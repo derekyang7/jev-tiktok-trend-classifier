@@ -107,6 +107,16 @@ class Store:
     def stage_done(self, run_id: int, stage: str) -> bool:
         return self.get_run(run_id)["stage_status"].get(stage) == "done"
 
+    def add_note(self, run_id: int, note: str) -> None:
+        params = self.get_run(run_id)["params"]
+        notes = params.setdefault("notes", [])
+        if note not in notes:
+            notes.append(note)
+            self._write("UPDATE runs SET params = ? WHERE id = ?", (json.dumps(params), run_id))
+
+    def notes(self, run_id: int) -> list[str]:
+        return self.get_run(run_id)["params"].get("notes", [])
+
     # --- videos -----------------------------------------------------------
     def upsert_video(self, video: Video) -> None:
         self._write("INSERT INTO videos (id, data) VALUES (?, ?) ON CONFLICT(id) DO UPDATE SET data = excluded.data",

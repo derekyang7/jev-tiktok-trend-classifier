@@ -101,3 +101,12 @@ def test_spend_and_labels():
     store.add_label("1", "is_signal", True, "random")
     store.add_label("1", "is_signal", False, "random")
     assert store.list_labels() == [{"video_id": "1", "field": "is_signal", "value": False, "stratum": "random"}]
+
+
+def test_run_notes_are_deduplicated_and_persisted():
+    store, run_id = new_store_and_run()
+    store.add_note(run_id, "momentum undefined")
+    store.add_note(run_id, "momentum undefined")
+    store.add_note(run_id, "budget trim: 11 briefs written instead of 20")
+    assert store.notes(run_id) == ["momentum undefined", "budget trim: 11 briefs written instead of 20"]
+    assert store.get_run(run_id)["params"]["lookback_days"] == 30
