@@ -1,0 +1,49 @@
+scan:
+  lookback_days: 30
+  max_videos: 1000
+  region: US
+thresholds:
+  gate_keep: 0.25
+  is_signal: 0.50
+  niche_member: 0.50
+  trend_member: 0.50
+  borderline: [0.35, 0.65]
+enrich:
+  transcript_max_words: 1500
+  comments_top_videos: 150
+  comments_per_video: 20
+  comment_max_chars: 300
+  comments_refresh_days: 7
+trends:
+  discover_max_digest_tokens: 100000
+  max_candidates: 60
+  min_support: 3.0
+  min_creators: 3
+  none_rate_warning: 0.30
+  self_check_min_agreement: 0.5
+  momentum_recent_fraction: 0.333
+  momentum_pseudo_count: 2
+  evidence_per_trend: 12
+ranking:
+  weights: {momentum: 0.30, pain: 0.20, spend: 0.20, underserved: 0.20, breadth: 0.10}
+briefs:
+  max_briefs: 20
+  min_briefs: 5
+models:
+  jev: typesafe/jev-1.13
+  llm: anthropic/claude-opus-5
+pricing:                         # for projections; actual spend comes from API usage
+  jev_input_per_mtok: 0.042
+  llm_input_per_mtok: 5.00
+  llm_output_per_mtok: 25.00
+  scrapecreators_per_credit: 0.00188
+  discover_expected_output_tokens: 15000
+  brief_expected_output_tokens: 3000
+budget:
+  max_usd_per_scan: 5.00
+concurrency: {jev: 16, scraper: 5, llm: 5}
+retries: {max_attempts: 4, base_delay_s: 1, max_delay_s: 30}
+failure:
+  max_item_failure_rate: 0.20
+llm:
+  use_json_schema: true          # set from Task 1 findings

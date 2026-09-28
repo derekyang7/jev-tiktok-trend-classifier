@@ -1,0 +1,67 @@
+niches:
+  - id: creator_economy
+    name: Creator economy
+    covers: "How people build audiences and earn from content: brand deals, UGC, affiliate and TikTok Shop selling, subscriptions, courses, fan monetization, and the tools creators use."
+    not_for: "Ordinary social media use that isn't about creating or monetizing content."
+    seed_queries: ["ugc creator", "brand deals", "tiktok shop affiliate", "creator tools", "how i make money on tiktok"]
+  - id: consumer_apps
+    name: Consumer apps
+    covers: "Mobile and web apps people use in everyday life: social, dating, productivity, habit tracking, lifestyle, entertainment and utilities."
+    not_for: "Physical products; software used mainly by businesses."
+    seed_queries: ["app recommendation", "apps you need", "this app changed my life", "best apps", "is there an app for"]
+  - id: longevity_health
+    name: Longevity & health
+    covers: "Physical and mental health, fitness, nutrition for health, sleep, biohacking, supplements, diagnostics and lab tests, healthcare access and costs, and aging."
+    not_for: "Beauty or fashion with no health angle."
+    seed_queries: ["longevity routine", "biohacking", "blood test results", "sleep tracking", "health insurance"]
+  - id: ai
+    name: AI
+    covers: "How people use AI tools, assistants, agents and AI-powered apps in life or work; new behaviors AI enables; frustrations with AI."
+    not_for: "General tech news with no usage or behavior."
+    seed_queries: ["chatgpt hack", "ai tool", "ai agent", "using ai to", "ai app"]
+  - id: b2b_saas
+    name: B2B SaaS
+    covers: "Software and workflows used by businesses, teams, freelancers and professionals: operations, CRM, invoicing, scheduling, hiring, internal tools and workplace productivity."
+    not_for: "Apps for personal life."
+    seed_queries: ["small business tools", "freelancer tools", "crm", "automate my business", "software for my business"]
+  - id: local_services
+    name: Offline & local services
+    covers: "In-person and local businesses and services: home services and trades, beauty and wellness appointments, restaurants and local shops, booking, and gig or service workers."
+    not_for: "Businesses that operate purely online."
+    seed_queries: ["local business", "small business owner day in the life", "home services", "cleaning business", "booking appointments"]
+  - id: fintech_payments
+    name: Fintech & payments
+    covers: "How people earn, save, spend, send, borrow, invest and insure money: budgeting, banking, payments, credit, buy now pay later, investing, side income and taxes."
+    not_for: "Shopping content with no money-management angle."
+    seed_queries: ["budgeting app", "credit card hack", "side hustle income", "buy now pay later", "savings challenge"]
+  - id: education_careers
+    name: Education & careers
+    covers: "Learning and upskilling, school and college, test prep, job search, career changes, workplace life and credentials."
+    not_for: "Trivia or 'fun facts' with no learning or career angle."
+    seed_queries: ["career change", "job search", "study hack", "learn a new skill", "corporate job"]
+  - id: ecommerce_resale
+    name: E-commerce & resale
+    covers: "How people shop for, discover and resell products: marketplaces, dupes, thrifting and flipping, deals, returns and other shopping behaviors."
+    not_for: "Budgeting or payments with no shopping angle."
+    seed_queries: ["thrift flip", "reselling", "amazon finds", "dupe", "tiktok made me buy it"]
+  - id: home_family_pets
+    name: Home, family & pets
+    covers: "Household life: parenting and childcare, family logistics, pets, renting and housing, cleaning, home improvement and eldercare."
+    not_for: "Running a home-services business."
+    seed_queries: ["mom hack", "parenting tips", "pet owner", "renter hack", "cleaning routine"]
+  - id: food_beverage
+    name: Food & beverage
+    covers: "What and how people eat and drink: cooking, meal prep, diets, groceries, restaurants and delivery, drinks and food products."
+    not_for: "Content where food only appears in the background."
+    seed_queries: ["meal prep", "grocery haul", "food delivery", "healthy snacks", "recipe hack"]
+global_seed_queries:
+  - i wish there was an app
+  - why is there no
+  - does anyone else
+  - stop paying for
+  - life hack
+  - game changer
+  - i built an app
+  - nobody talks about
+  - how i track
+  - rant
