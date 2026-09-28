@@ -110,3 +110,10 @@ def test_run_notes_are_deduplicated_and_persisted():
     store.add_note(run_id, "budget trim: 11 briefs written instead of 20")
     assert store.notes(run_id) == ["momentum undefined", "budget trim: 11 briefs written instead of 20"]
     assert store.get_run(run_id)["params"]["lookback_days"] == 30
+
+
+def test_failures_by_stage():
+    store, run_id = new_store_and_run()
+    store.record_api_call(run_id, "judge", "jev", "judge", {"item": "1"}, 0.0, "failed")
+    store.record_api_call(run_id, "judge", "jev", "systemone", {}, 0.01, "ok")
+    assert store.failures_by_stage(run_id) == {"judge": 1}

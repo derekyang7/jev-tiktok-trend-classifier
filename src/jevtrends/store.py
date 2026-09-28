@@ -262,6 +262,12 @@ class Store:
         row = self.conn.execute("SELECT COALESCE(SUM(cost_usd), 0) FROM api_calls WHERE run_id = ?", (run_id,)).fetchone()
         return float(row[0])
 
+    def failures_by_stage(self, run_id: int) -> dict[str, int]:
+        rows = self.conn.execute(
+            "SELECT stage, COUNT(*) AS n FROM api_calls WHERE run_id = ? AND status = 'failed' GROUP BY stage ORDER BY stage",
+            (run_id,))
+        return {r["stage"]: r["n"] for r in rows}
+
     # --- labels -----------------------------------------------------------
     def add_label(self, video_id: str, field: str, value: object, stratum: str) -> None:
         self._write(
