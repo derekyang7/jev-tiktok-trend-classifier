@@ -10,12 +10,14 @@ import typer
 
 from jevtrends.budget import BudgetGuard
 from jevtrends.config import NicheConfig, Settings, load_niches, load_settings, parse_weights
+from jevtrends.evaluation import compute_metrics, sample_for_labeling
 from jevtrends.http import APIError
 from jevtrends.jev.client import JevClient
 from jevtrends.llm.client import LLMClient
 from jevtrends.pipeline import BudgetExceeded, estimate_scan, run_pipeline
 from jevtrends.sources.scrapecreators import ScrapeCreatorsSource
 from jevtrends.stages.context import RunContext, StageFailed
+from jevtrends.stages.judge import truncate_words
 from jevtrends.stages.report import write_report
 from jevtrends.store import Store
 
@@ -122,3 +124,62 @@ def runs() -> None:
     """List runs with status and cost."""
     for run in Store(db_path()).list_runs():
         typer.echo(f"#{run['id']}  {run['started_at'][:16]}  {run['status']:<17}  ${run['cost_usd']:.2f}")
+
+
+from jevtrends.stages.judge import truncate_words
+
+SIGNAL_TYPES = ["behavior_need", "product_traction", "complaint_workaround", "other"]
+
+
+def _prompt_choice(label: str, options: list[str]) -> str:
+    while True:
+        answer = typer.prompt(f"{label} ({'/'.join(options)})").strip()
+        if answer in options:
+            return answer
+        typer.echo(f"Choose one of: {', '.join(options)}")
+
+
+@app.command()
+def label(run_id: int, n: int = 100) -> None:
+    """Label a sample of this run's videos for evaluation (interactive)."""
+    store = Store(db_path())
+    niche_ids = store.get_run(run_id)["niches"].ids()
+    sample = sample_for_labeling(store, run_id, n)
+    typer.echo(f"{len(sample)} videos to label. Open each link if the text isn't enough. Ctrl-C stops; labels so far are saved.")
+    for index, (video_id, stratum) in enumerate(sample, start=1):
+        video, enrichment = store.get_video(video_id), store.get_enrichment(video_id)
+        typer.echo(f"\n[{index}/{len(sample)}] {video.url}  ({stratum})")
+        typer.echo(f"Caption: {video.caption}")
+        typer.echo(f"Transcript: {truncate_words(enrichment.transcript if enrichment else None, 80)}")
+        for comment in ((enrichment.comments if enrichment else None) or [])[:3]:
+            typer.echo(f"Comment: {comment.text}")
+        is_signal = typer.confirm("Signal? (evidence of what people do, want, buy or struggle with)")
+        store.add_label(video_id, "is_signal", is_signal, stratum)
+        if stratum == "gate_dropped":
+            continue
+        if is_signal:
+            store.add_label(video_id, "signal_type", _prompt_choice("Type", SIGNAL_TYPES), stratum)
+        raw = typer.prompt(f"Niches (comma-separated: {', '.join(niche_ids)}; blank for none)", default="",
+                           show_default=False)
+        store.add_label(video_id, "niches", [x.strip() for x in raw.split(",") if x.strip() in niche_ids], stratum)
+        store.add_label(video_id, "is_promotional", typer.confirm("Promotional?"), stratum)
+
+
+def _fmt(value: float | None) -> str:
+    return "n/a" if value is None else f"{value:.2f}"
+
+
+@app.command(name="eval")
+def evaluate(run_id: int) -> None:
+    """Print precision, recall, calibration and a suggested threshold from your labels."""
+    m = compute_metrics(Store(db_path()), run_id)
+    typer.echo(f"Random-sample labels: {m['labeled_random']}")
+    typer.echo(f"is_signal @ {m['is_signal']['threshold']}: precision {_fmt(m['is_signal']['precision'])}, "
+               f"recall {_fmt(m['is_signal']['recall'])} (targets 0.80 / 0.70)")
+    typer.echo(f"niches @ {m['niches']['threshold']}: precision {_fmt(m['niches']['precision'])}, "
+               f"recall {_fmt(m['niches']['recall'])} (target precision 0.80)")
+    typer.echo(f"gate miss rate: {_fmt(m['gate_miss_rate'])} · signal_type accuracy: {_fmt(m['signal_type_accuracy'])}")
+    typer.echo(f"suggested is_signal threshold: {_fmt(m['suggested_is_signal_threshold'])}")
+    for bucket in m["calibration"]:
+        typer.echo(f"  {bucket['range']}: n={bucket['count']} predicted {_fmt(bucket['predicted'])} "
+                   f"observed {_fmt(bucket['observed'])}")

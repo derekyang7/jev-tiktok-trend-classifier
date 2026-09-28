@@ -43,3 +43,32 @@ def test_runs_and_report_commands(tmp_path):
     result = runner.invoke(app, ["report", str(run_id), "--weights", weights], env=env(tmp_path))
     assert result.exit_code == 0, result.output
     assert (tmp_path / "reports" / f"2026-09-28-scan-{run_id}.md").exists()
+
+
+def test_eval_command_prints_metrics(tmp_path):
+    store = Store(tmp_path / "db.sqlite")
+    run_id = store.create_run({}, Settings(), test_niches(), NOW)
+    store.close()
+    result = runner.invoke(app, ["eval", str(run_id)], env=env(tmp_path))
+    assert result.exit_code == 0, result.output
+    assert "Random-sample labels: 0" in result.output and "precision n/a" in result.output
+
+
+def test_label_command_records_labels_and_reprompts_invalid_type(tmp_path):
+    from jevtrends.models import Answer
+    from tests.helpers import make_video
+
+    store = Store(tmp_path / "db.sqlite")
+    run_id = store.create_run({}, Settings(), test_niches(), NOW)
+    store.upsert_video(make_video(id="a"))
+    store.add_run_video(run_id, "a", "q")
+    store.upsert_judgment(run_id, "video", "a", "gate.maybe_signal", 1, Answer(value=0.9))
+    store.upsert_judgment(run_id, "video", "a", "judge.is_signal", 1, Answer(value=0.9))
+    store.close()
+    answers = "y\nbogus\nbehavior_need\nfintech_payments, not_a_niche\nn\n"
+    result = runner.invoke(app, ["label", str(run_id), "--n", "2"], env=env(tmp_path), input=answers)
+    assert result.exit_code == 0, result.output
+    assert "Choose one of" in result.output
+    labels = {row["field"]: row["value"] for row in Store(tmp_path / "db.sqlite").list_labels()}
+    assert labels == {"is_signal": True, "signal_type": "behavior_need", "niches": ["fintech_payments"],
+                      "is_promotional": False}
