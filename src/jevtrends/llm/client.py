@@ -7,9 +7,10 @@ import httpx
 from pydantic import BaseModel, ValidationError
 
 from jevtrends.config import RetriesCfg
-from jevtrends.http import send_with_retry
+from jevtrends.http import TransientAPIError, send_with_retry
 
 CHAT_URL = "https://openrouter.ai/api/v1/chat/completions"
+LLM_TIMEOUT = httpx.Timeout(900.0, connect=30.0)  # long generations send no bytes until they finish
 
 
 @dataclass
@@ -23,11 +24,13 @@ class LLMResult:
 class LLMOutputError(Exception):
     """The model's output failed validation on both attempts. Carries the usage already spent."""
 
-    def __init__(self, message: str, input_tokens: int, output_tokens: int, cost_usd: float | None):
+    def __init__(self, message: str, input_tokens: int, output_tokens: int, cost_usd: float | None,
+                 estimated: bool = False):
         super().__init__(message)
         self.input_tokens = input_tokens
         self.output_tokens = output_tokens
         self.cost_usd = cost_usd
+        self.estimated = estimated
 
 
 def strict_schema(model: type[BaseModel]) -> dict:
@@ -75,8 +78,11 @@ class LLMClient:
             body["response_format"] = {"type": "json_schema", "json_schema": {
                 "name": schema.__name__, "strict": True, "schema": strict_schema(schema)}}
         response = await send_with_retry(self.client, "openrouter", "POST", self.url, retries=self.retries,
+                                         retry_transport_errors=False, timeout=LLM_TIMEOUT,
                                          json=body, headers={"Authorization": f"Bearer {self.api_key}"})
         data = response.json()
+        if not data.get("choices"):  # OpenRouter can return 200 with only an error body
+            raise TransientAPIError("openrouter", response.status_code, str(data.get("error"))[:300])
         return data["choices"][0]["message"].get("content") or "", data.get("usage") or {}
 
     async def complete_json(self, system: str, user: str, schema: type[BaseModel], max_tokens: int,
@@ -86,7 +92,16 @@ class LLMClient:
         cost: float | None = 0.0
         errors: list[str] = []
         for _ in range(2):
-            content, usage = await self._call(messages, schema, max_tokens)
+            try:
+                content, usage = await self._call(messages, schema, max_tokens)
+            except TransientAPIError as exc:
+                billing_unknown = exc.status in (None, 200)  # timeout or error body: generation may be billed
+                if billing_unknown:
+                    input_tokens += sum(len(m["content"]) for m in messages) // 4
+                    output_tokens += max_tokens
+                    cost = None
+                raise LLMOutputError(f"LLM call failed: {exc}", input_tokens, output_tokens, cost,
+                                     estimated=billing_unknown) from exc
             input_tokens += int(usage.get("prompt_tokens", 0))
             output_tokens += int(usage.get("completion_tokens", 0))
             cost = cost + float(usage["cost"]) if cost is not None and "cost" in usage else None

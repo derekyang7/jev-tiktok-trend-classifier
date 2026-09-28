@@ -87,3 +87,61 @@ def test_prompts_fence_untrusted_content():
     assert brief.startswith("<trend_data>") and '"name": "x"' in brief
     assert set(BriefOut.model_fields) == {"headline", "whats_happening", "who", "underlying_need", "evidence",
                                           "existing_solutions", "startup_angles", "risks"}
+
+
+def llm_client(handler, attempts=3):
+    requests = []
+
+    def wrapped(request):
+        requests.append(request)
+        return handler(request)
+
+    client = LLMClient(httpx.AsyncClient(transport=httpx.MockTransport(wrapped)), "k", "anthropic/claude-opus-5",
+                       RetriesCfg(max_attempts=attempts, base_delay_s=0), use_json_schema=True)
+    return client, requests
+
+
+async def test_read_timeout_is_not_retried_and_carries_estimated_usage():
+    def handler(request):
+        raise httpx.ReadTimeout("slow", request=request)
+
+    client, requests = llm_client(handler)
+    with pytest.raises(LLMOutputError) as err:
+        await client.complete_json("s" * 400, "u" * 400, DiscoverOut, max_tokens=1000)
+    assert len(requests) == 1
+    assert err.value.estimated is True
+    assert err.value.input_tokens == 200 and err.value.output_tokens == 1000
+
+
+async def test_error_body_with_status_200_raises_llm_output_error():
+    client, requests = llm_client(lambda r: httpx.Response(200, json={"error": {"code": 502, "message": "upstream"}}))
+    with pytest.raises(LLMOutputError) as err:
+        await client.complete_json("sys", "user", DiscoverOut, max_tokens=1000)
+    assert len(requests) == 1 and err.value.estimated is True
+
+
+async def test_failed_repair_attempt_keeps_first_attempt_usage():
+    responses = [chat_response("not json", prompt_tokens=100, completion_tokens=50)]
+
+    def handler(request):
+        if responses:
+            return responses.pop(0)
+        raise httpx.ReadTimeout("slow", request=request)
+
+    client, _ = llm_client(handler)
+    with pytest.raises(LLMOutputError) as err:
+        await client.complete_json("sys", "user", DiscoverOut, max_tokens=1000)
+    assert err.value.input_tokens > 100 and err.value.output_tokens == 50 + 1000
+    assert err.value.cost_usd is None  # unknown for the timed-out attempt; caller prices the tokens
+
+
+async def test_llm_requests_use_a_long_read_timeout():
+    seen = {}
+
+    def handler(request):
+        seen.update(request.extensions["timeout"])
+        return chat_response(json.dumps(VALID))
+
+    client, _ = llm_client(handler)
+    await client.complete_json("sys", "user", DiscoverOut, max_tokens=1000)
+    assert seen["read"] >= 900

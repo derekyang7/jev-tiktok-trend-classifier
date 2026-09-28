@@ -44,6 +44,7 @@ async def send_with_retry(
     *,
     retries: RetriesCfg,
     sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
+    retry_transport_errors: bool = True,
     **kwargs,
 ) -> httpx.Response:
     last_status: int | None = None
@@ -53,6 +54,8 @@ async def send_with_retry(
         try:
             response = await client.request(method, url, **kwargs)
         except httpx.TransportError as exc:
+            if not retry_transport_errors:  # e.g. LLM calls: the provider may still bill the abandoned request
+                raise TransientAPIError(provider, None, type(exc).__name__) from exc
             last_status, last_error = None, type(exc).__name__
         else:
             if response.is_success:
