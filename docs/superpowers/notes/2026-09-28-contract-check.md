@@ -1,7 +1,6 @@
 # Live contract check (spec §14.1): findings
 
-Run on 2026-09-28 with `scripts/contract_check.py` (the Jev and LLM checks were run on their own because the
-ScrapeCreators key was not yet in the secrets file).
+Run on 2026-09-28 with `scripts/contract_check.py`. Final run: `RESULT jev=True llm=True scrapecreators=True`.
 
 ## Jev via OpenRouter: PASS
 
@@ -25,20 +24,25 @@ ScrapeCreators key was not yet in the secrets file).
 - **Usage:** `prompt_tokens`, `completion_tokens`, `total_tokens`, `cost` (USD, e.g. `0.0019`), plus
   `cost_details` and token details. `usage.cost` is present, so `LLMClient` records OpenRouter's reported cost.
 
-## ScrapeCreators: PENDING
+## ScrapeCreators: PASS
 
-`SCRAPECREATORS_API_KEY` was not yet set in `~/Repos/.env.secrets`. Tasks 2–15 run offline, so they go ahead
-using the documented field names (see below). Before Task 16, run the full script
-(`scripts/with-secrets.sh uv run python scripts/contract_check.py`), record the search, transcript and comments
-shapes here, and let Task 6's fixture test (`test_parses_recorded_contract_fixtures`) confirm the parser.
-
-Documented shapes the plan relies on until then (docs.scrapecreators.com, fetched 2026-09-28):
-- search: `GET /v1/tiktok/search/keyword?query&date_posted&sort_by&region&cursor&trim`;
-  `search_item_list[].aweme_info.{aweme_id, desc, create_time, statistics.{play_count, digg_count, comment_count,
-  share_count}, author.{uid, unique_id, nickname}, text_extra[].hashtag_name, music.title, desc_language}`, `cursor`.
-- transcript: `GET /v1/tiktok/video/transcript?url&language` → `{"transcript": "WEBVTT..."}`.
-- comments: `GET /v1/tiktok/video/comments?url&cursor` → `comments[].{text, digg_count}`, `cursor`, `has_more`.
+- **Search** (`GET /v1/tiktok/search/keyword?query&date_posted=this-month&sort_by=relevance&region=US`): 200.
+  - Top level: `success`, `credits_charged` (1), `credits_remaining`, `cursor` (30), `has_more` (1), `search_item_list`.
+  - **30 videos per page** (the budget assumed up to 2 pages per query; with a per-query cap of 16, one page usually suffices).
+  - `aweme_info.aweme_id` is a string; `create_time` is epoch seconds (int); `desc_language` is present (`"en"`).
+  - `statistics`: `play_count`, `digg_count`, `comment_count`, `share_count` (plus `collect_count`, `download_count`, ...).
+  - `text_extra[]` mixes user mentions (no `hashtag_name`) with hashtags (`hashtag_name`); the parser keeps only hashtags.
+  - `music.title` present (e.g. `"original sound - <handle>"`).
+  - `author` has `uid`, `unique_id`, `nickname`, `sec_uid`, `follower_count`, ... but **no `signature`**.
+- **Transcript** (`GET /v1/tiktok/video/transcript?url&language=en`): 200, body `{success, credits_charged, credits_remaining,
+  id, url, transcript}` with `transcript` = `"WEBVTT\n\n\n00:00:00.620 --> 00:00:03.500\nI had someone ask me ..."`.
+- **Comments** (`GET /v1/tiktok/video/comments?url`): 200, body has `comments[]` (page of up to 20), `cursor`, `has_more`,
+  `total`. Each comment has `text`, `digg_count`, `create_time`, `comment_language`, `user`, `is_high_purchase_intent`, ...
+- **Credits:** the account had 100 free credits; 97 remain after this check. A full scan needs about 850.
 
 ## Deviations from the plan
 
-None so far for Jev and the LLM.
+- **Creator bio is not available from search results** (`author.signature` is absent). `parse_video` already falls back to
+  `""`, so `creator_bio` in Jev state will be empty. Fetching bios would cost one profile request per creator; not done in v1.
+- Not used in v1 but worth knowing: `aweme_info.is_ad`, `aweme_info.is_paid_partnership` (could complement Jev's
+  `is_promotional`) and comments' `is_high_purchase_intent` (could complement the `spend` score).

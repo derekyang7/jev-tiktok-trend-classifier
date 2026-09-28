@@ -12,14 +12,14 @@
         "choice": "money",
         "probabilities": {
           "other": 0,
-          "food": 0,
-          "money": 1
+          "money": 1,
+          "food": 0
         },
         "confidence": 1
       },
       "pain": {
         "type": "score",
-        "score": 1.94,
+        "score": 1.95,
         "legend": {
           "0": "No frustration",
           "1": "Mild annoyance",
@@ -27,10 +27,10 @@
         },
         "probabilities": {
           "0": 0,
-          "1": 0.06,
-          "2": 0.94
+          "1": 0.05,
+          "2": 0.95
         },
-        "confidence": 0.9
+        "confidence": 0.93
       }
     },
     "usage": {
@@ -38,7 +38,7 @@
       "output_tokens": 71,
       "cost": 1.6422e-05
     },
-    "id": "gen-dec-1790625457-XZ53glKcKix2RFubZTLR",
+    "id": "gen-dec-1790625541-3QWcVsmHtUoNgK7w1Tli",
     "provider": "TypeSafe"
   }
 }
