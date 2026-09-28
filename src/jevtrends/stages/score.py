@@ -7,8 +7,12 @@ from jevtrends.stages.context import RunContext, run_items
 from jevtrends.stages.judge import signal_videos, truncate_words
 
 
-def evidence_set(members: dict[str, float], size: int) -> list[str]:
-    return [video_id for video_id, _ in sorted(members.items(), key=lambda kv: (-kv[1], kv[0]))[:size]]
+EVIDENCE_MIN_P = 0.2  # below this a video is not evidence for the trend (most Jev probabilities are exactly 0)
+
+
+def evidence_set(members: dict[str, float], size: int, min_p: float = EVIDENCE_MIN_P) -> list[str]:
+    ranked = sorted(((v, p) for v, p in members.items() if p >= min_p), key=lambda kv: (-kv[1], kv[0]))
+    return [video_id for video_id, _ in ranked[:size]]
 
 
 def trend_state(trend: Trend, evidence_ids: list[str], videos: dict[str, Video],

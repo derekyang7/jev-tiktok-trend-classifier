@@ -69,7 +69,7 @@ async def test_score_computes_metrics_jev_scores_and_rank():
     assert (score.promo_share, score.median_views) == (0.0, 1000.0)
     assert score.opportunity == pytest.approx(0.6107, abs=1e-3)
     state = ctx.jev.calls[-1][0]
-    assert state["trend"]["name"] == "Rent splitting" and len(state["evidence"]) == 5
+    assert state["trend"]["name"] == "Rent splitting" and len(state["evidence"]) == 4  # e (p=0.05) excluded
     assert ctx.store.notes(ctx.run_id) == []
 
 
@@ -106,3 +106,8 @@ async def test_brief_respects_budget_limit():
     ctx.limits["max_briefs"] = 0
     await run_brief(ctx)
     assert llm.calls == []
+
+
+def test_evidence_set_excludes_near_zero_probabilities():
+    # Real Jev choice probabilities are mostly exactly 0; those videos are not evidence for the trend.
+    assert evidence_set({"a": 0.9, "b": 0.3, "c": 0.1, "d": 0.0}, 12) == ["a", "b"]
