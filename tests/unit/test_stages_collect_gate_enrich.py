@@ -10,6 +10,7 @@ from jevtrends.stages.collect import is_english_or_unknown, run_collect
 from jevtrends.stages.context import StageFailed, run_items
 from jevtrends.stages.enrich import run_enrich
 from jevtrends.stages.gate import gate_state, gate_survivors, run_gate
+from jevtrends.store import Store
 from tests.fakes import NOW, FakeJev, FakeSource, make_ctx
 from tests.helpers import make_video
 
@@ -123,3 +124,26 @@ async def test_gate_resume_is_not_stuck_by_a_few_persistent_failures():
     failing.intersection_update({"v0"})
     await run_gate(ctx)  # one persistent failure is 10% of the stage, not 1 of the 3 retried
     assert len(ctx.answers(MAYBE_SIGNAL)) == 9
+
+
+async def test_collect_resume_skips_finished_queries():
+    settings, store = sequential_settings(max_videos=6), Store(":memory:")
+    first = make_ctx(source=FakeSource(pages=search_pages(), fail_pages={("rant", 0)}), settings=settings, store=store)
+    with pytest.raises(StageFailed):
+        await run_collect(first)
+    source = FakeSource(pages=search_pages())
+    await run_collect(make_ctx(source=source, settings=settings, store=store, run_id=first.run_id))
+    assert source.calls == [("search", "rant", None)]
+    assert store.run_video_ids(first.run_id) == ["v1", "v4", "v5", "v6", "v7", "v8"]
+
+
+async def test_collect_resume_counts_videos_a_query_already_found():
+    pages = {"ai app": [[make_video(id="v1")], [make_video(id="v9"), make_video(id="v4")]],
+             "budgeting app": [[make_video(id="v5")]], "rant": [[make_video(id="v7")]]}
+    settings, store = sequential_settings(max_videos=6), Store(":memory:")  # cap: 2 per query
+    first = make_ctx(source=FakeSource(pages=pages, fail_pages={("ai app", 1)}), settings=settings, store=store)
+    with pytest.raises(StageFailed):
+        await run_collect(first)
+    await run_collect(make_ctx(source=FakeSource(pages=pages), settings=settings, store=store, run_id=first.run_id))
+    ids = store.run_video_ids(first.run_id)
+    assert "v9" in ids and "v4" not in ids  # ai app already had v1, so only one more fits its cap

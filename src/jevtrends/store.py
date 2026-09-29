@@ -117,6 +117,25 @@ class Store:
     def notes(self, run_id: int) -> list[str]:
         return self.get_run(run_id)["params"].get("notes", [])
 
+    def mark_query_done(self, run_id: int, query: str) -> None:
+        params = self.get_run(run_id)["params"]
+        done = params.setdefault("collect_done", [])
+        if query not in done:
+            done.append(query)
+            self._write("UPDATE runs SET params = ? WHERE id = ?", (json.dumps(params), run_id))
+
+    def done_queries(self, run_id: int) -> set[str]:
+        return set(self.get_run(run_id)["params"].get("collect_done", []))
+
+    def query_counts(self, run_id: int) -> dict[str, int]:
+        """Videos each seed query contributed, counting a video for the first query that found it."""
+        counts: dict[str, int] = {}
+        for row in self.conn.execute("SELECT seed_queries FROM run_videos WHERE run_id = ?", (run_id,)):
+            queries = json.loads(row["seed_queries"])
+            if queries:
+                counts[queries[0]] = counts.get(queries[0], 0) + 1
+        return counts
+
     # --- videos -----------------------------------------------------------
     def upsert_video(self, video: Video) -> None:
         self._write("INSERT INTO videos (id, data) VALUES (?, ?) ON CONFLICT(id) DO UPDATE SET data = excluded.data",

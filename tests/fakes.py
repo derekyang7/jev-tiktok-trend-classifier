@@ -7,6 +7,7 @@ from pydantic import BaseModel
 
 from jevtrends.budget import BudgetGuard
 from jevtrends.config import NicheConfig, Settings
+from jevtrends.http import TransientAPIError
 from jevtrends.jev.client import JevResult
 from jevtrends.llm.client import LLMOutputError, LLMResult
 from jevtrends.models import Answer, Comment, Video
@@ -34,8 +35,10 @@ test_niches.__test__ = False  # not a pytest test
 class FakeSource:
     def __init__(self, pages: dict[str, list[list[Video]]] | None = None,
                  transcripts: dict[str, str | None] | None = None,
-                 comments: dict[str, list[Comment]] | None = None):
+                 comments: dict[str, list[Comment]] | None = None,
+                 fail_pages: set[tuple[str, int]] | None = None):
         self.pages = pages or {}
+        self.fail_pages = fail_pages or set()  # (query, page index) pairs whose search raises a transient error
         self.transcripts = transcripts or {}
         self.comments_by_video = comments or {}
         self.calls: list[tuple] = []
@@ -44,6 +47,8 @@ class FakeSource:
         self.calls.append(("search", query, cursor))
         pages = self.pages.get(query, [])
         index = cursor or 0
+        if (query, index) in self.fail_pages:
+            raise TransientAPIError("scrapecreators", 503, "boom")
         videos = pages[index] if index < len(pages) else []
         return SearchPage(videos=videos, next_cursor=index + 1 if index + 1 < len(pages) else None, credits=1)
 

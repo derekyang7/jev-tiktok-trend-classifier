@@ -18,11 +18,15 @@ async def run_collect(ctx: RunContext) -> None:
     per_query_cap = math.ceil(scan.max_videos / len(queries))
     window_start = ctx.now - timedelta(days=scan.lookback_days)
     seen = set(ctx.store.run_video_ids(ctx.run_id))
+    done = ctx.store.done_queries(ctx.run_id)
+    found_before = ctx.store.query_counts(ctx.run_id)  # progress from an earlier, interrupted attempt
     lock = asyncio.Lock()
 
-    async def collect_query(query: str) -> None:
-        found, cursor = 0, None
+    async def search_query(query: str) -> None:
+        found, cursor = found_before.get(query, 0), None
         for _ in range(SEARCH_PAGES_PER_QUERY):
+            if found >= per_query_cap or len(seen) >= scan.max_videos:
+                return
             page = await ctx.source.search(query, scan.lookback_days, scan.region, cursor)
             ctx.record_scraper("collect", "search", page.credits)
             for video in page.videos:
@@ -44,5 +48,10 @@ async def run_collect(ctx: RunContext) -> None:
                 return
             cursor = page.next_cursor
 
-    await run_items(ctx, "collect", "scrapecreators", queries, collect_query, ctx.settings.concurrency.scraper,
+    async def collect_query(query: str) -> None:
+        await search_query(query)
+        ctx.store.mark_query_done(ctx.run_id, query)
+
+    todo = [query for query in queries if query not in done]
+    await run_items(ctx, "collect", "scrapecreators", todo, collect_query, ctx.settings.concurrency.scraper,
                     total=len(queries))
