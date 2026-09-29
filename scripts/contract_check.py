@@ -2,6 +2,7 @@
 
 Run with: scripts/with-secrets.sh uv run python scripts/contract_check.py
 Writes redacted responses to tests/fixtures/contract/. Never prints keys or headers.
+`uv run python scripts/contract_check.py --scrub-fixtures` re-redacts the saved fixtures offline.
 """
 
 import asyncio
@@ -25,15 +26,32 @@ def save(name: str, data: object) -> None:
     print(f"  saved tests/fixtures/contract/{name}")
 
 
-def redact_user(user: dict, n: int) -> dict:
-    user = dict(user)
-    for key in ("unique_id", "nickname", "uid", "sec_uid", "signature"):
-        if key in user:
-            user[key] = f"redacted_{key}_{n}"
-    user.pop("avatar_thumb", None)
-    user.pop("avatar_larger", None)
-    user.pop("avatar_medium", None)
-    return user
+IDENTIFYING = {"unique_id", "nickname", "uid", "sec_uid", "signature", "author_user_id", "avatar_uri", "owner_handle",
+               "owner_id", "owner_nickname", "search_user_desc", "search_user_name", "share_desc", "share_title",
+               "share_url", "user_id", "sec_user_id", "ins_id", "twitter_id", "youtube_channel_id", "reply_to_username"}
+
+
+def scrub(node: object) -> object:
+    """Deep-redacts creators' and commenters' identifiers so the fixtures can be committed."""
+    if isinstance(node, dict):
+        out = {}
+        for key, value in node.items():
+            if key == "share_info" or (key.startswith("avatar") and isinstance(value, dict)):
+                continue
+            if key in IDENTIFYING and value not in (None, "", 0):
+                out[key] = "redacted"
+            elif key == "author" and isinstance(value, str):
+                out[key] = "redacted"
+            elif key == "title" and isinstance(value, str) and value.startswith("original sound - "):
+                out[key] = "original sound - redacted"
+            elif key in ("url", "share_url") and isinstance(value, str) and "/@" in value:
+                out[key] = "https://www.tiktok.com/@redacted/video/0"
+            else:
+                out[key] = scrub(value)
+        return out
+    if isinstance(node, list):
+        return [scrub(item) for item in node]
+    return node
 
 
 JEV_BODY = {
@@ -133,13 +151,7 @@ async def check_scrapecreators(client: httpx.AsyncClient, key: str) -> bool:
     first = items[0]["aweme_info"]
     print(f"  aweme_info keys: {sorted(first.keys())}")
     print(f"  author keys: {sorted(first.get('author', {}).keys())}")
-    redacted = dict(data)
-    redacted["search_item_list"] = []
-    for n, item in enumerate(items[:2]):
-        info = dict(item["aweme_info"])
-        info["author"] = redact_user(info.get("author", {}), n)
-        redacted["search_item_list"].append({"aweme_info": info})
-    save("sc_search.json", redacted)
+    save("sc_search.json", scrub({**data, "search_item_list": items[:2]}))
 
     handle = first["author"]["unique_id"]
     url = f"https://www.tiktok.com/@{handle}/video/{first['aweme_id']}"
@@ -149,19 +161,27 @@ async def check_scrapecreators(client: httpx.AsyncClient, key: str) -> bool:
     if isinstance(transcript.get("transcript"), str):
         transcript["transcript"] = "\n".join(transcript["transcript"].splitlines()[:20])
     transcript["url"] = "https://www.tiktok.com/@redacted/video/0"
-    save("sc_transcript.json", {"status_code": resp.status_code, "body": transcript})
+    save("sc_transcript.json", scrub({"status_code": resp.status_code, "body": transcript}))
 
     resp = await client.get(f"{SC}/v1/tiktok/video/comments", params={"url": url}, headers=headers)
     print(f"  GET /v1/tiktok/video/comments -> {resp.status_code}")
     comments = resp.json()
-    comments["comments"] = [
-        {**c, "user": redact_user(c.get("user", {}), n)} for n, c in enumerate((comments.get("comments") or [])[:3])
-    ]
-    save("sc_comments.json", comments)
+    save("sc_comments.json", scrub({**comments, "comments": (comments.get("comments") or [])[:3]}))
     return True
 
 
+def scrub_fixtures() -> int:
+    """Re-redacts the recorded ScrapeCreators fixtures in place; no network calls."""
+    for name in ("sc_search.json", "sc_comments.json", "sc_transcript.json"):
+        path = OUT / name
+        path.write_text(json.dumps(scrub(json.loads(path.read_text())), indent=2, ensure_ascii=False) + "\n")
+        print(f"  scrubbed tests/fixtures/contract/{name}")
+    return 0
+
+
 async def main() -> int:
+    if "--scrub-fixtures" in sys.argv:
+        return scrub_fixtures()
     keys = {name: os.environ.get(name, "") for name in ("OPENROUTER_API_KEY", "SCRAPECREATORS_API_KEY")}
     missing = [name for name, value in keys.items() if not value]
     if missing:
