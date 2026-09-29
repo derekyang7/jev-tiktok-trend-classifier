@@ -145,3 +145,13 @@ async def test_llm_requests_use_a_long_read_timeout():
     client, _ = llm_client(handler)
     await client.complete_json("sys", "user", DiscoverOut, max_tokens=1000)
     assert seen["read"] >= 900
+
+
+def test_trend_count_scales_with_signal_videos():
+    from jevtrends.llm.prompts import discover_system, trend_count_range
+
+    assert trend_count_range(460, 60) == (20, 60)  # full scan: the spec's 20-60
+    assert trend_count_range(46, 60) == (3, 7)  # pilot size: about one trend per 6 signal videos
+    assert trend_count_range(5, 60) == (1, 1)
+    assert "Propose between 3 and 7 trends." in discover_system(3, 7)
+    assert "Propose up to 1 trend." in discover_system(1, 1)

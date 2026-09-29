@@ -119,3 +119,12 @@ async def test_assign_warns_when_none_rate_is_high():
     ctx.store.upsert_trend(ctx.run_id, Trend(trend_id="t01", name="Rent", kind="behavior_need", definition="d"))
     await run_assign(ctx)
     assert "fit none of the proposed trends" in ctx.store.notes(ctx.run_id)[0]
+
+
+async def test_discover_asks_for_a_trend_count_that_fits_the_corpus():
+    proposal = DiscoverOut(trends=[TrendProposal(id="t01", name="Rent", kind="behavior_need", definition="d",
+                                                 example_video_ids=["v001"])])
+    llm = FakeLLM(lambda system, user, schema: proposal)
+    ctx = await judged_ctx(rent_videos(), llm=llm)  # 5 signal videos
+    await run_discover(ctx)
+    assert "Propose up to 1 trend." in llm.calls[0][0]

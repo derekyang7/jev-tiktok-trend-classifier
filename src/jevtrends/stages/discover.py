@@ -4,7 +4,7 @@ import math
 
 from jevtrends.jev.questions import IS_PROMOTIONAL, IS_SIGNAL, SIGNAL_TYPE, niche_question
 from jevtrends.llm.client import LLMOutputError
-from jevtrends.llm.prompts import DISCOVER_SYSTEM, DiscoverOut, discover_user_prompt
+from jevtrends.llm.prompts import DiscoverOut, discover_system, discover_user_prompt, trend_count_range
 from jevtrends.models import Enrichment, Trend, Video
 from jevtrends.stages.context import RunContext, StageFailed
 from jevtrends.stages.judge import signal_videos
@@ -68,14 +68,15 @@ async def run_discover(ctx: RunContext) -> None:
         ctx.store.set_short_id(ctx.run_id, video_id, short_id)
 
     max_candidates = ctx.settings.trends.max_candidates
+    low, high = trend_count_range(len(lines), max_candidates)
 
     def validate(out: DiscoverOut) -> list[str]:
         if clean_proposals(out, short_to_video, max_candidates):
             return []
-        return ["No valid trends. Propose 20-60 trends with the fields described."]
+        return [f"No valid trends. Propose {low}-{high} trends with the fields described."]
 
     try:
-        result = await ctx.llm.complete_json(DISCOVER_SYSTEM, discover_user_prompt(lines), DiscoverOut,
+        result = await ctx.llm.complete_json(discover_system(low, high), discover_user_prompt(lines), DiscoverOut,
                                              max_tokens=DISCOVER_MAX_TOKENS, validate=validate)
     except LLMOutputError as exc:
         ctx.record_llm("discover", exc.input_tokens, exc.output_tokens, exc.cost_usd)
