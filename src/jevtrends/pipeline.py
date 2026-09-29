@@ -72,6 +72,10 @@ async def run_pipeline(ctx: RunContext, reports_dir: Path) -> Path:
         ctx.store.set_run_status(ctx.run_id, "failed_resumable")
         ctx.store.add_note(ctx.run_id, f"Attempt stopped at {stage}: {exc}")
         raise
+    except BaseException as exc:  # unexpected errors and Ctrl-C must not leave the run marked "running"
+        ctx.store.set_run_status(ctx.run_id, "failed_resumable")
+        ctx.store.add_note(ctx.run_id, f"Attempt stopped at {stage}: {exc!r}")
+        raise
     ctx.store.set_run_status(ctx.run_id, "completed", finished=True)
     path = write_report(ctx.store, ctx.run_id, reports_dir)
     ctx.store.mark_stage_done(ctx.run_id, "report")

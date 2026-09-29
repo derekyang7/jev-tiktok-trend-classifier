@@ -111,3 +111,12 @@ async def test_budget_guard_stops_before_spending(tmp_path):
         await run_pipeline(ctx, tmp_path)
     assert ctx.store.get_run(ctx.run_id)["status"] == "budget_exceeded"
     assert source.calls == []
+
+
+async def test_unexpected_error_marks_run_resumable(tmp_path):
+    jev = FakeJev(rules=RULES, fail_when=lambda s, q: RuntimeError("bad payload") if "maybe_signal" in q else None)
+    ctx = make_ctx(source=FakeSource(pages=world()), jev=jev, settings=settings())
+    with pytest.raises(Exception):
+        await run_pipeline(ctx, tmp_path)
+    assert ctx.store.get_run(ctx.run_id)["status"] == "failed_resumable"
+    assert any("Attempt stopped at gate" in note for note in ctx.store.notes(ctx.run_id))
