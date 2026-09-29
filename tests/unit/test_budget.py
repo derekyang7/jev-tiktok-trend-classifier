@@ -9,13 +9,14 @@ def test_llm_cost_math():
     assert GUARD.llm_cost(4000, 1000) == (1000 * 5.0 + 1000 * 25.0) / 1e6
 
 
-def test_default_scan_projection_is_under_cap():
+def test_default_scan_projection_uses_pilot_pass_rate_and_fits_by_trimming_briefs():
     work = remaining_work("collect", {"queries": 65}, SETTINGS, comment_videos=150, max_briefs=20)
-    assert (work.search_requests, work.transcript_requests, work.comment_requests) == (130, 600, 150)
-    assert work.brief_count == 20
+    assert (work.search_requests, work.transcript_requests, work.comment_requests) == (130, 1000, 150)
     projection = GUARD.project(work)
-    assert round(projection.scraper, 4) == 1.6544
-    assert 4.5 < projection.total < 5.0
+    assert round(projection.scraper, 4) == 2.4064
+    assert 5.5 < projection.total < 6.0
+    decision = GUARD.decide(0.0, work, min_briefs=5)
+    assert decision.ok and (decision.brief_count, decision.comment_requests) == (12, 150)
 
 
 def test_remaining_work_skips_finished_stages():

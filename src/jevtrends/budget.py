@@ -10,7 +10,7 @@ STAGE_ORDER = ["collect", "gate", "enrich", "judge", "discover", "assign", "scor
 # Rough request sizes in characters, used only for projections.
 CHARS = {"gate": 1_200, "judge": 16_000, "assign": 30_000, "trend_score": 20_000,
          "digest_line": 600, "discover_prompt": 6_000, "brief": 20_000}
-GATE_PASS_RATE = 0.6
+GATE_PASS_RATE = 1.0  # pilot scan 2026-09-29: 100 of 100 videos passed the lenient gate
 SIGNAL_RATE = 0.65
 EXPECTED_TRENDS = 40
 SEARCH_PAGES_PER_QUERY = 2

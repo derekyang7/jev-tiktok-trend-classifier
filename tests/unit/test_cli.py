@@ -20,7 +20,8 @@ def test_scan_estimate_prints_projection_without_keys(tmp_path, monkeypatch):
     monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
     result = runner.invoke(app, ["scan", "--estimate"], env=env(tmp_path))
     assert result.exit_code == 0, result.output
-    assert "Projected cost: $4." in result.output and "cap $5.00" in result.output
+    assert "Projected cost: $5." in result.output and "cap $5.00" in result.output
+    assert "Budget guard would trim: 12 briefs written instead of 20" in result.output
     assert not (tmp_path / "db.sqlite").exists()
 
 

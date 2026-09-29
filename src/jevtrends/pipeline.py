@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from jevtrends.budget import STAGE_ORDER, BudgetGuard, Projection, remaining_work
+from jevtrends.budget import STAGE_ORDER, BudgetGuard, Decision, Projection, remaining_work
 from jevtrends.config import NicheConfig, Settings
 from jevtrends.http import FatalAPIError
 from jevtrends.stages.assign import run_assign
@@ -82,7 +82,8 @@ async def run_pipeline(ctx: RunContext, reports_dir: Path) -> Path:
     return path
 
 
-def estimate_scan(settings: Settings, niches: NicheConfig, guard: BudgetGuard) -> Projection:
+def estimate_scan(settings: Settings, niches: NicheConfig, guard: BudgetGuard) -> tuple[Projection, Decision]:
+    """Full-pipeline projection before anything is spent, and what the budget guard would trim to fit."""
     work = remaining_work("collect", {"queries": len(niches.all_queries())}, settings,
                           settings.enrich.comments_top_videos, settings.briefs.max_briefs)
-    return guard.project(work)
+    return guard.project(work), guard.decide(0.0, work, settings.briefs.min_briefs)

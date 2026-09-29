@@ -86,9 +86,13 @@ def scan(lookback_days: int | None = None, max_videos: int | None = None, budget
     if budget:
         settings.budget.max_usd_per_scan = budget
     if estimate:
-        p = estimate_scan(settings, niches, BudgetGuard(settings.budget.max_usd_per_scan, settings.pricing))
+        p, decision = estimate_scan(settings, niches, BudgetGuard(settings.budget.max_usd_per_scan, settings.pricing))
         typer.echo(f"Projected cost: ${p.total:.2f} (scraper ${p.scraper:.2f} · jev ${p.jev:.2f} · "
                    f"llm ${p.llm:.2f}); cap ${settings.budget.max_usd_per_scan:.2f}")
+        for trim in decision.trims:
+            typer.echo(f"Budget guard would trim: {trim}")
+        if not decision.ok:
+            typer.echo("Budget guard would stop this scan before it starts; raise --budget.")
         return
     keys = require_keys()
     store = Store(db_path())
