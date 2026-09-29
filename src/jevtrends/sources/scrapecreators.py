@@ -10,6 +10,9 @@ from jevtrends.models import Comment, Video
 from jevtrends.sources.base import CommentsResult, SearchPage, TranscriptResult
 
 BASE_URL = "https://api.scrapecreators.com"
+# Per-video errors (no captions, photo posts, private or deleted videos) mean "unavailable";
+# 401/402 (key or credits) stay fatal.
+UNAVAILABLE_STATUS = {400, 403, 404, 422}
 
 
 def date_posted_for(lookback_days: int) -> str:
@@ -88,7 +91,7 @@ class ScrapeCreatorsSource:
         try:
             data = await self._get("/v1/tiktok/video/transcript", {"url": video.url, "language": "en"})
         except FatalAPIError as exc:
-            if exc.status == 404:
+            if exc.status in UNAVAILABLE_STATUS:
                 return TranscriptResult(text=None, credits=1)
             raise
         return TranscriptResult(text=vtt_to_text(data.get("transcript")), credits=int(data.get("credits_charged", 1)))
@@ -97,7 +100,7 @@ class ScrapeCreatorsSource:
         try:
             data = await self._get("/v1/tiktok/video/comments", {"url": video.url})
         except FatalAPIError as exc:
-            if exc.status == 404:
+            if exc.status in UNAVAILABLE_STATUS:
                 return CommentsResult(comments=[], credits=1)
             raise
         raw = [c for c in data.get("comments") or [] if (c.get("text") or "").strip()]

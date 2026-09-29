@@ -6,6 +6,7 @@ import httpx
 import pytest
 
 from jevtrends.config import RetriesCfg
+from jevtrends.http import FatalAPIError
 from jevtrends.sources.scrapecreators import ScrapeCreatorsSource, date_posted_for, parse_video, vtt_to_text
 from tests.helpers import make_video
 
@@ -118,3 +119,15 @@ def test_parses_recorded_contract_fixtures():
     transcript = json.loads((CONTRACT / "sc_transcript.json").read_text())["body"]
     text = vtt_to_text(transcript.get("transcript"))
     assert text is None or isinstance(text, str)
+
+
+async def test_per_video_client_errors_mean_unavailable_but_auth_errors_stay_fatal():
+    video = make_video()
+    for status in (400, 403, 422):
+        source = source_for(lambda r, s=status: httpx.Response(s, json={"message": "unavailable"}))
+        assert (await source.transcript(video)).text is None
+        assert (await source.comments(video, limit=5, max_chars=100)).comments == []
+    for status in (401, 402):
+        source = source_for(lambda r, s=status: httpx.Response(s, json={"message": "key or credits"}))
+        with pytest.raises(FatalAPIError):
+            await source.transcript(video)
