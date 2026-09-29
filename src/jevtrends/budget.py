@@ -75,15 +75,16 @@ class BudgetGuard:
         def total() -> float:
             return self.project(replace(work, comment_requests=comments, brief_count=briefs)).total
 
-        if total() > available and comments:
-            cut = min(comments, math.ceil((total() - available) / self.scraper_cost(1)))
-            comments -= cut
-            trims.append(f"comments fetched for {comments} videos instead of {work.comment_requests}")
+        # Briefs go first (lowest-ranked dropped); comments carry the complaint signal, so they are trimmed last.
         if total() > available and briefs > min_briefs:
             per_brief = self.llm_cost(CHARS["brief"], self.pricing.brief_expected_output_tokens)
             cut = min(briefs - min_briefs, math.ceil((total() - available) / per_brief))
             briefs -= cut
             trims.append(f"{briefs} briefs written instead of {work.brief_count}")
+        if total() > available and comments:
+            cut = min(comments, math.ceil((total() - available) / self.scraper_cost(1)))
+            comments -= cut
+            trims.append(f"comments fetched for {comments} videos instead of {work.comment_requests}")
         projected = total()
         return Decision(ok=projected <= available, comment_requests=comments, brief_count=briefs,
                         projected=projected, trims=trims)

@@ -30,21 +30,19 @@ def test_decide_keeps_everything_when_it_fits():
     assert (decision.comment_requests, decision.brief_count) == (150, 20)
 
 
-def test_decide_trims_comments_before_briefs():
+def test_decide_trims_briefs_before_comments():
     work = RemainingWork(comment_requests=150, brief_count=20)  # 0.282 + 2.0 = 2.282
     decision = GUARD.decide(5.0 - 2.2, work, min_briefs=5)
     assert decision.ok
-    assert decision.brief_count == 20
-    assert decision.comment_requests == 106
+    assert (decision.brief_count, decision.comment_requests) == (19, 150)
     assert len(decision.trims) == 1
 
 
-def test_decide_then_trims_briefs_down_to_minimum():
+def test_decide_trims_comments_only_after_briefs_reach_minimum():
     work = RemainingWork(comment_requests=150, brief_count=20)
-    decision = GUARD.decide(3.85, work, min_briefs=5)
+    decision = GUARD.decide(4.4, work, min_briefs=5)  # 0.60 available
     assert decision.ok
-    assert decision.comment_requests == 0
-    assert decision.brief_count == 11
+    assert (decision.brief_count, decision.comment_requests) == (5, 53)
     assert len(decision.trims) == 2
 
 
