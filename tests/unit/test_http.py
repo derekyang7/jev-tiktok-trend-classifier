@@ -80,3 +80,17 @@ async def test_connection_errors_are_retried():
     async with client_for(handler) as client:
         with pytest.raises(TransientAPIError):
             await send_with_retry(client, "scrapecreators", "GET", "https://x/y", retries=RETRIES, sleep=Sleeps())
+
+
+async def test_any_5xx_is_retried_including_cloudflare_520():
+    calls = []
+
+    def handler(request):
+        calls.append(request)
+        if len(calls) == 1:
+            return httpx.Response(520, json={"error": {"message": "HTTP 520: error code: 520", "code": 520}})
+        return httpx.Response(200, json={"ok": True})
+
+    async with client_for(handler) as client:
+        resp = await send_with_retry(client, "jev", "POST", "https://x/y", retries=RETRIES, sleep=Sleeps())
+    assert resp.status_code == 200 and len(calls) == 2

@@ -8,7 +8,8 @@ import httpx
 
 from jevtrends.config import RetriesCfg
 
-RETRYABLE_STATUS = {408, 429, 500, 502, 503, 504, 529}
+# Every 5xx is server-side and worth retrying, including Cloudflare's 520-524 seen in front of OpenRouter.
+RETRYABLE_STATUS = {408, 429} | set(range(500, 600))
 
 
 class APIError(Exception):
