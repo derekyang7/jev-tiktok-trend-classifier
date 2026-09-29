@@ -1,0 +1,44 @@
+{
+  "endpoint": "/v1/systemone",
+  "response": {
+    "model": "typesafe/jev-1.13-20260917",
+    "answers": {
+      "is_complaint": {
+        "type": "noul",
+        "noul": 0.97
+      },
+      "topic": {
+        "type": "choice",
+        "choice": "money",
+        "probabilities": {
+          "other": 0,
+          "money": 1,
+          "food": 0
+        },
+        "confidence": 1
+      },
+      "pain": {
+        "type": "score",
+        "score": 1.95,
+        "legend": {
+          "0": "No frustration",
+          "1": "Mild annoyance",
+          "2": "Clear, recurring problem"
+        },
+        "probabilities": {
+          "0": 0,
+          "1": 0.05,
+          "2": 0.95
+        },
+        "confidence": 0.93
+      }
+    },
+    "usage": {
+      "input_tokens": 391,
+      "output_tokens": 71,
+      "cost": 1.6422e-05
+    },
+    "id": "gen-dec-1790625541-3QWcVsmHtUoNgK7w1Tli",
+    "provider": "TypeSafe"
+  }
+}

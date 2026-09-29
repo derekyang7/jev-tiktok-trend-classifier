@@ -1,0 +1,118 @@
+{% macro trend_detail(e) %}
+### {{ e.score.rank }}. {{ e.trend.name }}
+
+**{{ e.brief.headline }}**
+
+Score {{ e.score.opportunity|f2 }} · momentum {{ "%.1f"|format(e.score.momentum_ratio) }}× · pain {{ e.score.pain_norm|f2 }} · spend {{ e.score.spend_norm|f2 }} · underserved {{ e.score.underserved_norm|f2 }} · {{ e.score.creators }} creators · {{ "%.1f"|format(e.score.support) }} videos · {{ e.score.promo_share|pct }} promotional
+
+*Definition:* {{ e.trend.definition }}
+
+**What's happening:** {{ e.brief.whats_happening }}
+
+**Who:** {{ e.brief.who }}
+
+**Underlying need:** {{ e.brief.underlying_need }}
+
+**Existing solutions mentioned:** {{ e.brief.existing_solutions|join(", ") or "none" }}
+
+**Startup angles:**
+{% for angle in e.brief.startup_angles %}
+- {{ angle.idea }} (why now: {{ angle.why_now }})
+{% endfor %}
+
+**Risks:**
+{% for risk in e.brief.risks %}
+- {{ risk }}
+{% endfor %}
+
+**Evidence:**
+{% for v in e.evidence %}
+- [@{{ v.handle }}]({{ v.url }}) · {{ v.views }} views · posted {{ v.posted }} · p={{ v.p|f2 }}{% if v.why %} · {{ v.why }}{% endif %}
+
+  > {{ v.snippet }}
+{% if v.comment %}
+  >
+  > Top comment: {{ v.comment }}
+{% endif %}
+
+{% endfor %}
+{% endmacro %}
+{% macro trend_table(items) %}
+| # | Trend | Kind | Score | Brief |
+|---|---|---|---|---|
+{% for e in items %}
+| {{ e.score.rank }} | {{ e.trend.name }} | {{ e.trend.kind }} | {{ e.score.opportunity|f2 }} | {% if e.brief %}see {{ e.primary_name }}{% elif e.brief_status == "failed" %}failed{% else %}none{% endif %} |
+{% endfor %}
+
+{% endmacro %}
+# TikTok opportunity scan #{{ run_id }}: {{ date }}
+
+Lookback: last {{ lookback_days }} days · Status: {{ status }}
+
+**Funnel:** {{ funnel.collected }} collected → {{ funnel.passed }} passed filter → {{ funnel.signals }} signals → {{ funnel.proposed }} trends proposed → {{ funnel.kept }} kept
+
+**Cost:** ${{ "%.2f"|format(total_cost) }}{% if cost %} ({% for provider, usd in cost.items() %}{{ provider }} ${{ "%.2f"|format(usd) }}{% if not loop.last %} · {% endif %}{% endfor %}){% endif %}
+
+
+{% if notes %}
+**Notes:**
+{% for note in notes %}
+- {{ note }}
+{% endfor %}
+
+{% endif %}
+## Top opportunities
+
+{% if entries %}
+| # | Trend | Niches | Kind | Momentum | Pain | Spend | Underserved | Creators | Promo | Score |
+|---|---|---|---|---|---|---|---|---|---|---|
+{% for e in entries %}
+| {{ e.score.rank }} | {{ e.trend.name }} | {{ e.niche_names|join(", ") or "none" }} | {{ e.trend.kind }} | {{ "%.1f"|format(e.score.momentum_ratio) }}× | {{ e.score.pain_norm|f2 }} | {{ e.score.spend_norm|f2 }} | {{ e.score.underserved_norm|f2 }} | {{ e.score.creators }} | {{ e.score.promo_share|pct }} | {{ e.score.opportunity|f2 }} |
+{% endfor %}
+{% else %}
+No trends were kept in this scan.
+{% endif %}
+
+{% for section in sections %}
+## {{ section.name }}
+
+{% if not section.briefed and not section.others %}
+No trends in this niche this scan.
+
+{% endif %}
+{% for e in section.briefed %}
+{{ trend_detail(e) }}
+{% endfor %}
+{% if section.others %}
+{{ trend_table(section.others) }}
+{% endif %}
+{% endfor %}
+## Outside your niches
+
+{% for e in outside if e.brief %}
+{{ trend_detail(e) }}
+{% endfor %}
+{% set unbriefed = outside|rejectattr("brief")|list %}
+{% if unbriefed %}
+{{ trend_table(unbriefed) }}
+{% elif not outside %}
+No trends outside your niches this scan.
+
+{% endif %}
+## Diagnostics
+
+- "None of these" rate: {{ diagnostics.none_rate|pct if diagnostics.none_rate is not none else "n/a" }}
+- Trend definitions flagged by the self-check: {{ diagnostics.flagged|join(", ") or "none" }}
+- Borderline videos (useful for labeling): {{ diagnostics.borderline }}
+- Videos without a transcript: {{ diagnostics.missing_transcripts }}
+- Failed items: {% if diagnostics.failures %}{% for stage, n in diagnostics.failures.items() %}{{ stage }} {{ n }}{% if not loop.last %}, {% endif %}{% endfor %}{% else %}none{% endif %}
+
+- Ranking weights: {% for key, value in diagnostics.weights.items() %}{{ key }} {{ value }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+
+<details><summary>Settings used</summary>
+
+```yaml
+{{ settings_yaml }}```
+
+</details>
