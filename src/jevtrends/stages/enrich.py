@@ -26,7 +26,7 @@ async def run_enrich(ctx: RunContext) -> None:
 
     need_transcripts = [v for v in survivors if current(v).transcript_status not in ("ok", "missing")]
     await run_items(ctx, "enrich", "scrapecreators", need_transcripts, fetch_transcript,
-                    ctx.settings.concurrency.scraper)
+                    ctx.settings.concurrency.scraper, total=len(survivors))
 
     limit = ctx.limits.get("comments_top_videos", cfg.comments_top_videos)
     top = sorted(survivors, key=lambda v: videos[v].comment_count, reverse=True)[:limit]
@@ -40,4 +40,5 @@ async def run_enrich(ctx: RunContext) -> None:
 
     need_comments = [v for v in top
                      if current(v).comments_fetched_at is None or current(v).comments_fetched_at < fresh_after]
-    await run_items(ctx, "enrich", "scrapecreators", need_comments, fetch_comments, ctx.settings.concurrency.scraper)
+    await run_items(ctx, "enrich", "scrapecreators", need_comments, fetch_comments, ctx.settings.concurrency.scraper,
+                    total=len(top))

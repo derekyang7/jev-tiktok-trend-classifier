@@ -24,7 +24,8 @@ def video_state(video: Video, enrichment: Enrichment | None, transcript_max_word
 async def run_judge(ctx: RunContext) -> None:
     questions = judge_questions(ctx.niches.niches)
     done = ctx.answers(IS_SIGNAL)
-    todo = [video_id for video_id in gate_survivors(ctx) if video_id not in done]
+    survivors = gate_survivors(ctx)
+    todo = [video_id for video_id in survivors if video_id not in done]
     videos = ctx.store.get_videos(todo)
 
     async def judge_one(video_id: str) -> None:
@@ -32,7 +33,7 @@ async def run_judge(ctx: RunContext) -> None:
                             ctx.settings.enrich.transcript_max_words)
         await ctx.ask_jev("judge", "video", video_id, state, questions)
 
-    await run_items(ctx, "judge", "jev", todo, judge_one, ctx.settings.concurrency.jev)
+    await run_items(ctx, "judge", "jev", todo, judge_one, ctx.settings.concurrency.jev, total=len(survivors))
 
 
 def signal_videos(ctx: RunContext) -> list[str]:

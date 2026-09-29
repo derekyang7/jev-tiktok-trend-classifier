@@ -13,7 +13,8 @@ async def run_assign(ctx: RunContext) -> None:
         return
     question = assign_question(trends)
     done = ctx.answers(question)
-    todo = [video_id for video_id in signal_videos(ctx) if video_id not in done]
+    signals = signal_videos(ctx)
+    todo = [video_id for video_id in signals if video_id not in done]
     videos = ctx.store.get_videos(todo)
 
     async def assign_one(video_id: str) -> None:
@@ -21,7 +22,7 @@ async def run_assign(ctx: RunContext) -> None:
                             ctx.settings.enrich.transcript_max_words)
         await ctx.ask_jev("assign", "video", video_id, state, [question])
 
-    await run_items(ctx, "assign", "jev", todo, assign_one, ctx.settings.concurrency.jev)
+    await run_items(ctx, "assign", "jev", todo, assign_one, ctx.settings.concurrency.jev, total=len(signals))
     finalize_assignment(ctx, trends, question)
 
 

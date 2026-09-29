@@ -79,8 +79,12 @@ class RunContext:
 
 
 async def run_items(ctx: RunContext, stage: str, provider: str, items: Sequence,
-                    fn: Callable[[object], Awaitable[None]], concurrency: int) -> int:
-    """Runs fn(item) with bounded concurrency; item failures are recorded and counted."""
+                    fn: Callable[[object], Awaitable[None]], concurrency: int, total: int | None = None) -> int:
+    """Runs fn(item) with bounded concurrency; item failures are recorded and counted.
+
+    The failure rate is measured against the stage's whole item count (`total`), so a resumed attempt that only
+    retries the leftovers is not judged by those leftovers alone.
+    """
     semaphore = asyncio.Semaphore(concurrency)
     failures = 0
 
@@ -101,6 +105,6 @@ async def run_items(ctx: RunContext, stage: str, provider: str, items: Sequence,
                 group.create_task(one(item))
     except* FatalAPIError as group_error:
         raise group_error.exceptions[0] from None
-    if items and failures / len(items) > ctx.settings.failure.max_item_failure_rate:
+    if items and failures / max(len(items), total or 0) > ctx.settings.failure.max_item_failure_rate:
         raise StageFailed(f"{stage}: {failures} of {len(items)} items failed")
     return failures

@@ -51,7 +51,8 @@ def brief_dossier(ctx: RunContext, trend_id: str, evidence_ids: list[str]) -> di
 
 async def run_brief(ctx: RunContext) -> None:
     existing = ctx.store.list_briefs(ctx.run_id)
-    todo = [trend_id for trend_id in selected_trends(ctx) if trend_id not in existing]
+    selected = selected_trends(ctx)
+    todo = [trend_id for trend_id in selected if trend_id not in existing]
     members = ctx.store.trend_members(ctx.run_id)
 
     async def brief_one(trend_id: str) -> None:
@@ -76,4 +77,4 @@ async def run_brief(ctx: RunContext) -> None:
                              for ref in brief["evidence"] if ref["video_id"] in short_to_video]
         ctx.store.upsert_brief(ctx.run_id, trend_id, ctx.llm.model, brief, "ok")
 
-    await run_items(ctx, "brief", "llm", todo, brief_one, ctx.settings.concurrency.llm)
+    await run_items(ctx, "brief", "llm", todo, brief_one, ctx.settings.concurrency.llm, total=len(selected))

@@ -44,4 +44,5 @@ async def run_collect(ctx: RunContext) -> None:
                 return
             cursor = page.next_cursor
 
-    await run_items(ctx, "collect", "scrapecreators", queries, collect_query, ctx.settings.concurrency.scraper)
+    await run_items(ctx, "collect", "scrapecreators", queries, collect_query, ctx.settings.concurrency.scraper,
+                    total=len(queries))

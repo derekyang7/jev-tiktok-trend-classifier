@@ -3,8 +3,11 @@ from datetime import UTC, datetime, timedelta
 import pytest
 
 from jevtrends.config import Settings
+from jevtrends.http import TransientAPIError
+from jevtrends.jev.questions import MAYBE_SIGNAL
 from jevtrends.models import Comment, Enrichment
 from jevtrends.stages.collect import is_english_or_unknown, run_collect
+from jevtrends.stages.context import StageFailed, run_items
 from jevtrends.stages.enrich import run_enrich
 from jevtrends.stages.gate import gate_state, gate_survivors, run_gate
 from tests.fakes import NOW, FakeJev, FakeSource, make_ctx
@@ -97,3 +100,26 @@ async def test_enrich_refreshes_stale_comments_but_not_transcripts():
     await run_enrich(ctx)
     assert ctx.store.get_enrichment("a").comments == [Comment(text="new", likes=1)]
     assert ("transcript", "a") not in source.calls
+
+
+async def test_run_items_failure_rate_uses_the_stage_total():
+    ctx = make_ctx()
+
+    async def always_fails(item):
+        raise TransientAPIError("jev", 503, "busy")
+
+    assert await run_items(ctx, "judge", "jev", list(range(7)), always_fails, 2, total=100) == 7
+    with pytest.raises(StageFailed):
+        await run_items(ctx, "judge", "jev", list(range(7)), always_fails, 2)
+
+
+async def test_gate_resume_is_not_stuck_by_a_few_persistent_failures():
+    failing = {"v0", "v1", "v2"}
+    jev = FakeJev(fail_when=lambda s, q: TransientAPIError("jev", 503, "busy") if s["caption"] in failing else None)
+    ctx = make_ctx(jev=jev)
+    add_videos(ctx, *(make_video(id=f"x{i}", caption=f"v{i}") for i in range(10)))
+    with pytest.raises(StageFailed):
+        await run_gate(ctx)  # 3 of 10 fail: 30% of the stage
+    failing.intersection_update({"v0"})
+    await run_gate(ctx)  # one persistent failure is 10% of the stage, not 1 of the 3 retried
+    assert len(ctx.answers(MAYBE_SIGNAL)) == 9

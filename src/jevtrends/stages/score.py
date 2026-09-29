@@ -46,7 +46,7 @@ async def run_score(ctx: RunContext) -> None:
                           TREND_QUESTIONS)
 
     await run_items(ctx, "score", "jev", [t for t in trends if t.trend_id not in done], score_one,
-                    ctx.settings.concurrency.jev)
+                    ctx.settings.concurrency.jev, total=len(trends))
 
     posted = {video_id: videos[video_id].posted_at for video_id in signals}
     start = scoring.recent_start(ctx.now, ctx.settings.scan.lookback_days, cfg.momentum_recent_fraction)
