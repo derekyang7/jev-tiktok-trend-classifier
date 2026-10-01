@@ -1,0 +1,12 @@
+# A fictional product showing the profile format (UGC spec §9.3). Real profiles in this folder stay out of git.
+id: example
+name: StreakBuddy
+one_liner: "A habit tracker that turns goals into daily streaks with friends."
+what_it_does: "Users pick habits, check them off each day, and keep streaks going with friends who can see their progress."
+audience: "Students and young professionals who struggle to stay consistent."
+key_benefits: ["Streaks with friends keep you accountable", "Takes ten seconds a day"]
+claims_allowed:
+  - {id: c1, text: "Free to download"}
+  - {id: c2, text: "Works on iPhone and Android"}
+claims_to_avoid: ["Health or medical outcomes", "Guaranteed results"]
+tone: "Friendly, practical, a little playful"

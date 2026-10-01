@@ -1,0 +1,11 @@
+# First niche (UGC spec §9.2). A draft: edit it to match your app's category.
+id: consumer_apps
+name: Consumer apps
+covers: "Mobile and web apps people use in everyday life (productivity, habits, money, health and fitness, dating, social, learning, lifestyle and utilities): how people discover, use, recommend, compare and complain about them, and the everyday goals and frustrations these apps serve."
+not_for: "Software used mainly by businesses; physical products; mobile games; tech news with no everyday use."
+audience: "US adults, mostly 18 to 40, who use apps to organize, improve or enjoy daily life."
+seed_queries: [apps you need, this app changed my life, app recommendation, apps that feel illegal to know,
+               apps i can't live without, underrated apps, best apps, is there an app for, what's on my phone,
+               iphone apps, productivity apps, habit tracker app, budgeting app, ai app, app review]
+# Hashtag search returns all-time top posts, so almost nothing lands in a 14-day window (contract check D1).
+hashtags: []
