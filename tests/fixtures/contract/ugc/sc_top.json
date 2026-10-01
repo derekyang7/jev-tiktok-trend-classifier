@@ -1,0 +1,498 @@
+{
+  "items": [
+    {
+      "id": "7681617187953446164",
+      "desc": "⊹ ࣪ ˖ ໒꒱ aesthetic apps you need to try ! dumps your favorite photos @MoodStream. A digital camera journal you can havee ✨  #moodstream #aesthetic #pinterestaesthetic #pinterest #moodstreamapp ",
+      "content_type": "video",
+      "create_time": "2026-09-04T09:57:58.000Z",
+      "desc_language": "en",
+      "region": "PH",
+      "is_top": 0,
+      "statistics": {
+        "aweme_id": "7681617187953446164",
+        "collect_count": 1885,
+        "comment_count": 30,
+        "digg_count": 5354,
+        "download_count": 41,
+        "forward_count": 0,
+        "lose_comment_count": 0,
+        "lose_count": 0,
+        "play_count": 162392,
+        "repost_count": 0,
+        "share_count": 357,
+        "whatsapp_share_count": 7
+      },
+      "video": {
+        "CoverTsp": 0,
+        "ai_dynamic_cover": {
+          "uri": "tos-alisg-p-0037/owiBPRt1TAYDAxeAi3ZYaKAAo2bvIONPBA9wIB",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "ai_dynamic_cover_bak": {
+          "uri": "tos-alisg-p-0037/owiBPRt1TAYDAxeAi3ZYaKAAo2bvIONPBA9wIB",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "animated_cover": {
+          "uri": "tos-alisg-p-0037/owiBPRt1TAYDAxeAi3ZYaKAAo2bvIONPBA9wIB",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "big_thumbs": [
+          {
+            "duration": 32.067,
+            "fext": "jpeg",
+            "img_num": 32,
+            "img_uris": [
+              "tos-alisg-p-0037/o8PsrGPgeTWQPAwBfFtqAAZYApAvBGqf4AbJew",
+              "tos-alisg-p-0037/oAA9PIg0VDWwAH1cAGCSJfNNLCHgggerfEkBs0"
+            ],
+            "img_url": "",
+            "img_urls": [
+              "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/o8PsrGPgeTWQPAwBfFtqAAZYApAvBGqf4AbJew~tplv-noop.image?dr=12525&refresh_token=3ec55915&x-expires=1790839672&x-signature=j8J3h37I4TMnyAAfugbRkNaNR9s%3D&t=9276707c&ps=14f1eb3e&shp=9e36835a&shcp=d05b14bd&idc=useast8&VideoID=v10025g50000dadg1unog65n069k7hug",
+              "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oAA9PIg0VDWwAH1cAGCSJfNNLCHgggerfEkBs0~tplv-noop.image?dr=12525&refresh_token=3f088357&x-expires=1790839672&x-signature=BCI4NFGvQsrGqzpAiP64yUbLMB4%3D&t=9276707c&ps=14f1eb3e&shp=9e36835a&shcp=d05b14bd&idc=useast8&VideoID=v10025g50000dadg1unog65n069k7hug"
+            ],
+            "img_x_len": 5,
+            "img_x_size": 136,
+            "img_y_len": 5,
+            "img_y_size": 240,
+            "interval": 1,
+            "uri": ""
+          }
+        ],
+        "bit_rate": [
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 165977,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\",\"audio_meta_ladder\":\"{\\\"Normal\\\":{\\\"TACM\\\":[0.78],\\\"DRR\\\":14,\\\"RCD\\\":[3],\\\"MP\\\":-6.03,\\\"BE\\\":[10.8,5431.8],\\\"OCF\\\":[-6.8183,-2.863,-9.8068,-8.712,-15.0463,-24.259,-32.9806,-41.9282,-49.1595,-57.7468],\\\"DO\\\":0,\\\"CTPS\\\":0,\\\"IL\\\":-20.5}}\"}",
+            "fps": 30,
+            "gear_name": "adapt_lower_720_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 664617,
+              "file_cs": "c:0-28102-98d6",
+              "file_hash": "3204aa2e29a307d27cbc189c0c52834a",
+              "height": 1280,
+              "uri": "v10025g50000dadg1unog65n069k7hug",
+              "url_key": "v10025g50000dadg1unog65n069k7hug_bytevc1_720p_165977",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 720
+            },
+            "quality_type": 14,
+            "video_extra": "{\"PktOffsetMap\":\"[{\\\"time\\\": 1, \\\"offset\\\": 50297}, {\\\"time\\\": 2, \\\"offset\\\": 60138}, {\\\"time\\\": 3, \\\"offset\\\": 69998}, {\\\"time\\\": 4, \\\"offset\\\": 83496}, {\\\"time\\\": 5, \\\"offset\\\": 92555}, {\\\"time\\\": 10, \\\"offset\\\": 184155}]\",\"mvmaf\":\"{\\\"v2.0\\\": {\\\"srv1\\\": {\\\"v1080\\\": 98.452, \\\"v960\\\": 99.357, \\\"v864\\\": 99.552, \\\"v720\\\": 99.822}, \\\"ori\\\": {\\\"v1080\\\": 89.906, \\\"v960\\\": 92.074, \\\"v864\\\": 93.589, \\\"v720\\\": 96.377}}}\",\"ufq\":\"{\\\"enh\\\":93.636,\\\"playback\\\":{\\\"ori\\\":87.542,\\\"srv1\\\":96.088},\\\"src\\\":93.636,\\\"trans\\\":87.542,\\\"version\\\":\\\"v1.2\\\"}\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"fd6a40e8f737c5bf210b60d03f1583d9\",\"dec_info\":\"\",\"gearvqm\":\"{\\\"v3.0\\\": {\\\"ori\\\": 99.966, \\\"sr20\\\": 106.421}}\",\"audio_bit_rate\":64324,\"ps_info\":\"{\\\"vps\\\": \\\"AQwC//8BYAAAAwAAAwAAAwAAAwC6AACIJElgSA==\\\", \\\"sps\\\": \\\"AQMBYAAAAwAAAwAAAwAAAwC6AACgBaIAUBZYgkSXJIkQTPCEREREREYR8xPOX+/+v82fy/+v8yh+S/3/1/mz+X/1/jOEAg5qAgICCAAAAwAIAAADAPBA\\\", \\\"pps\\\": \\\"AcElPAiQ\\\"}\"}"
+          },
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 110608,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\",\"audio_meta_ladder\":\"{\\\"Normal\\\":{\\\"TACM\\\":[0.78],\\\"DRR\\\":14,\\\"RCD\\\":[3],\\\"MP\\\":-6.05,\\\"BE\\\":[10.8,5264.9],\\\"OCF\\\":[-6.7969,-2.8706,-9.8156,-8.7182,-15.0116,-24.2394,-32.8129,-42.0762,-49.3643,-57.9463],\\\"DO\\\":0,\\\"CTPS\\\":0,\\\"IL\\\":-20.5}}\"}",
+            "fps": 30,
+            "gear_name": "lower_540_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 442904,
+              "file_cs": "c:0-28101-2ebc",
+              "file_hash": "edb02dc77d63b02a773dd7f048e0dacb",
+              "height": 1024,
+              "uri": "v10025g50000dadg1unog65n069k7hug",
+              "url_key": "v10025g50000dadg1unog65n069k7hug_bytevc1_540p_110608",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 576
+            },
+            "quality_type": 24,
+            "video_extra": "{\"PktOffsetMap\":\"[{\\\"time\\\": 1, \\\"offset\\\": 42352}, {\\\"time\\\": 2, \\\"offset\\\": 47173}, {\\\"time\\\": 3, \\\"offset\\\": 52759}, {\\\"time\\\": 4, \\\"offset\\\": 61999}, {\\\"time\\\": 5, \\\"offset\\\": 66964}, {\\\"time\\\": 10, \\\"offset\\\": 134093}]\",\"mvmaf\":\"{\\\"v2.0\\\": {\\\"srv1\\\": {\\\"v1080\\\": 93.681, \\\"v960\\\": 95.335, \\\"v864\\\": 96.836, \\\"v720\\\": 98.283}, \\\"ori\\\": {\\\"v1080\\\": 83.202, \\\"v960\\\": 86.797, \\\"v864\\\": 88.866, \\\"v720\\\": 92.262}}}\",\"ufq\":\"{\\\"enh\\\":93.636,\\\"playback\\\":{\\\"ori\\\":81.287,\\\"srv1\\\":91.766},\\\"src\\\":93.636,\\\"trans\\\":81.287,\\\"version\\\":\\\"v1.2\\\"}\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"e3c447347ae51ffdc04e514fcb73a23e\",\"dec_info\":\"\",\"gearvqm\":\"{\\\"v3.0\\\": {\\\"ori\\\": 91.839, \\\"sr20\\\": 100.778}}\",\"audio_bit_rate\":32219,\"ps_info\":\"{\\\"vps\\\": \\\"AQwC//8BYAAAAwAAAwAAAwAAAwB4AACIJElgSA==\\\", \\\"sps\\\": \\\"AQMBYAAAAwAAAwAAAwAAAwB4AACgBIIAQBZYgkSXJJRBM8IRERERERhHzE85f7/6/zZ/L/6/zKH5L/f/X+bP5f/X+M4QCDmoCAgIIAAAAwAgAAADA8E=\\\", \\\"pps\\\": \\\"AcElPAiQ\\\"}\"}"
+          },
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 109290,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\",\"audio_meta_ladder\":\"{\\\"Normal\\\":{\\\"TACM\\\":[0.78],\\\"DRR\\\":14,\\\"RCD\\\":[3],\\\"MP\\\":-6.05,\\\"BE\\\":[10.8,5264.9],\\\"OCF\\\":[-6.7969,-2.8706,-9.8156,-8.7182,-15.0116,-24.2394,-32.8129,-42.0762,-49.3643,-57.9463],\\\"DO\\\":0,\\\"CTPS\\\":0,\\\"IL\\\":-20.5}}\"}",
+            "fps": 30,
+            "gear_name": "adapt_540_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 437625,
+              "file_cs": "c:0-28102-e38b",
+              "file_hash": "cbadcf2d3a54f0ba0f52dda16809c8eb",
+              "height": 1024,
+              "uri": "v10025g50000dadg1unog65n069k7hug",
+              "url_key": "v10025g50000dadg1unog65n069k7hug_bytevc1_540p_109290",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 576
+            },
+            "quality_type": 28,
+            "video_extra": "{\"PktOffsetMap\":\"[{\\\"time\\\": 1, \\\"offset\\\": 42157}, {\\\"time\\\": 2, \\\"offset\\\": 46939}, {\\\"time\\\": 3, \\\"offset\\\": 51921}, {\\\"time\\\": 4, \\\"offset\\\": 61252}, {\\\"time\\\": 5, \\\"offset\\\": 66110}, {\\\"time\\\": 10, \\\"offset\\\": 126873}]\",\"mvmaf\":\"{\\\"v2.0\\\": {\\\"srv1\\\": {\\\"v1080\\\": 94.632, \\\"v960\\\": 96.713, \\\"v864\\\": 97.601, \\\"v720\\\": 98.905}, \\\"ori\\\": {\\\"v1080\\\": 84.169, \\\"v960\\\": 87.582, \\\"v864\\\": 89.31, \\\"v720\\\": 92.58}}}\",\"ufq\":\"{\\\"enh\\\":93.636,\\\"playback\\\":{\\\"ori\\\":82.013,\\\"srv1\\\":92.476},\\\"src\\\":93.636,\\\"trans\\\":82.013,\\\"version\\\":\\\"v1.2\\\"}\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"74df003a2a9eb6a75ac8f4de88046459\",\"dec_info\":\"\",\"gearvqm\":\"{\\\"v3.0\\\": {\\\"ori\\\": 93.108, \\\"sr20\\\": 102.047}}\",\"audio_bit_rate\":32219,\"ps_info\":\"{\\\"vps\\\": \\\"AQwC//8BYAAAAwAAAwAAAwAAAwC6AACIJElgSA==\\\", \\\"sps\\\": \\\"AQMBYAAAAwAAAwAAAwAAAwC6AACgBIIAQBZYgkSXJIkQTPCEREREREYR8xPOX+/+v82fy/+v8yh+S/3/1/mz+X/1/jOEAg5qAgICCAAAAwAIAAADAPBA\\\", \\\"pps\\\": \\\"AcElPAiQ\\\"}\"}"
+          },
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 102589,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\",\"audio_meta_ladder\":\"{\\\"Normal\\\":{\\\"TACM\\\":[0.78],\\\"DRR\\\":14,\\\"RCD\\\":[3],\\\"MP\\\":-5.78,\\\"BE\\\":[10.8,5087.2],\\\"OCF\\\":[-6.6803,-2.8941,-9.8713,-8.7808,-14.9525,-24.267,-33.189,-42.6183,-49.3189,-58.5276],\\\"DO\\\":0,\\\"CTPS\\\":0,\\\"IL\\\":-20.5}}\"}",
+            "fps": 30,
+            "gear_name": "lowest_540_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 410795,
+              "file_cs": "c:0-28101-80c4",
+              "file_hash": "1dc0cd3fbc077945081cef7d109e9403",
+              "height": 1024,
+              "uri": "v10025g50000dadg1unog65n069k7hug",
+              "url_key": "v10025g50000dadg1unog65n069k7hug_bytevc1_540p_102589",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 576
+            },
+            "quality_type": 25,
+            "video_extra": "{\"PktOffsetMap\":\"[{\\\"time\\\": 1, \\\"offset\\\": 41181}, {\\\"time\\\": 2, \\\"offset\\\": 45058}, {\\\"time\\\": 3, \\\"offset\\\": 49612}, {\\\"time\\\": 4, \\\"offset\\\": 57883}, {\\\"time\\\": 5, \\\"offset\\\": 61838}, {\\\"time\\\": 10, \\\"offset\\\": 123979}]\",\"mvmaf\":\"{\\\"v2.0\\\": {\\\"srv1\\\": {\\\"v1080\\\": 93.681, \\\"v960\\\": 95.335, \\\"v864\\\": 96.836, \\\"v720\\\": 98.283}, \\\"ori\\\": {\\\"v1080\\\": 83.202, \\\"v960\\\": 86.797, \\\"v864\\\": 88.866, \\\"v720\\\": 92.262}}}\",\"ufq\":\"{\\\"enh\\\":93.636,\\\"playback\\\":{\\\"ori\\\":81.287,\\\"srv1\\\":91.766},\\\"src\\\":93.636,\\\"trans\\\":81.287,\\\"version\\\":\\\"v1.2\\\"}\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"1ed613581196a6f5124d0d1fd0054fb0\",\"dec_info\":\"\",\"gearvqm\":\"{\\\"v3.0\\\": {\\\"ori\\\": 91.839, \\\"sr20\\\": 100.778}}\",\"audio_bit_rate\":24197,\"ps_info\":\"{\\\"vps\\\": \\\"AQwC//8BYAAAAwAAAwAAAwAAAwB4AACIJElgSA==\\\", \\\"sps\\\": \\\"AQMBYAAAAwAAAwAAAwAAAwB4AACgBIIAQBZYgkSXJJRBM8IRERERERhHzE85f7/6/zZ/L/6/zKH5L/f/X+bP5f/X+M4QCDmoCAgIIAAAAwAgAAADA8E=\\\", \\\"pps\\\": \\\"AcElPAiQ\\\"}\"}"
+          },
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 89064,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\",\"audio_meta_ladder\":\"{\\\"Normal\\\":{\\\"TACM\\\":[0.78],\\\"DRR\\\":14,\\\"RCD\\\":[3],\\\"MP\\\":-5.78,\\\"BE\\\":[10.8,5087.2],\\\"OCF\\\":[-6.6803,-2.8941,-9.8713,-8.7808,-14.9525,-24.267,-33.189,-42.6183,-49.3189,-58.5276],\\\"DO\\\":0,\\\"CTPS\\\":0,\\\"IL\\\":-20.5}}\"}",
+            "fps": 30,
+            "gear_name": "lowest_480_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 356636,
+              "file_cs": "c:0-28102-c595",
+              "file_hash": "7d51259cb2c4b02a47a2a6652a161c2b",
+              "height": 854,
+              "uri": "v10025g50000dadg1unog65n069k7hug",
+              "url_key": "v10025g50000dadg1unog65n069k7hug_bytevc1_480p_89064",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 480
+            },
+            "quality_type": 35,
+            "video_extra": "{\"PktOffsetMap\":\"[{\\\"time\\\": 1, \\\"offset\\\": 39435}, {\\\"time\\\": 2, \\\"offset\\\": 43208}, {\\\"time\\\": 3, \\\"offset\\\": 47218}, {\\\"time\\\": 4, \\\"offset\\\": 54915}, {\\\"time\\\": 5, \\\"offset\\\": 58684}, {\\\"time\\\": 10, \\\"offset\\\": 110560}]\",\"mvmaf\":\"{\\\"v2.0\\\": {\\\"srv1\\\": {\\\"v1080\\\": 89.033, \\\"v960\\\": 92.408, \\\"v864\\\": 93.257, \\\"v720\\\": 96.189}, \\\"ori\\\": {\\\"v1080\\\": 76.824, \\\"v960\\\": 81.183, \\\"v864\\\": 83.963, \\\"v720\\\": 88.124}}}\",\"ufq\":\"{\\\"enh\\\":93.636,\\\"playback\\\":{\\\"ori\\\":76.504,\\\"srv1\\\":88.713},\\\"src\\\":93.636,\\\"trans\\\":76.504,\\\"version\\\":\\\"v1.2\\\"}\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"f859b222b065c3edb622ece62ab55e90\",\"dec_info\":\"\",\"gearvqm\":\"\",\"audio_bit_rate\":24197,\"ps_info\":\"{\\\"vps\\\": \\\"AQwC//8BYAAAAwAAAwAAAwAAAwBdAACIJElgSA==\\\", \\\"sps\\\": \\\"AQMBYAAAAwAAAwAAAwAAAwBdAACgDwgDWfWWIJElySUQTPCEREREREYR8xPOX+/+v82fy/+v8yh+S/3/1/mz+X/1/jOEAg5qAgICCAAAAwAIAAADAPBA\\\", \\\"pps\\\": \\\"AcElPAiQ\\\"}\"}"
+          }
+        ],
+        "bit_rate_audio": [],
+        "cdn_url_expired": 0,
+        "cla_info": {
+          "caption_infos": null,
+          "captions_type": 0,
+          "creator_edited_caption_id": 0,
+          "enable_auto_caption": 0,
+          "has_original_audio": 0,
+          "hide_original_caption": false,
+          "is_author_dubbing_qualified": false,
+          "no_caption_reason": 3,
+          "no_caption_reason_v2": 3,
+          "show_asr_edit_guide_banner": false,
+          "vertical_positions": null
+        },
+        "cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-p-0037/oAE071QAgVAL0IgA5ZrHcNeklHGfDCAgPBfVBs",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_rgb": "FBFBF9",
+        "did_profile_labels": "",
+        "download_addr": {
+          "data_size": 1620454,
+          "file_cs": "c:0-27697-7792",
+          "height": 720,
+          "uri": "v10025g50000dadg1unog65n069k7hug",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "download_no_watermark_addr": {
+          "data_size": 741842,
+          "file_cs": "c:0-27697-7792",
+          "file_hash": "2e23c443cd9da690099059e8f7bb8043",
+          "height": 1024,
+          "uri": "v10025g50000dadg1unog65n069k7hug",
+          "url_key": "v10025g50000dadg1unog65n069k7hug_h264_540p_185263",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "duration": 32034,
+        "dynamic_cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-p-0037/o0a4AvxZBAK1iBNBebiAYXIPTAoIA9Dw33K9BA",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "has_watermark": true,
+        "height": 1024,
+        "is_bytevc1": 0,
+        "is_callback": true,
+        "is_long_video": 1,
+        "meta": "{\"LoudnessRange\":\"4.1\",\"LoudnessRangeEnd\":\"-18.2\",\"LoudnessRangeStart\":\"-22.3\",\"MaximumMomentaryLoudness\":\"-14.7\",\"MaximumShortTermLoudness\":\"-17.6\",\"Version\":\"2\",\"VolumeInfoJson\":\"{\\\"Metrics\\\":{\\\"AEDInfo\\\":{\\\"MusicRatio\\\":1,\\\"SingingRatio\\\":0,\\\"SpeechRatio\\\":0},\\\"Cutoff\\\":{\\\"Spkr100G\\\":0.8,\\\"Spkr150G\\\":1.05,\\\"Spkr200G\\\":1.14,\\\"FCenL\\\":2353.06,\\\"FCenR\\\":1430.48},\\\"Loudness\\\":{\\\"Integrated\\\":-20.077},\\\"Phase\\\":{\\\"RMSDownmixDiff\\\":-0.726},\\\"RMSStats\\\":{\\\"LRDiff\\\":-1.636,\\\"LTotal\\\":-22.885,\\\"Peak\\\":-7.536,\\\"RTotal\\\":-21.249},\\\"Version\\\":\\\"1.4.2\\\"},\\\"Peak\\\":0.4217,\\\"Version\\\":2,\\\"Loudness\\\":-20.1,\\\"LoudnessRange\\\":4.1,\\\"LoudnessRangeEnd\\\":-18.2,\\\"LoudnessRangeStart\\\":-22.3,\\\"MaximumMomentaryLoudness\\\":-14.7,\\\"MaximumShortTermLoudness\\\":-17.6}\",\"loudness\":\"-20.1\",\"peak\":\"0.4217\",\"play_time_prob_dist\":\"[800,0.3441,9685.4506]\",\"sp_extra_info\":\"{\\\"origin_width\\\":720,\\\"origin_height\\\":1280,\\\"origin_create_at\\\":1788543230}\",\"sr_score\":\"1.000\",\"vq_score\":\"75.68\"}",
+        "misc_download_addrs": "{\"suffix_scene\":{\"uri\":\"v10025g50000dadg1unog65n069k7hug\",\"url_list\":[\"https://v16m.tiktokcdn-us.com/f14e054c99631c0184b4264caef12ee1/6abe0b78/video/tos/alisg/tos-alisg-ve-37c815-sg/o4vKIBBA93eMCBZixUA4EZNjwQiSA1AYTDBoki/?a=1233\\u0026bti=NEBzbmQxZmR2bndsQGo6OjZALnAjYG1lb2IrbGhxYCMxNDNg\\u0026\\u0026bt=355\\u0026ft=4bUg3MVc8Zmo0NluWa4jVJDvp31rKsd.\\u0026mime_type=video_mp4\\u0026rc=ODM3aGQ6ZGk7NTlpOjVpaEBpamtuOXE5cnhqZDMzODgzNEA2LzQxMmAzNTYxLmNgLzIxYSNyNDYtMmRrLmFhLS1kLy1zcw%3D%3D\\u0026vvpl=1\\u0026l=2026100101254370F0DD8BC5EDD74ACF39\\u0026btag=e00090000\",\"https://v19.tiktokcdn-us.com/5e28038c6cf6604f31e833fb7b860861/6abe0b78/video/tos/alisg/tos-alisg-ve-37c815-sg/o4vKIBBA93eMCBZixUA4EZNjwQiSA1AYTDBoki/?a=1233\\u0026bti=NEBzbmQxZmR2bndsQGo6OjZALnAjYG1lb2IrbGhxYCMxNDNg\\u0026\\u0026bt=355\\u0026ft=4bUg3MVc8Zmo0NluWa4jVJDvp31rKsd.\\u0026mime_type=video_mp4\\u0026rc=ODM3aGQ6ZGk7NTlpOjVpaEBpamtuOXE5cnhqZDMzODgzNEA2LzQxMmAzNTYxLmNgLzIxYSNyNDYtMmRrLmFhLS1kLy1zcw%3D%3D\\u0026vvpl=1\\u0026l=2026100101254370F0DD8BC5EDD74ACF39\\u0026btag=e00090000\",\"https://api16-normal-useast8.tiktokv.us/aweme/v1/play/?video_id=v10025g50000dadg1unog65n069k7hug\\u0026line=0\\u0026watermark=1\\u0026logo_name=tiktok_end_sonic\\u0026source=SEARCH\\u0026file_id=4e5f22c7ff1642988f6ac75a4e742095\\u0026item_id=7681617187953446164\\u0026signaturev3=dmlkZW9faWQ7ZmlsZV9pZDtpdGVtX2lkLjQ3NzdkZjI0NDQ0MDQ1ODhhOGQ4ZTYwMGE5ZTY1OTkx\\u0026shp=d05b14bd\\u0026shcp=-\"],\"width\":720,\"height\":720,\"data_size\":1639035,\"file_cs\":\"c:0-27697-7792\",\"url_prefix\":null}}",
+        "need_set_token": false,
+        "origin_cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-p-0037/oIPbK1RATuZiBAjGAAIPx3BveN2wLiIBADoA9Y",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "play_addr": {
+          "data_size": 741842,
+          "file_cs": "c:0-27697-7792",
+          "file_hash": "2e23c443cd9da690099059e8f7bb8043",
+          "height": 1024,
+          "uri": "v10025g50000dadg1unog65n069k7hug",
+          "url_key": "v10025g50000dadg1unog65n069k7hug_h264_540p_185263",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "play_addr_bytevc1": {
+          "data_size": 437625,
+          "file_cs": "c:0-28102-e38b",
+          "file_hash": "cbadcf2d3a54f0ba0f52dda16809c8eb",
+          "height": 1024,
+          "uri": "v10025g50000dadg1unog65n069k7hug",
+          "url_key": "v10025g50000dadg1unog65n069k7hug_bytevc1_540p_109290",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "play_addr_h264": {
+          "data_size": 741842,
+          "file_cs": "c:0-27697-7792",
+          "file_hash": "2e23c443cd9da690099059e8f7bb8043",
+          "height": 1024,
+          "uri": "v10025g50000dadg1unog65n069k7hug",
+          "url_key": "v10025g50000dadg1unog65n069k7hug_h264_540p_185263",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "ratio": "540p",
+        "source_HDR_type": 0,
+        "tags": null,
+        "vid_profile_labels": "{\"audio_meta_origin\":\"{\\\"TS\\\":[\\\"tag_01010226\\\",\\\"tag_03010309\\\",\\\"tag_01010227\\\",\\\"tag_01000006\\\",\\\"tag_01000202\\\"],\\\"TRS\\\":[0.83,0.11,0.1,0.08,0.08],\\\"TACM\\\":[0.65],\\\"DRR\\\":13.6,\\\"RCD\\\":[2],\\\"MP\\\":-7.54,\\\"BE\\\":[10.8,5657.8],\\\"OCF\\\":[-6.7862,-2.9647,-9.84,-8.5121,-14.4855,-23.6468,-32.8226,-41.7781,-48.1937,-57.3311],\\\"DO\\\":0,\\\"CTPS\\\":0,\\\"IL\\\":-20.1}\",\"loudness_offset\":\"-1\",\"rec_audio_effect\":\"1\"}",
+        "video_model": "",
+        "width": 576
+      },
+      "author": {
+        "accept_private_policy": false,
+        "account_labels": null,
+        "ad_cover_url": null,
+        "advance_feature_item_order": null,
+        "advanced_feature_info": null,
+        "authority_status": 0,
+        "avatar_uri": "redacted",
+        "aweme_count": 0,
+        "bold_fields": null,
+        "can_message_follow_status_list": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "can_set_geofencing": null,
+        "cha_list": null,
+        "comment_filter_status": 0,
+        "comment_setting": 0,
+        "commerce_user_level": 0,
+        "cover_url": null,
+        "custom_verify": "",
+        "cv_level": "",
+        "download_prompt_ts": 0,
+        "enabled_filter_all_comments": false,
+        "enterprise_verify_reason": "",
+        "events": null,
+        "fake_data_info": {},
+        "fb_expire_time": 0,
+        "follow_status": 0,
+        "follower_count": 37339,
+        "follower_status": 0,
+        "followers_detail": null,
+        "following_count": 12,
+        "friends_status": 0,
+        "geofencing": null,
+        "hide_search": false,
+        "homepage_bottom_toast": null,
+        "ins_id": "",
+        "is_ad_fake": false,
+        "is_block": false,
+        "is_discipline_member": false,
+        "is_mute": 0,
+        "is_mute_lives": 0,
+        "is_mute_non_story_post": 0,
+        "is_mute_story": 0,
+        "is_star": false,
+        "item_list": null,
+        "live_agreement": 0,
+        "live_commerce": false,
+        "live_verify": 0,
+        "mention_status": 1,
+        "mutual_relation_avatars": null,
+        "name_field": "nickname",
+        "need_points": null,
+        "need_recommend": 0,
+        "nickname": "redacted",
+        "platform_sync_info": null,
+        "prevent_download": false,
+        "relative_users": null,
+        "reply_with_video_flag": 4,
+        "room_id": 0,
+        "search_highlight": null,
+        "search_user_desc": "redacted",
+        "search_user_name": "redacted",
+        "sec_uid": "redacted",
+        "secret": 0,
+        "shield_comment_notice": 0,
+        "shield_digg_notice": 0,
+        "shield_edit_field_info": null,
+        "shield_follow_notice": 0,
+        "short_id": "0",
+        "show_image_bubble": false,
+        "special_account": {
+          "special_account_list": null
+        },
+        "special_lock": 1,
+        "status": 1,
+        "stitch_setting": 0,
+        "story_status": 1,
+        "total_favorited": 0,
+        "type_label": null,
+        "uid": "redacted",
+        "unique_id": "redacted",
+        "user_all_story_metadata": {
+          "post_type_to_counts": [
+            {
+              "count": 1,
+              "post_type": 1
+            }
+          ],
+          "story_lite_metadata": [
+            {
+              "audience_scope": 0,
+              "expire_at": 1790840250000,
+              "item_id": 7691229191894814000,
+              "post_type": 1,
+              "viewed": false
+            }
+          ],
+          "user_story_change_time": 1790753890321
+        },
+        "user_canceled": false,
+        "user_mode": 1,
+        "user_now_pack_info": {},
+        "user_period": 0,
+        "user_profile_guide": null,
+        "user_rate": 1,
+        "user_spark_info": {},
+        "user_tags": null,
+        "verification_type": 0,
+        "verify_info": "",
+        "video_icon": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "white_cover_url": null,
+        "with_commerce_entry": false,
+        "with_shop_entry": false
+      },
+      "music": {
+        "author": "redacted",
+        "duration": 128,
+        "id": 7055324508386757000,
+        "title": "Children, cooking, heartwarming, bright pop songs(1181048)",
+        "play_url": "https://sf19.tiktokcdn-us.com/obj/tos-alisg-ve-2774/o4amGDoQlgnTAGFeQfTaCR2yQgeaz8EDYDnLb9",
+        "matched_song": {
+          "author": "redacted",
+          "id": "7055324508256733186",
+          "title": "Children, cooking, heartwarming, bright pop songs(1181048)"
+        }
+      },
+      "is_eligible_for_commission": false,
+      "is_paid_partnership": false,
+      "is_ad": false,
+      "url": "https://www.tiktok.com/@redacted/video/0",
+      "shop_product_url": null
+    }
+  ]
+}

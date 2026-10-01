@@ -1,0 +1,159 @@
+{% macro stats(e) %}Score {{ e.score.score|f2 }} · momentum {{ e.score.momentum_ratio|x1 }} · reach {{ e.score.reach_ratio|x1 }} · engagement {{ e.score.eng_ratio|x1 }} · {{ e.score.creators }} creators · fit {{ e.score.fit_norm|f2 }} · ease {{ e.score.ease_norm|f2 }} · {{ e.score.ad_share|pct }} ads{% if e.score.risky %} · brand risk{% endif %}{% endmacro %}
+{% macro trend_detail(e) %}
+### {{ e.score.rank_overall }}. {{ e.brief.title }}
+
+*{{ e.facet_label }}:* {{ e.trend.name }}
+
+{{ stats(e) }}
+
+{% if e.trend.definition %}
+*Definition:* {{ e.trend.definition }}
+
+{% endif %}
+{% if e.trend.template %}
+*Template:* "{{ e.trend.template }}"
+
+{% endif %}
+{% if e.trend.usage %}
+*How it's used:* {{ e.trend.usage }}
+
+{% endif %}
+**Why it's working:** {{ e.brief.why_its_working }}
+
+**Concept:** {{ e.brief.concept }}
+
+**Hooks:**
+{% for hook in e.brief.hooks %}
+- {{ hook }}
+{% endfor %}
+
+**Beats:**
+{% for beat in e.brief.beats %}
+{{ loop.index }}. {{ beat.time }}: {{ beat.action }}{% if beat.on_screen_text %} (on screen: "{{ beat.on_screen_text }}"){% endif %}
+
+{% endfor %}
+
+**Sound:** {{ e.sound_pick }}
+
+{% if e.brief_pairs %}
+**Pairs with:** {{ e.brief_pairs|join(", ") }}
+
+{% endif %}
+**Dos:**
+{% for item in e.brief.dos %}
+- {{ item }}
+{% endfor %}
+
+**Don'ts:**
+{% for item in e.brief.donts %}
+- {{ item }}
+{% endfor %}
+
+**CTA:** {{ e.brief.cta }}
+
+{% if e.claims %}
+**Claims used:** {{ e.claims|join("; ") }}
+
+{% endif %}
+**Risks:**
+{% for risk in e.brief.risks %}
+- {{ risk }}
+{% endfor %}
+
+**Evidence:**
+{% for v in e.evidence %}
+- [@{{ v.handle }}]({{ v.url }}) · {{ v.views }} views · reach {{ v.reach|x1 }} · {{ v.saves }} saves · {{ v.shares }} shares · posted {{ v.posted }}{% if v.promotional %} · promotional{% endif %}{% if v.why %} · {{ v.why }}{% endif %}
+
+{% if v.on_screen %}
+  > On screen: "{{ v.on_screen }}"
+  >
+{% endif %}
+  > {{ v.snippet }}
+{% if v.comment %}
+  >
+  > Top comment: {{ v.comment }}
+{% endif %}
+
+{% endfor %}
+{% endmacro %}
+# TikTok trends for UGC and ads #{{ run_id }}: {{ niche_name }}, {{ date }}
+
+Product: {{ product_name or "generic (no product profile)" }} · Lookback: last {{ lookback_days }} days · Status: {{ status }}
+
+**Funnel:** {{ funnel.collected }} collected{% if funnel.by_type %} ({% for kind, n in funnel.by_type.items() %}{{ kind }} {{ n }}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %} → {{ funnel.passed }} passed gate → {{ funnel.relevant }} relevant → {{ funnel.images_read }} images read → {% for facet, c in funnel.facets.items() %}{{ facet }}s {{ c.kept }}/{{ c.proposed }}{% if not loop.last %}, {% endif %}{% endfor %} kept → {{ funnel.sounds }} sound candidates
+
+**Cost:** ${{ "%.2f"|format(total_cost) }}{% if cost %} ({% for provider, usd in cost.items() %}{{ provider }} ${{ "%.2f"|format(usd) }}{% if not loop.last %} · {% endif %}{% endfor %}){% endif %}
+
+
+{% if notes %}
+**Notes:**
+{% for note in notes %}
+- {{ note }}
+{% endfor %}
+
+{% endif %}
+## Top picks
+
+{% if top_picks %}
+| # | Facet | Trend | Momentum | Reach | Creators | Fit | Ease | Ads | Score | Brief |
+|---|---|---|---|---|---|---|---|---|---|---|
+{% for e in top_picks %}
+| {{ e.score.rank_overall }} | {{ e.facet_label }} | {{ e.trend.name|cell }} | {{ e.score.momentum_ratio|x1 }} | {{ e.score.reach_ratio|x1 }} | {{ e.score.creators }} | {{ e.score.fit_norm|f2 }} | {{ e.score.ease_norm|f2 }} | {{ e.score.ad_share|pct }} | {{ e.score.score|f2 }} | {{ "yes" if e.brief else ("failed" if e.brief_status == "failed" else "no") }} |
+{% endfor %}
+{% else %}
+No trends were kept in this run.
+{% endif %}
+
+{% for section in sections %}
+## {{ section.title }}
+
+{% for e in section.briefed %}
+{{ trend_detail(e) }}
+{% endfor %}
+{% if section.is_sounds %}
+{% if section.sound_rows %}
+| # | Sound | Business use | How it's used | Niche creators | Niche share | TikTok uses | Momentum | Fit | Score |
+|---|---|---|---|---|---|---|---|---|---|
+{% for e in section.sound_rows %}
+| {{ e.score.rank_in_facet }} | [{{ e.sound.title|cell }}]({{ e.sound_url }}){% if e.sound.author %} by {{ e.sound.author|cell }}{% endif %} | {{ e.sound.business_use|replace("_", " ") }}{% if e.sound.business_use_source %} ({{ e.sound.business_use_source }}){% endif %} | {{ e.trend.usage|cell }} | {{ e.sound.niche_creators }} | {{ e.sound.niche_share|pct if e.sound.niche_share is not none else "n/a" }} | {{ e.sound.use_count }} | {{ e.score.momentum_ratio|x1 }} | {{ e.score.fit_norm|f2 }} | {{ e.score.score|f2 }} |
+{% endfor %}
+
+{% else %}
+No sounds in this run.
+
+{% endif %}
+{% elif section.others %}
+| # | Facet | Trend | What it is | Score | Flag |
+|---|---|---|---|---|---|
+{% for e in section.others %}
+| {{ e.score.rank_overall }} | {{ e.facet_label }} | {{ e.trend.name|cell }} | {{ (e.trend.template or e.trend.definition)|cell }} | {{ e.score.score|f2 }} | {{ "brand risk" if e.score.risky else ("brief failed" if e.brief_status == "failed" else "") }} |
+{% endfor %}
+
+{% elif not section.briefed %}
+No trends of this kind in this run.
+
+{% endif %}
+{% endfor %}
+## Diagnostics
+
+- "None of these" rates: {% for facet, rate in diagnostics.none_rates.items() %}{{ facet }}s {{ rate|pct if rate is not none else "n/a" }}{% if not loop.last %}, {% endif %}{% else %}n/a{% endfor %}
+
+- Candidates flagged by the self-check: {{ diagnostics.flagged|join(", ") or "none" }}
+- Borderline videos (useful for review): {{ diagnostics.borderline }}
+- Vision: {% for status, n in diagnostics.vision.items() %}{{ status }} {{ n }}{% if not loop.last %}, {% endif %}{% else %}nothing read{% endfor %}
+
+- Transcripts: {% for status, n in diagnostics.transcripts.items() %}{{ status }} {{ n }}{% if not loop.last %}, {% endif %}{% else %}none fetched{% endfor %}
+
+- Failed items: {% if diagnostics.failures %}{% for stage, n in diagnostics.failures.items() %}{{ stage }} {{ n }}{% if not loop.last %}, {% endif %}{% endfor %}{% else %}none{% endif %}
+
+- Sound licensing: {% for label, n in diagnostics.licensing.items() %}{{ label|replace("_", " ") }} {{ n }}{% if not loop.last %}, {% endif %}{% else %}no sounds{% endfor %} (sources: {{ diagnostics.licensing_sources|join(", ") or "none verified; check TikTok's Commercial Music Library before using a sound" }})
+- Momentum compares the share of a trend's videos posted in the last {{ "%.1f"|format(diagnostics.momentum_recent_days) }} days with the whole sample's share, pulling small trends toward 1×. It counts posts, not view growth, so treat it as a rough signal.
+- Ranking weights: {% for key, value in diagnostics.weights.items() %}{{ key }} {{ value }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+
+<details><summary>Settings used</summary>
+
+```yaml
+{{ settings_yaml }}```
+
+</details>

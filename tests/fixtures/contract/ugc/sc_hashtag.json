@@ -1,0 +1,4666 @@
+{
+  "success": true,
+  "credits_remaining": 6161,
+  "credits_charged": 1,
+  "has_more": 1,
+  "cursor": 20,
+  "status_code": 0,
+  "aweme_list": [
+    {
+      "added_sound_music_info": {
+        "album": "",
+        "allow_offline_music_to_detail_page": false,
+        "artists": [],
+        "audition_duration": 0,
+        "author": "redacted",
+        "author_deleted": false,
+        "author_position": null,
+        "binded_challenge_id": 0,
+        "can_be_stitched": false,
+        "can_not_reuse": true,
+        "collect_stat": 0,
+        "commercial_right_type": 1,
+        "cover_large": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_medium": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_thumb": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "create_time": 1698510344,
+        "dmv_auto_show": false,
+        "duration": 0,
+        "duration_high_precision": {
+          "audition_duration_precision": 0,
+          "duration_precision": 0,
+          "shoot_duration_precision": 0,
+          "video_duration_precision": 0
+        },
+        "external_song_info": [],
+        "extra": "{\"amplitude_peak\":0,\"beats\":{},\"can_read\":true,\"can_reuse\":false,\"erase_type\":0,\"erase_uid\":0,\"filter_reason\":\"not_commerce\",\"from_user_id\":7575780923294598147,\"full_song_beat_info\":{},\"full_song_beats\":{},\"has_edited\":0,\"is_batch_take_down_music\":false,\"is_ugc_mapping\":false,\"is_used\":0,\"loudness_lufs\":0,\"music_vid\":\"\",\"owner_id\":0,\"resource_status\":2,\"review_unshelve_reason\":0,\"reviewed\":0,\"schedule_search_time\":0,\"sh_tag\":0}",
+        "has_commerce_right": false,
+        "has_commerce_right_strict": false,
+        "has_human_voice": false,
+        "id": 7295046359504293000,
+        "id_str": "7295046359504292654",
+        "is_audio_url_with_cookie": false,
+        "is_author_artist": false,
+        "is_commerce_music": false,
+        "is_commerce_music_strict": false,
+        "is_matched_metadata": false,
+        "is_original": false,
+        "is_original_sound": false,
+        "is_pgc": false,
+        "is_play_music": false,
+        "is_shooting_allow": false,
+        "log_extra": "{\"meta_song_matched_type\":\"not_found\",\"ttm_matched_type\":\"\",\"ttm_track_id\":\"\",\"matched_meta_song_id\":\"\",\"vid\":\"\",\"owner_id\":\"\"}",
+        "lyric_short_position": null,
+        "meme_song_info": {},
+        "mid": "7295046359504292654",
+        "multi_bit_rate_play_info": null,
+        "music_group_use_count": 0,
+        "music_ugid_use_count": 0,
+        "mute_share": false,
+        "offline_desc": "The copyright owner hasn’t made this sound available in your country",
+        "owner_handle": "",
+        "owner_nickname": "",
+        "play_url": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "position": null,
+        "prevent_download": false,
+        "preview_end_time": 0,
+        "preview_start_time": 0,
+        "recommend_status": 258,
+        "search_highlight": null,
+        "shoot_duration": 0,
+        "source_platform": 0,
+        "status": 0,
+        "tag_list": null,
+        "tag_list_v2": null,
+        "title": "",
+        "tt_to_dsp_song_infos": null,
+        "uncert_artists": null,
+        "user_count": 0,
+        "video_duration": 0
+      },
+      "ai_remix_info": {
+        "has_entrance": false
+      },
+      "aigc_info": {
+        "aigc_label_type": 0,
+        "created_by_ai": false
+      },
+      "anchors": null,
+      "anchors_extras": "",
+      "animated_image_info": {
+        "effect": 0,
+        "type": 0
+      },
+      "author": {
+        "accept_private_policy": false,
+        "account_labels": null,
+        "account_region": "",
+        "ad_cover_url": null,
+        "advance_feature_item_order": null,
+        "advanced_feature_info": null,
+        "apple_account": 0,
+        "authority_status": 0,
+        "avatar_uri": "redacted",
+        "aweme_count": 0,
+        "bind_phone": "",
+        "bold_fields": null,
+        "can_message_follow_status_list": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "can_set_geofencing": null,
+        "cha_list": null,
+        "comment_filter_status": 0,
+        "comment_setting": 0,
+        "commerce_user_level": 0,
+        "cover_url": [],
+        "create_time": 0,
+        "custom_verify": "",
+        "cv_level": "",
+        "download_prompt_ts": 0,
+        "download_setting": 3,
+        "duet_setting": 3,
+        "enabled_filter_all_comments": false,
+        "enterprise_verify_reason": "",
+        "events": null,
+        "fake_data_info": {},
+        "favoriting_count": 0,
+        "fb_expire_time": 0,
+        "follow_status": 0,
+        "follower_count": 0,
+        "follower_status": 0,
+        "followers_detail": null,
+        "following_count": 0,
+        "friends_status": 0,
+        "gender": 0,
+        "geofencing": null,
+        "google_account": "",
+        "has_email": false,
+        "has_facebook_token": false,
+        "has_insights": false,
+        "has_orders": false,
+        "has_twitter_token": false,
+        "has_youtube_token": false,
+        "hide_search": false,
+        "homepage_bottom_toast": null,
+        "ins_id": "",
+        "is_ad_fake": false,
+        "is_block": false,
+        "is_discipline_member": false,
+        "is_mute": 0,
+        "is_mute_lives": 0,
+        "is_mute_non_story_post": 0,
+        "is_mute_story": 0,
+        "is_phone_binded": false,
+        "is_star": false,
+        "item_list": null,
+        "language": "en",
+        "live_agreement": 0,
+        "live_commerce": false,
+        "live_verify": 0,
+        "mention_status": 1,
+        "mutual_relation_avatars": null,
+        "need_points": null,
+        "need_recommend": 0,
+        "nickname": "redacted",
+        "platform_sync_info": null,
+        "prevent_download": false,
+        "react_setting": 0,
+        "region": "XK",
+        "relative_users": null,
+        "reply_with_video_flag": 4,
+        "room_id": 0,
+        "search_highlight": null,
+        "sec_uid": "redacted",
+        "secret": 0,
+        "share_qrcode_uri": "",
+        "shield_comment_notice": 0,
+        "shield_digg_notice": 0,
+        "shield_edit_field_info": null,
+        "shield_follow_notice": 0,
+        "short_id": "0",
+        "show_image_bubble": false,
+        "signature": "redacted",
+        "special_account": {
+          "special_account_list": null
+        },
+        "special_lock": 1,
+        "status": 1,
+        "stitch_setting": 3,
+        "total_favorited": 0,
+        "tw_expire_time": 0,
+        "twitter_id": "",
+        "twitter_name": "",
+        "type_label": null,
+        "uid": "redacted",
+        "unique_id": "redacted",
+        "unique_id_modify_time": 1790817940,
+        "user_canceled": false,
+        "user_mode": 1,
+        "user_now_pack_info": {},
+        "user_period": 0,
+        "user_profile_guide": null,
+        "user_rate": 1,
+        "user_spark_info": {},
+        "user_tags": null,
+        "verification_type": 1,
+        "verify_info": "",
+        "video_icon": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "white_cover_url": null,
+        "with_commerce_entry": false,
+        "with_shop_entry": false,
+        "youtube_channel_id": "",
+        "youtube_channel_title": "",
+        "youtube_expire_time": 0
+      },
+      "author_user_id": "redacted",
+      "aweme_acl": {
+        "download_general": {
+          "code": 1,
+          "extra": "101",
+          "mute": false,
+          "show_type": 0,
+          "transcode": 1
+        },
+        "download_mask_panel": {
+          "code": 1,
+          "extra": "101",
+          "mute": false,
+          "show_type": 0,
+          "transcode": 1
+        },
+        "platform_list": null,
+        "press_action_list": null,
+        "share_action_list": [
+          {
+            "action_id": "share_to_story",
+            "code": 1,
+            "extra": "116",
+            "show_type": 0
+          },
+          {
+            "action_id": "create_sticker",
+            "code": 1,
+            "extra": "216",
+            "show_type": 1,
+            "toast_msg": "Create sticker isn’t available for this video"
+          }
+        ],
+        "share_general": {
+          "code": 1,
+          "extra": "101",
+          "mute": false,
+          "show_type": 1,
+          "toast_msg": "This action isn’t allowed for this post",
+          "transcode": 1
+        },
+        "share_list_status": 0
+      },
+      "aweme_id": "7348250808653319455",
+      "aweme_type": 0,
+      "banners": null,
+      "behind_the_song_music_ids": null,
+      "behind_the_song_video_music_ids": null,
+      "bodydance_score": 0,
+      "bottom_products": null,
+      "branded_content_accounts": null,
+      "cc_template_info": {
+        "author_name": "",
+        "clip_count": 0,
+        "desc": "",
+        "duration_milliseconds": 0,
+        "related_music_id": "",
+        "template_id": ""
+      },
+      "cha_list": [
+        {
+          "author": {
+            "account_labels": null,
+            "ad_cover_url": null,
+            "advance_feature_item_order": null,
+            "advanced_feature_info": null,
+            "bold_fields": null,
+            "can_message_follow_status_list": null,
+            "can_set_geofencing": null,
+            "cha_list": null,
+            "cover_url": null,
+            "events": null,
+            "followers_detail": null,
+            "geofencing": null,
+            "homepage_bottom_toast": null,
+            "item_list": null,
+            "mutual_relation_avatars": null,
+            "need_points": null,
+            "platform_sync_info": null,
+            "relative_users": null,
+            "search_highlight": null,
+            "shield_edit_field_info": null,
+            "type_label": null,
+            "user_profile_guide": null,
+            "user_tags": null,
+            "white_cover_url": null
+          },
+          "banner_list": null,
+          "cha_attrs": null,
+          "cha_name": "tipsforu",
+          "cid": "1628734126896134",
+          "collect_stat": 0,
+          "connect_music": [],
+          "desc": "We all know something someone doesn't. Share some tips on dating, friendship, mental health, emotions, technology, family etc.",
+          "extra_attr": {
+            "is_live": false
+          },
+          "hashtag_profile": "musically-maliva-obj/dd4a18945ef61e4c7b64fbe956b2ecea",
+          "is_challenge": 0,
+          "is_commerce": false,
+          "is_pgcshow": false,
+          "schema": "aweme://aweme/challenge/detail?cid=1628734126896134",
+          "search_highlight": null,
+          "show_items": null,
+          "sub_type": 0,
+          "type": 1,
+          "use_count": 0,
+          "user_count": 0,
+          "view_count": 0
+        }
+      ],
+      "challenge_position": null,
+      "cmt_swt": false,
+      "collect_stat": 0,
+      "comment_at_tako_info": {
+        "show_tako_account": 0
+      },
+      "comment_config": {
+        "comment_panel_show_tab_config": {
+          "comment_tab_info_config": [
+            {
+              "priority": 100,
+              "tab_id": 2,
+              "tab_name": "like_list"
+            },
+            {
+              "priority": 101,
+              "tab_id": 3,
+              "tab_name": "view_list"
+            },
+            {
+              "priority": -100,
+              "tab_id": 4,
+              "tab_name": "story2viewer_list"
+            },
+            {
+              "priority": 102,
+              "tab_id": 5,
+              "tab_name": "video_auth_page"
+            },
+            {
+              "priority": 11,
+              "tab_id": 11,
+              "tab_name": "ec_reviews_tab"
+            }
+          ],
+          "max_tab_count": 3
+        },
+        "emoji_recommend_list": [
+          {
+            "emoji": "🙂",
+            "score": 11
+          },
+          {
+            "emoji": "😁",
+            "score": 10
+          },
+          {
+            "emoji": "🥰",
+            "score": 9
+          },
+          {
+            "emoji": "😂",
+            "score": 8
+          },
+          {
+            "emoji": "😳",
+            "score": 7
+          },
+          {
+            "emoji": "😏",
+            "score": 6
+          },
+          {
+            "emoji": "😅",
+            "score": 5
+          },
+          {
+            "emoji": "🥺",
+            "score": 4
+          },
+          {
+            "emoji": "😌",
+            "score": 3
+          },
+          {
+            "emoji": "😬",
+            "score": 2
+          },
+          {
+            "emoji": "😊",
+            "score": 1
+          }
+        ],
+        "long_press_recommend_list": null,
+        "preload": {
+          "preds": "{\"item_post_comment\":0.00035561034589032974}"
+        },
+        "quick_comment": {
+          "enabled": true,
+          "rec_level": 0
+        },
+        "quick_comment_emoji_recommend_list": null,
+        "social_quick_comment": {
+          "enabled": false,
+          "rec_metrics": {
+            "non_social_enabled": "true",
+            "p_comment": "0",
+            "p_skip": "0",
+            "p_stay_time": "0"
+          }
+        }
+      },
+      "comment_topbar_info": null,
+      "commerce_config_data": null,
+      "commerce_info": {
+        "adv_promotable": false,
+        "auction_ad_invited": false,
+        "branded_content_type": 0,
+        "is_diversion_ad": 0,
+        "organic_log_extra": "{\"req_id\":\"20261001012539AADEBB72A125E5317498\"}",
+        "with_comment_filter_words": false
+      },
+      "content_desc": "",
+      "content_desc_extra": [],
+      "content_level": 0,
+      "content_model": {
+        "custom_biz": {
+          "aweme_trace": "20261001012539AADEBB72A125E5317498",
+          "high_quality_boost_info": {
+            "description": "",
+            "is_high_quality_post": false,
+            "link": ""
+          },
+          "high_quality_boost_info_v2": {}
+        },
+        "standard_biz": {
+          "ai_comment_photo": {
+            "enable_comment": true
+          },
+          "e_commerce": {
+            "ttec_content_tag": {
+              "recommendation_tag_consumer_str": "",
+              "recommendation_tag_creator_str": ""
+            }
+          },
+          "local_alliance_info": {
+            "alliance_item_label_text": "",
+            "alliance_item_label_type": 0
+          },
+          "tts_voice_info": {
+            "tts_voice_attr": "[]",
+            "tts_voice_reuse_params": "[{\"layer\":0,\"voice_resource_id\":\"\",\"rotation\":0,\"transform_y\":0.267799973487854,\"end_time\":-1,\"border_color\":\"0x000000\",\"text_str\":\"@askyourrfriendss\",\"start_time\":0,\"scale\":0.3,\"transform_x\":0,\"font_resource_id\":\"6792500966827495950\",\"color\":-1,\"start_x\":0.1905,\"is_voice_clone\":false,\"align\":0,\"start_y\":0.0271,\"text_style\":0,\"speaker_id\":\"\",\"bg_mode\":1},{\"is_voice_clone\":false,\"layer\":0,\"text_str\":\"apps you need to download!\",\"border_color\":\"0x000000\",\"text_style\":0,\"start_time\":0,\"start_x\":0.4452,\"end_time\":-1,\"bg_mode\":1,\"transform_x\":0,\"rotation\":0,\"color\":-1,\"align\":0,\"start_y\":0.0922,\"voice_resource_id\":\"\",\"speaker_id\":\"\",\"font_resource_id\":\"6792500541873197576\",\"transform_y\":0.31040000915527344,\"scale\":0.6489},{\"text_style\":0,\"start_time\":0,\"transform_x\":0,\"start_y\":0.1295,\"text_str\":\"\\n\",\"border_color\":\"0x000000\",\"align\":0,\"end_time\":-1,\"font_resource_id\":\"6792500966827495950\",\"layer\":0,\"scale\":1,\"rotation\":0,\"start_x\":0.093,\"speaker_id\":\"\",\"color\":-1,\"bg_mode\":1,\"transform_y\":0,\"is_voice_clone\":false,\"voice_resource_id\":\"\"},{\"transform_x\":-0.34880000352859497,\"speaker_id\":\"\",\"bg_mode\":1,\"is_voice_clone\":false,\"text_str\":\"sky remote - if u have lost ur tv remote this app is a must have \\n\\ncountdown - tells u how many days until a special occasion\\n\\nmoviediary - watch any movie for free\\n\\nsnapseed - removes anything unwanted from pictures\\n\\nmubr - listening to spotify music together online with your friends, sending reactions & stalk last listened songs\\n\\n\",\"start_time\":0,\"color\":-1,\"layer\":0,\"voice_resource_id\":\"\",\"start_y\":0.3067,\"scale\":0.3264,\"align\":1,\"rotation\":0,\"transform_y\":-0.18060004711151123,\"start_x\":0.3082,\"border_color\":\"0x000000\",\"text_style\":0,\"end_time\":-1,\"font_resource_id\":\"6792500966827495950\"},{\"color\":-1,\"scale\":0.3003,\"rotation\":0,\"font_resource_id\":\"6792500966827495950\",\"is_voice_clone\":false,\"start_x\":0.2787,\"align\":2,\"transform_y\":-0.15779995918273926,\"text_str\":\"setty - cute &\\naesthetic filters for ur photos and vids\\n\\nforest - stops u from using other apps while studying\\nmache film - the best vintage filters\\n\\nwattpad -\\nread ace\\n\\nwalkie-talkie - talk to random people (like omegle but ve only)\\n\\nCapCut - it’s a really good app for editing videos!!\\n\\nFlo - really good for tracking your period (for my girlies)\",\"start_time\":0,\"voice_resource_id\":\"\",\"bg_mode\":1,\"text_style\":0,\"layer\":0,\"border_color\":\"0x000000\",\"end_time\":-1,\"transform_x\":0.2962000370025635,\"start_y\":0.2829,\"speaker_id\":\"\"}]"
+          },
+          "vc_filter_info": {
+            "vc_filter_attr": "[]"
+          }
+        }
+      },
+      "content_original_type": 1,
+      "content_size_type": 1,
+      "content_type": "video",
+      "cover_labels": null,
+      "create_time": 1710897985,
+      "creation_info": {
+        "creation_used_functions": [
+          "text",
+          "select_music",
+          "high_quality_upload"
+        ]
+      },
+      "creator_ai_comment": {
+        "eligible_video": false,
+        "has_ai_topic": false,
+        "not_eligible_reason": 213
+      },
+      "desc": "Apps you need!! #tipsforu #tips #FYP #viral #viralvideo #xyzbca #trending #blowthisup #blowup #tipacc #tipaccount #askyourrfriendss #fyp #appsyouneed #apps #appsuneed #appsneeded ",
+      "desc_language": "en",
+      "disable_search_trending_bar": false,
+      "distance": "",
+      "distribute_type": 1,
+      "ecosystem_perception_enhancement": null,
+      "follow_up_publish_from_id": 7342234259958091000,
+      "geofencing": null,
+      "geofencing_regions": null,
+      "green_screen_materials": null,
+      "group_id": "7348250808653319455",
+      "group_id_list": {
+        "GroupdIdList0": null,
+        "GroupdIdList1": [
+          7348250808653319000
+        ]
+      },
+      "has_danmaku": false,
+      "has_promote_entry": 2,
+      "has_vs_entry": false,
+      "have_dashboard": false,
+      "hybrid_label": null,
+      "image_infos": null,
+      "interact_permission": {
+        "allow_adding_as_post": {
+          "status": 0
+        },
+        "allow_adding_to_story": 1,
+        "allow_create_sticker": {
+          "disable_toast": "Create sticker isn’t available for this video",
+          "status": 1
+        },
+        "allow_story_switch_to_post": {
+          "status": 1
+        },
+        "duet": 0,
+        "duet_privacy_setting": 0,
+        "stitch": 0,
+        "stitch_privacy_setting": 0,
+        "upvote": 0
+      },
+      "interaction_stickers": [
+        {
+          "attr": "",
+          "index": 0,
+          "is_non_global": false,
+          "is_non_global_v2": false,
+          "material_index": 0,
+          "text_info": "@askyourrfriendss",
+          "text_sticker_info": {
+            "alignment": 0,
+            "bg_color": "#00000000",
+            "source_height": 0.0745639534883721,
+            "source_width": 0.6069767441860465,
+            "text_color": "#FFFFFFFF",
+            "text_language": "un",
+            "text_size": 28
+          },
+          "track_info": "[{\"x\":0.5,\"end_time\":8334,\"p\":null,\"y\":0.3661,\"h\":0.0271,\"isRatioCoord\":true,\"start_time\":0,\"r\":0,\"w\":0.1905,\"s\":0.3}]",
+          "type": 18
+        },
+        {
+          "attr": "",
+          "index": 1,
+          "is_non_global": false,
+          "is_non_global_v2": false,
+          "material_index": 0,
+          "text_info": "apps you need to download!",
+          "text_sticker_info": {
+            "alignment": 0,
+            "bg_color": "#00000000",
+            "source_height": 0.12645348837209303,
+            "source_width": 0.6581395348837209,
+            "text_color": "#FFFFFFFF",
+            "text_language": "en",
+            "text_size": 28
+          },
+          "track_info": "[{\"x\":0.5,\"end_time\":8334,\"p\":null,\"y\":0.3448,\"h\":0.0922,\"isRatioCoord\":true,\"start_time\":0,\"r\":0,\"w\":0.4452,\"s\":0.6489}]",
+          "type": 18
+        },
+        {
+          "attr": "",
+          "index": 2,
+          "is_non_global": false,
+          "is_non_global_v2": false,
+          "material_index": 0,
+          "text_info": "\n",
+          "text_sticker_info": {
+            "alignment": 0,
+            "bg_color": "#00000000",
+            "source_height": 0.11380813953488372,
+            "source_width": 0.06511627906976744,
+            "text_color": "#FFFFFFFF",
+            "text_language": "un",
+            "text_size": 28
+          },
+          "track_info": "[{\"x\":0.5,\"end_time\":8334,\"p\":null,\"y\":0.5,\"h\":0.1295,\"isRatioCoord\":true,\"start_time\":0,\"r\":0,\"w\":0.093,\"s\":1}]",
+          "type": 18
+        },
+        {
+          "attr": "",
+          "index": 3,
+          "is_non_global": false,
+          "is_non_global_v2": false,
+          "material_index": 0,
+          "text_info": "sky remote - if u have lost ur tv remote this app is a must have \n\ncountdown - tells u how many days until a special occasion\n\nmoviediary - watch any movie for free\n\nsnapseed - removes anything unwanted from pictures\n\nmubr - listening to spotify music together online with your friends, sending reactions & stalk last listened songs\n\n",
+          "text_sticker_info": {
+            "alignment": 1,
+            "bg_color": "#00000000",
+            "source_height": 0.9239825581395349,
+            "source_width": 0.9162790697674419,
+            "text_color": "#FFFFFFFF",
+            "text_language": "en",
+            "text_size": 28
+          },
+          "track_info": "[{\"x\":0.3256,\"end_time\":8334,\"p\":null,\"y\":0.5903,\"h\":0.3067,\"isRatioCoord\":true,\"start_time\":0,\"r\":0,\"w\":0.3082,\"s\":0.3264}]",
+          "type": 18
+        },
+        {
+          "attr": "",
+          "index": 4,
+          "is_non_global": false,
+          "is_non_global_v2": false,
+          "material_index": 0,
+          "text_info": "setty - cute &\naesthetic filters for ur photos and vids\n\nforest - stops u from using other apps while studying\nmache film - the best vintage filters\n\nwattpad -\nread ace\n\nwalkie-talkie - talk to random people (like omegle but ve only)\n\nCapCut - it’s a really good app for editing videos!!\n\nFlo - really good for tracking your period (for my girlies)",
+          "text_sticker_info": {
+            "alignment": 2,
+            "bg_color": "#00000000",
+            "source_height": 0.9261627906976744,
+            "source_width": 0.9,
+            "text_color": "#FFFFFFFF",
+            "text_language": "en",
+            "text_size": 28
+          },
+          "track_info": "[{\"x\":0.6481,\"end_time\":8334,\"p\":null,\"y\":0.5789,\"h\":0.2829,\"isRatioCoord\":true,\"start_time\":0,\"r\":0,\"w\":0.2787,\"s\":0.3003}]",
+          "type": 18
+        }
+      ],
+      "is_ads": false,
+      "is_description_translatable": true,
+      "is_hash_tag": 1,
+      "is_nff_or_nr": false,
+      "is_on_this_day": 0,
+      "is_paid_content": false,
+      "is_pgcshow": false,
+      "is_preview": 0,
+      "is_relieve": false,
+      "is_text_sticker_translatable": true,
+      "is_title_translatable": false,
+      "is_top": 0,
+      "is_vr": false,
+      "item_allow_ai_remix": 2,
+      "item_comment_settings": 0,
+      "item_duet": 1,
+      "item_react": 1,
+      "item_stitch": 1,
+      "label_top": {
+        "height": 720,
+        "uri": "tiktok-obj/1598708589477025.PNG",
+        "url_list": [
+          "https://example.invalid/media",
+          "https://example.invalid/media",
+          "https://example.invalid/media"
+        ],
+        "url_prefix": null,
+        "width": 720
+      },
+      "label_top_text": null,
+      "long_video": null,
+      "main_arch_common": "{\"music_detail_fail_reason\":\"other_offline\",\"music_detail_fail_type\":9,\"music_detail_fail_toast\":\"This sound isn’t available.\"}",
+      "mask_infos": [],
+      "meme_reg_info": {},
+      "misc_info": "{}",
+      "muf_comment_info_v2": null,
+      "music": {
+        "album": "",
+        "allow_offline_music_to_detail_page": false,
+        "artists": [],
+        "audition_duration": 0,
+        "author": "redacted",
+        "author_deleted": false,
+        "author_position": null,
+        "binded_challenge_id": 0,
+        "can_be_stitched": false,
+        "can_not_reuse": true,
+        "collect_stat": 0,
+        "commercial_right_type": 1,
+        "cover_large": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_medium": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_thumb": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "create_time": 1698510344,
+        "dmv_auto_show": false,
+        "duration": 0,
+        "duration_high_precision": {
+          "audition_duration_precision": 0,
+          "duration_precision": 0,
+          "shoot_duration_precision": 0,
+          "video_duration_precision": 0
+        },
+        "external_song_info": [],
+        "extra": "{\"amplitude_peak\":0,\"beats\":{},\"can_read\":true,\"can_reuse\":false,\"erase_type\":0,\"erase_uid\":0,\"filter_reason\":\"not_commerce\",\"from_user_id\":7575780923294598147,\"full_song_beat_info\":{},\"full_song_beats\":{},\"has_edited\":0,\"is_batch_take_down_music\":false,\"is_ugc_mapping\":false,\"is_used\":0,\"loudness_lufs\":0,\"music_vid\":\"\",\"owner_id\":0,\"resource_status\":2,\"review_unshelve_reason\":0,\"reviewed\":0,\"schedule_search_time\":0,\"sh_tag\":0}",
+        "has_commerce_right": false,
+        "has_commerce_right_strict": false,
+        "has_human_voice": false,
+        "id": 7295046359504293000,
+        "id_str": "7295046359504292654",
+        "is_audio_url_with_cookie": false,
+        "is_author_artist": false,
+        "is_commerce_music": false,
+        "is_commerce_music_strict": false,
+        "is_matched_metadata": false,
+        "is_original": false,
+        "is_original_sound": false,
+        "is_pgc": false,
+        "is_play_music": false,
+        "is_shooting_allow": false,
+        "log_extra": "{\"meta_song_matched_type\":\"not_found\",\"ttm_matched_type\":\"\",\"ttm_track_id\":\"\",\"matched_meta_song_id\":\"\",\"vid\":\"\",\"owner_id\":\"\"}",
+        "lyric_short_position": null,
+        "meme_song_info": {},
+        "mid": "7295046359504292654",
+        "multi_bit_rate_play_info": null,
+        "music_group_use_count": 0,
+        "music_ugid_use_count": 0,
+        "mute_share": false,
+        "mute_type": 0,
+        "offline_desc": "The copyright owner hasn’t made this sound available in your country",
+        "owner_handle": "",
+        "owner_nickname": "",
+        "play_url": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "position": null,
+        "prevent_download": false,
+        "preview_end_time": 0,
+        "preview_start_time": 0,
+        "recommend_status": 258,
+        "search_highlight": null,
+        "shoot_duration": 0,
+        "source_platform": 0,
+        "status": 0,
+        "tag_list": null,
+        "tag_list_v2": null,
+        "title": "",
+        "tt_to_dsp_song_infos": null,
+        "uncert_artists": null,
+        "user_count": 0,
+        "video_duration": 0
+      },
+      "music_begin_time_in_ms": 22513,
+      "music_end_time_in_ms": 30747,
+      "music_selected_from": "single_song",
+      "music_title_style": 1,
+      "music_volume": "50.000000",
+      "need_trim_step": false,
+      "need_vs_entry": false,
+      "nickname_position": null,
+      "no_selected_music": false,
+      "operator_boost_info": null,
+      "origin_comment_ids": null,
+      "origin_volume": "0.000000",
+      "original_client_text": {
+        "markup_text": "Apps you need!! <h id=\"1\">#tipsforu</h> <h id=\"8\">#tips</h> <h id=\"21\">#FYP</h> <h id=\"40\">#viral</h> <h id=\"65\">#viralvideo</h> <h id=\"96\">#xyzbca</h> <h id=\"133\">#trending</h> <h id=\"176\">#blowthisup</h> <h id=\"225\">#blowup</h> <h id=\"280\">#tipacc</h> <h id=\"341\">#tipaccount</h> <h id=\"408\">#askyourrfriendss</h> <h id=\"481\">#fyp</h> <h id=\"560\">#appsyouneed</h> <h id=\"1261\">#apps</h> <h id=\"1712\">#appsuneed</h> <h id=\"3314\">#appsneeded</h> ",
+        "text_extra": [
+          {
+            "hashtag_id": "1628734126896134",
+            "hashtag_name": "tipsforu",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "1",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "79189",
+            "hashtag_name": "tips",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "8",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "229207",
+            "hashtag_name": "fyp",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "21",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "20884",
+            "hashtag_name": "viral",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "40",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "85133",
+            "hashtag_name": "viralvideo",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "65",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1652484531221509",
+            "hashtag_name": "xyzbca",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "96",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "20105",
+            "hashtag_name": "trending",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "133",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "2464977",
+            "hashtag_name": "blowthisup",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "176",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "63865",
+            "hashtag_name": "blowup",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "225",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1640949440485381",
+            "hashtag_name": "tipacc",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "280",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "76521283",
+            "hashtag_name": "tipaccount",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "341",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "7347353669588746282",
+            "hashtag_name": "askyourrfriendss",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "408",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "229207",
+            "hashtag_name": "fyp",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "481",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1660954451752965",
+            "hashtag_name": "appsyouneed",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "560",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "127317",
+            "hashtag_name": "apps",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "1261",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1668428236998661",
+            "hashtag_name": "appsuneed",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "1712",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1685474453923841",
+            "hashtag_name": "appsneeded",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "3314",
+            "type": 1,
+            "user_id": ""
+          }
+        ]
+      },
+      "paid_content_info": {
+        "paid_collection_id": 0
+      },
+      "picked_users": [],
+      "playlist_blocked": false,
+      "poi_re_tag_signal": 0,
+      "position": null,
+      "prevent_download": false,
+      "products_info": null,
+      "promote": {
+        "extra": "{\"is_self_post\":false,\"page_source\":\"challenge_aweme\",\"share_panel_icon_text_key\":\"\",\"store_country_code\":\"IT\",\"traffic_level\":0}",
+        "is_show_video_view": false,
+        "promote_traffic_tag": {
+          "need_track": false,
+          "traffic_level": 0,
+          "version": "2025v1"
+        },
+        "video_view_count": 0,
+        "video_view_schema": ""
+      },
+      "promote_capcut_toggle": 0,
+      "promote_icon_text": "Promote",
+      "promote_toast": "Can’t promote due to audio copyright issue",
+      "promote_toast_key": "reason_cannot_promote_music",
+      "question_list": null,
+      "quick_reply_emojis": [
+        "😍",
+        "😂",
+        "😳"
+      ],
+      "rate": 12,
+      "reference_tts_voice_ids": null,
+      "reference_voice_filter_ids": null,
+      "region": "US",
+      "right_products": null,
+      "risk_infos": {
+        "content": "",
+        "risk_sink": false,
+        "type": 0,
+        "vote": false,
+        "warn": false
+      },
+      "search_highlight": null,
+      "share_url": "redacted",
+      "shoot_tab_name": "video_15",
+      "smart_search_info": {
+        "ai_overview_intent_type": 0,
+        "ask_tako_intent_type": 0,
+        "find_similar_intent_type": 0,
+        "related_videos_intent_type": 0,
+        "title_smart_search_panel_type": 0
+      },
+      "social_interaction_blob": {
+        "auxiliary_model_content": "ChIKBPCfmI0KBPCfmIIKBPCfmLMaBAoAEgA="
+      },
+      "solaria_profile": {
+        "profile": "{\"play_time_prob_dist\":\"[800,1.042,2009.0903]\"}"
+      },
+      "sort_label": "",
+      "standard_component_info": {
+        "button": {
+          "buttons": [
+            {
+              "key": {
+                "component_key": "bottom_button_quick_external_share"
+              },
+              "signal": {
+                "auto_display": true,
+                "code": -1,
+                "releasable": true
+              },
+              "ui": {
+                "template": {
+                  "actions": [
+                    {
+                      "events": [
+                        {
+                          "type": "bottom_button_quick_external_share_expose"
+                        },
+                        {
+                          "next": [
+                            {
+                              "next": [
+                                {
+                                  "params": "{\"buttons.button1.variant\":\"primary\"}",
+                                  "type": "update_vo"
+                                }
+                              ],
+                              "type": "bottom_button_quick_external_share_will_update"
+                            }
+                          ],
+                          "params": "{\"duration\":1000}",
+                          "type": "timer"
+                        }
+                      ],
+                      "key": "exposure_action"
+                    },
+                    {
+                      "events": [
+                        {
+                          "type": "exit_screen"
+                        },
+                        {
+                          "type": "bottom_button_quick_external_share_click"
+                        }
+                      ],
+                      "key": "click_button1"
+                    }
+                  ],
+                  "fields": "{\"buttons\":{\"button1\":{\"text\":\"quick_external_share\",\"variant\":\"secondary\",\"action_key\":\"click_button1\"}}}",
+                  "type": 1
+                },
+                "ui_type": 2
+              }
+            }
+          ],
+          "enable_standard_button": true
+        }
+      },
+      "statistics": {
+        "aweme_id": "7348250808653319455",
+        "collect_count": 1057,
+        "comment_count": 15,
+        "digg_count": 2424,
+        "download_count": 94,
+        "forward_count": 0,
+        "lose_comment_count": 0,
+        "lose_count": 0,
+        "play_count": 42181,
+        "repost_count": 0,
+        "share_count": 43,
+        "whatsapp_share_count": 2
+      },
+      "status": {
+        "allow_comment": true,
+        "allow_share": true,
+        "aweme_id": "7348250808653319455",
+        "download_status": 0,
+        "in_reviewing": false,
+        "is_delete": false,
+        "is_prohibited": false,
+        "private_status": 0,
+        "review_result": {
+          "review_status": 0
+        },
+        "reviewed": 0,
+        "self_see": false,
+        "video_mute": {
+          "audio_change_status": 0,
+          "is_copyright_violation": true,
+          "is_mute": true,
+          "mute_desc": "This sound isn’t available.",
+          "mute_detail_notice_bottom": "Sound removed"
+        },
+        "violation_display_status": 0
+      },
+      "support_danmaku": false,
+      "survey_info": null,
+      "tako_bubble_info": {
+        "tako_bubble_enable": false
+      },
+      "text_extra": [
+        {
+          "end": 25,
+          "hashtag_id": "1628734126896134",
+          "hashtag_name": "tipsforu",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 16,
+          "tag_id": "1",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 31,
+          "hashtag_id": "79189",
+          "hashtag_name": "tips",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 26,
+          "tag_id": "8",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 36,
+          "hashtag_id": "229207",
+          "hashtag_name": "fyp",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 32,
+          "tag_id": "21",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 43,
+          "hashtag_id": "20884",
+          "hashtag_name": "viral",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 37,
+          "tag_id": "40",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 55,
+          "hashtag_id": "85133",
+          "hashtag_name": "viralvideo",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 44,
+          "tag_id": "65",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 63,
+          "hashtag_id": "1652484531221509",
+          "hashtag_name": "xyzbca",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 56,
+          "tag_id": "96",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 73,
+          "hashtag_id": "20105",
+          "hashtag_name": "trending",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 64,
+          "tag_id": "133",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 85,
+          "hashtag_id": "2464977",
+          "hashtag_name": "blowthisup",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 74,
+          "tag_id": "176",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 93,
+          "hashtag_id": "63865",
+          "hashtag_name": "blowup",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 86,
+          "tag_id": "225",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 101,
+          "hashtag_id": "1640949440485381",
+          "hashtag_name": "tipacc",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 94,
+          "tag_id": "280",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 113,
+          "hashtag_id": "76521283",
+          "hashtag_name": "tipaccount",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 102,
+          "tag_id": "341",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 131,
+          "hashtag_id": "7347353669588746282",
+          "hashtag_name": "askyourrfriendss",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 114,
+          "tag_id": "408",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 136,
+          "hashtag_id": "229207",
+          "hashtag_name": "fyp",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 132,
+          "tag_id": "481",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 149,
+          "hashtag_id": "1660954451752965",
+          "hashtag_name": "appsyouneed",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 137,
+          "tag_id": "560",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 155,
+          "hashtag_id": "127317",
+          "hashtag_name": "apps",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 150,
+          "tag_id": "1261",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 166,
+          "hashtag_id": "1668428236998661",
+          "hashtag_name": "appsuneed",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 156,
+          "tag_id": "1712",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 178,
+          "hashtag_id": "1685474453923841",
+          "hashtag_name": "appsneeded",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 167,
+          "tag_id": "3314",
+          "type": 1,
+          "user_id": ""
+        }
+      ],
+      "text_sticker_major_lang": "en",
+      "title_language": "un",
+      "ttec_suggest_words": {
+        "ttec_suggest_words": null
+      },
+      "tts_voice_ids": null,
+      "ttt_product_recall_type": -2,
+      "uniqid_position": null,
+      "used_full_song": false,
+      "user_digged": 0,
+      "video": {
+        "CoverTsp": 1.303140056022409,
+        "ai_dynamic_cover": {
+          "uri": "tos-useast8-p-0068-tx2/7eccc7cb002d4ebab7bdcc0a96a0507f_1710897990",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "ai_dynamic_cover_bak": {
+          "uri": "tos-useast8-p-0068-tx2/7eccc7cb002d4ebab7bdcc0a96a0507f_1710897990",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "animated_cover": {
+          "uri": "tos-useast8-p-0068-tx2/7eccc7cb002d4ebab7bdcc0a96a0507f_1710897990",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "big_thumbs": [],
+        "bit_rate": [
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 405249,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\"}",
+            "fps": 30,
+            "gear_name": "adapt_540_2",
+            "is_bytevc1": 2,
+            "play_addr": {
+              "data_size": 418775,
+              "file_cs": "c:0-8719-2fdf",
+              "file_hash": "d9f7748058c4ccf875e4a026888691a5",
+              "height": 1024,
+              "uri": "v15044gf0000cnt3k3nog65r33mi50p0",
+              "url_key": "v15044gf0000cnt3k3nog65r33mi50p0_bytevc2_540p_405249",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 576
+            },
+            "quality_type": 28,
+            "video_extra": "{\"PktOffsetMap\":\"[{\\\"time\\\": 1, \\\"offset\\\": 101311}, {\\\"time\\\": 2, \\\"offset\\\": 143307}, {\\\"time\\\": 3, \\\"offset\\\": 179204}, {\\\"time\\\": 4, \\\"offset\\\": 221163}, {\\\"time\\\": 5, \\\"offset\\\": 261636}]\",\"mvmaf\":\"\",\"ufq\":\"\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"dedce4c22f1c45f2ea60af015eeb82b7\",\"dec_info\":\"\",\"gearvqm\":\"\",\"audio_bit_rate\":32905}"
+          },
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 315859,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\"}",
+            "fps": 30,
+            "gear_name": "lowest_540_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 326401,
+              "file_cs": "c:0-8526-d208",
+              "file_hash": "ba46c34987c7c9a4353af0e1e9c445fa",
+              "height": 1024,
+              "uri": "v15044gf0000cnt3k3nog65r33mi50p0",
+              "url_key": "v15044gf0000cnt3k3nog65r33mi50p0_bytevc1_540p_315859",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 576
+            },
+            "quality_type": 25,
+            "video_extra": "{\"PktOffsetMap\":\"[{\\\"time\\\": 1, \\\"offset\\\": 83945}, {\\\"time\\\": 2, \\\"offset\\\": 115996}, {\\\"time\\\": 3, \\\"offset\\\": 151130}, {\\\"time\\\": 4, \\\"offset\\\": 184340}, {\\\"time\\\": 5, \\\"offset\\\": 216549}]\",\"mvmaf\":\"\",\"ufq\":\"\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"a3d845a283840731aa1b0291e435ad98\",\"dec_info\":\"\",\"gearvqm\":\"\",\"audio_bit_rate\":24820}"
+          }
+        ],
+        "bit_rate_audio": [],
+        "cdn_url_expired": 0,
+        "cla_info": {
+          "caption_infos": null,
+          "captions_type": 0,
+          "creator_edited_caption_id": 0,
+          "enable_auto_caption": 0,
+          "has_original_audio": 0,
+          "hide_original_caption": false,
+          "is_author_dubbing_qualified": false,
+          "no_caption_reason": 3,
+          "no_caption_reason_v2": 3,
+          "vertical_positions": null
+        },
+        "cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-useast8-p-0068-tx2/ooB0OoBGBIn0y676AiiAqCIDgAvxyjiEiCAOCf",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_is_custom": true,
+        "did_profile_labels": "",
+        "duration": 8267,
+        "dynamic_cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-useast8-p-0068-tx2/738e9e10ea514b50868c1578e9c092b6_1710897990",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "has_watermark": false,
+        "height": 1024,
+        "is_bytevc1": 0,
+        "is_callback": true,
+        "meta": "{\"LoudnessRange\":\"0.6\",\"LoudnessRangeEnd\":\"-17.3\",\"LoudnessRangeStart\":\"-17.9\",\"MaximumMomentaryLoudness\":\"-15.7\",\"MaximumShortTermLoudness\":\"-17.2\",\"Version\":\"2\",\"VolumeInfoJson\":\"{\\\"Peak\\\":0.50119,\\\"Loudness\\\":-17.7,\\\"MaximumMomentaryLoudness\\\":-15.7,\\\"Version\\\":2,\\\"Metrics\\\":{\\\"Phase\\\":{\\\"RMSDownmixDiff\\\":-0.039},\\\"RMSStats\\\":{\\\"LRDiff\\\":-0.062,\\\"Peak\\\":-5.992,\\\"LTotal\\\":-16.893,\\\"RTotal\\\":-16.831},\\\"Cutoff\\\":{\\\"Spkr150G\\\":4.44,\\\"Spkr100G\\\":4.21,\\\"FCenL\\\":3494.3,\\\"FCenR\\\":3413.52,\\\"Spkr200G\\\":4.59},\\\"AEDInfo\\\":{\\\"SpeechRatio\\\":0,\\\"MusicRatio\\\":1,\\\"SingingRatio\\\":0},\\\"Version\\\":\\\"1.4.2\\\",\\\"Loudness\\\":{\\\"Integrated\\\":-17.78}},\\\"MaximumShortTermLoudness\\\":-17.2,\\\"LoudnessRangeStart\\\":-17.9,\\\"LoudnessRangeEnd\\\":-17.3,\\\"LoudnessRange\\\":0.6}\",\"bright_ratio_mean\":\"0.0078\",\"brightness_mean\":\"111.3419\",\"diff_overexposure_ratio\":\"0.0001\",\"loudness\":\"-17.7\",\"overexposure_ratio_mean\":\"0.003\",\"peak\":\"0.50119\",\"play_time_prob_dist\":\"[800,1.042,2009.0903]\",\"sp_extra_info\":\"{\\\"origin_width\\\":576,\\\"origin_height\\\":1024,\\\"origin_create_at\\\":1710897996}\",\"sr_score\":\"1.000\",\"std_brightness\":\"4.0447\",\"vq_score\":\"61.83\"}",
+        "need_set_token": false,
+        "origin_cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-useast8-p-0068-tx2/53c3cac18ed54b439f3177815b07d333_1710897991",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "play_addr": {
+          "data_size": 1157334,
+          "file_cs": "c:0-8363-ab83",
+          "file_hash": "a34a8d261b42aba928e01428cd2d3e49",
+          "height": 1024,
+          "uri": "v15044gf0000cnt3k3nog65r33mi50p0",
+          "url_key": "v15044gf0000cnt3k3nog65r33mi50p0_h264_540p_1119955",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "play_addr_bytevc1": {
+          "data_size": 677923,
+          "file_cs": "c:0-8526-1476",
+          "file_hash": "e1a271568b4c999029a5123acaa6bdae",
+          "height": 1024,
+          "uri": "v15044gf0000cnt3k3nog65r33mi50p0",
+          "url_key": "v15044gf0000cnt3k3nog65r33mi50p0_bytevc1_540p_656028",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "play_addr_h264": {
+          "data_size": 1157334,
+          "file_cs": "c:0-8363-ab83",
+          "file_hash": "a34a8d261b42aba928e01428cd2d3e49",
+          "height": 1024,
+          "uri": "v15044gf0000cnt3k3nog65r33mi50p0",
+          "url_key": "v15044gf0000cnt3k3nog65r33mi50p0_h264_540p_1119955",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "ratio": "540p",
+        "source_HDR_type": 0,
+        "tags": null,
+        "vid_profile_labels": "",
+        "width": 576
+      },
+      "video_control": {
+        "allow_download": false,
+        "allow_duet": false,
+        "allow_dynamic_wallpaper": true,
+        "allow_music": true,
+        "allow_react": true,
+        "allow_stitch": false,
+        "draft_progress_bar": 1,
+        "prevent_download_type": 2,
+        "share_type": 0,
+        "show_progress_bar": 1,
+        "timer_status": 1
+      },
+      "video_labels": [],
+      "video_text": [],
+      "visual_search_info": {
+        "fallback_vtag_enable": false,
+        "fallback_vtag_enable_type": 0,
+        "long_press_entrance_enable": false,
+        "long_press_entrance_enable_type": 0,
+        "screenshot_entrance_enable": 0,
+        "visual_search_intent_level": 0,
+        "vtag_enable": false,
+        "vtag_enable_type": 0
+      },
+      "voice_filter_ids": null,
+      "with_promotional_music": false,
+      "without_watermark": false,
+      "is_eligible_for_commission": false,
+      "is_paid_partnership": false,
+      "is_ad": false,
+      "url": "https://www.tiktok.com/@redacted/video/0",
+      "create_time_utc": "2024-03-20T01:26:25.000Z",
+      "shop_product_url": null
+    },
+    {
+      "added_sound_music_info": {
+        "album": "",
+        "allow_offline_music_to_detail_page": false,
+        "artists": [],
+        "audition_duration": 31,
+        "author": "redacted",
+        "author_deleted": false,
+        "author_position": null,
+        "binded_challenge_id": 0,
+        "can_be_stitched": true,
+        "can_not_reuse": false,
+        "collect_stat": 0,
+        "commercial_right_type": 2,
+        "cover_large": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-avt-0068/e5ee0cf81a3b49dbb1dbd131be650ec8",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_medium": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-avt-0068/e5ee0cf81a3b49dbb1dbd131be650ec8",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_thumb": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-avt-0068/e5ee0cf81a3b49dbb1dbd131be650ec8",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "create_time": 1620676058,
+        "dmv_auto_show": false,
+        "duration": 31,
+        "duration_high_precision": {
+          "audition_duration_precision": 31,
+          "duration_precision": 31,
+          "shoot_duration_precision": 31,
+          "video_duration_precision": 31
+        },
+        "external_song_info": [],
+        "extra": "{\"amplitude_peak\":0,\"beats\":{},\"can_read\":true,\"can_reuse\":true,\"erase_type\":0,\"erase_uid\":0,\"extract_item_id\":6960750581510130950,\"from_user_id\":7575780923294598147,\"full_song_beat_info\":{},\"full_song_beats\":{},\"has_edited\":0,\"is_batch_take_down_music\":false,\"is_ugc_mapping\":false,\"is_used\":0,\"loudness_lufs\":0,\"music_vid\":\"v09942g40000c2corjc6nlqdlbve9sug\",\"owner_id\":6634337045078114310,\"resource_status\":0,\"review_unshelve_reason\":0,\"reviewed\":0,\"schedule_search_time\":0,\"sh_tag\":0}",
+        "has_commerce_right": true,
+        "has_commerce_right_strict": true,
+        "has_human_voice": true,
+        "id": 6960750497133235000,
+        "id_str": "6960750497133234949",
+        "is_audio_url_with_cookie": false,
+        "is_author_artist": false,
+        "is_commerce_music": true,
+        "is_commerce_music_strict": true,
+        "is_matched_metadata": false,
+        "is_original": false,
+        "is_original_sound": true,
+        "is_pgc": false,
+        "is_play_music": false,
+        "is_shooting_allow": true,
+        "log_extra": "{\"meta_song_matched_type\":\"not_found\",\"ttm_matched_type\":\"\",\"ttm_track_id\":\"\",\"matched_meta_song_id\":\"\",\"vid\":\"\",\"owner_id\":\"\"}",
+        "lyric_short_position": null,
+        "meme_song_info": {},
+        "mid": "6960750497133234949",
+        "multi_bit_rate_play_info": null,
+        "music_group_use_count": 0,
+        "music_ugid_use_count": 0,
+        "mute_share": false,
+        "offline_desc": "",
+        "owner_handle": "redacted",
+        "owner_id": "redacted",
+        "owner_nickname": "redacted",
+        "play_url": {
+          "height": 720,
+          "uri": "https://sf16-music.tiktokcdn-eu.com/obj/musically-maliva-obj/6960750556075903749.mp3",
+          "url_list": [
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "position": null,
+        "prevent_download": false,
+        "preview_end_time": 0,
+        "preview_start_time": 0,
+        "recommend_status": 100,
+        "search_highlight": null,
+        "sec_uid": "redacted",
+        "shoot_duration": 31,
+        "source_platform": 72,
+        "status": 1,
+        "tag_list": null,
+        "tag_list_v2": null,
+        "title": "original sound - redacted",
+        "tt_to_dsp_song_infos": null,
+        "uncert_artists": null,
+        "user_count": 0,
+        "video_duration": 31
+      },
+      "ai_remix_info": {
+        "has_entrance": false
+      },
+      "aigc_info": {
+        "aigc_label_type": 0,
+        "created_by_ai": false
+      },
+      "anchors": [
+        {
+          "actions": [
+            {
+              "action_type": 1,
+              "icon": {
+                "height": 720,
+                "uri": "tiktok-obj/28px_primary_create_onDark3x.png",
+                "url_list": [
+                  "https://example.invalid/media",
+                  "https://example.invalid/media",
+                  "https://example.invalid/media"
+                ],
+                "url_prefix": null,
+                "width": 720
+              },
+              "schema": "shoot"
+            }
+          ],
+          "anchor_strong": null,
+          "component_key": "anchor_effect",
+          "description": "Effects",
+          "extra": {
+            "effect_source": 0,
+            "is_commerce": 0,
+            "resource_id": 6711137499550324000
+          },
+          "icon": {
+            "height": 720,
+            "uri": "tiktok-obj/20px_anchor_effect3x.png",
+            "url_list": [
+              "https://example.invalid/media",
+              "https://example.invalid/media",
+              "https://example.invalid/media"
+            ],
+            "url_prefix": null,
+            "width": 720
+          },
+          "id": "308867",
+          "keyword": "Green Screen",
+          "log_extra": "{\"anchor_id\":\"263840\",\"anchor_name\":\"Green Screen\",\"anchor_type\":\"prop\",\"has_friends_info\":\"0\"}",
+          "thumbnail": {
+            "height": 64,
+            "uri": "cfaa5ce4a49351ceb195197df28a788b",
+            "url_list": [
+              "https://example.invalid/media",
+              "https://example.invalid/media"
+            ],
+            "url_prefix": null,
+            "width": 64
+          },
+          "type": 28
+        }
+      ],
+      "anchors_extras": "",
+      "animated_image_info": {
+        "effect": 0,
+        "type": 0
+      },
+      "author": {
+        "accept_private_policy": false,
+        "account_labels": null,
+        "account_region": "",
+        "ad_cover_url": null,
+        "advance_feature_item_order": null,
+        "advanced_feature_info": null,
+        "apple_account": 0,
+        "authority_status": 0,
+        "avatar_uri": "redacted",
+        "aweme_count": 0,
+        "bind_phone": "",
+        "bold_fields": null,
+        "can_message_follow_status_list": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "can_set_geofencing": null,
+        "cha_list": null,
+        "comment_filter_status": 1,
+        "comment_setting": 0,
+        "commerce_user_level": 0,
+        "cover_url": [],
+        "create_time": 0,
+        "custom_verify": "",
+        "cv_level": "",
+        "download_prompt_ts": 0,
+        "download_setting": 0,
+        "duet_setting": 0,
+        "enabled_filter_all_comments": false,
+        "enterprise_verify_reason": "",
+        "events": null,
+        "fake_data_info": {},
+        "favoriting_count": 0,
+        "fb_expire_time": 0,
+        "follow_status": 0,
+        "follower_count": 0,
+        "follower_status": 0,
+        "followers_detail": null,
+        "following_count": 0,
+        "friends_status": 0,
+        "gender": 0,
+        "geofencing": null,
+        "google_account": "",
+        "has_email": false,
+        "has_facebook_token": false,
+        "has_insights": false,
+        "has_orders": false,
+        "has_twitter_token": false,
+        "has_youtube_token": false,
+        "hide_search": false,
+        "homepage_bottom_toast": null,
+        "ins_id": "",
+        "is_ad_fake": false,
+        "is_block": false,
+        "is_discipline_member": false,
+        "is_mute": 0,
+        "is_mute_lives": 0,
+        "is_mute_non_story_post": 0,
+        "is_mute_story": 0,
+        "is_phone_binded": false,
+        "is_star": false,
+        "item_list": null,
+        "language": "en",
+        "live_agreement": 0,
+        "live_commerce": false,
+        "live_verify": 0,
+        "mention_status": 1,
+        "mutual_relation_avatars": null,
+        "need_points": null,
+        "need_recommend": 0,
+        "nickname": "redacted",
+        "platform_sync_info": null,
+        "prevent_download": false,
+        "react_setting": 0,
+        "region": "US",
+        "relative_users": null,
+        "reply_with_video_flag": 4,
+        "room_id": 0,
+        "search_highlight": null,
+        "sec_uid": "redacted",
+        "secret": 0,
+        "share_qrcode_uri": "",
+        "shield_comment_notice": 0,
+        "shield_digg_notice": 0,
+        "shield_edit_field_info": null,
+        "shield_follow_notice": 0,
+        "short_id": "0",
+        "show_image_bubble": false,
+        "signature": "redacted",
+        "special_account": {
+          "special_account_list": null
+        },
+        "special_lock": 1,
+        "status": 1,
+        "stitch_setting": 0,
+        "total_favorited": 0,
+        "tw_expire_time": 0,
+        "twitter_id": "",
+        "twitter_name": "",
+        "type_label": null,
+        "uid": "redacted",
+        "unique_id": "redacted",
+        "unique_id_modify_time": 1790817940,
+        "user_canceled": false,
+        "user_mode": 1,
+        "user_now_pack_info": {},
+        "user_period": 0,
+        "user_profile_guide": null,
+        "user_rate": 1,
+        "user_spark_info": {},
+        "user_tags": null,
+        "verification_type": 1,
+        "verify_info": "",
+        "video_icon": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "white_cover_url": null,
+        "with_commerce_entry": false,
+        "with_shop_entry": false,
+        "youtube_channel_id": "redacted",
+        "youtube_channel_title": "Scott Frenzel",
+        "youtube_expire_time": 0
+      },
+      "author_user_id": "redacted",
+      "aweme_acl": {
+        "download_general": {
+          "code": 0,
+          "mute": false,
+          "show_type": 2,
+          "transcode": 3
+        },
+        "download_mask_panel": {
+          "code": 0,
+          "mute": false,
+          "show_type": 2,
+          "transcode": 3
+        },
+        "platform_list": null,
+        "press_action_list": null,
+        "share_action_list": null,
+        "share_general": {
+          "code": 0,
+          "mute": false,
+          "show_type": 2,
+          "transcode": 3
+        },
+        "share_list_status": 0
+      },
+      "aweme_id": "6960750581510130950",
+      "aweme_type": 0,
+      "banners": [
+        {
+          "key": {
+            "component_key": "bottom_banner_search_rs"
+          }
+        }
+      ],
+      "behind_the_song_music_ids": null,
+      "behind_the_song_video_music_ids": null,
+      "bodydance_score": 0,
+      "bottom_products": null,
+      "branded_content_accounts": null,
+      "cc_template_info": {
+        "author_name": "",
+        "clip_count": 0,
+        "desc": "",
+        "duration_milliseconds": 0,
+        "related_music_id": "",
+        "template_id": ""
+      },
+      "cha_list": [
+        {
+          "author": {
+            "account_labels": null,
+            "ad_cover_url": null,
+            "advance_feature_item_order": null,
+            "advanced_feature_info": null,
+            "bold_fields": null,
+            "can_message_follow_status_list": null,
+            "can_set_geofencing": null,
+            "cha_list": null,
+            "cover_url": null,
+            "events": null,
+            "followers_detail": null,
+            "geofencing": null,
+            "homepage_bottom_toast": null,
+            "item_list": null,
+            "mutual_relation_avatars": null,
+            "need_points": null,
+            "platform_sync_info": null,
+            "relative_users": null,
+            "search_highlight": null,
+            "shield_edit_field_info": null,
+            "type_label": null,
+            "user_profile_guide": null,
+            "user_tags": null,
+            "white_cover_url": null
+          },
+          "banner_list": null,
+          "cha_attrs": null,
+          "cha_name": "Photography",
+          "cid": "39238",
+          "collect_stat": 0,
+          "connect_music": [],
+          "desc": "Click the shutter, capture the moment, and show us your #Photography.",
+          "extra_attr": {
+            "is_live": false
+          },
+          "hashtag_profile": "musically-maliva-obj/7f577590c71c1103d1b0e645bf5bd174.jpeg",
+          "is_challenge": 0,
+          "is_commerce": false,
+          "is_pgcshow": false,
+          "schema": "aweme://aweme/challenge/detail?cid=39238",
+          "search_highlight": null,
+          "show_items": null,
+          "sub_type": 0,
+          "type": 2,
+          "use_count": 0,
+          "user_count": 0,
+          "view_count": 0
+        }
+      ],
+      "challenge_position": null,
+      "cmt_swt": false,
+      "collect_stat": 0,
+      "comment_at_tako_info": {
+        "show_tako_account": 0
+      },
+      "comment_config": {
+        "comment_panel_show_tab_config": {
+          "comment_tab_info_config": [
+            {
+              "priority": 100,
+              "tab_id": 2,
+              "tab_name": "like_list"
+            },
+            {
+              "priority": 101,
+              "tab_id": 3,
+              "tab_name": "view_list"
+            },
+            {
+              "priority": -100,
+              "tab_id": 4,
+              "tab_name": "story2viewer_list"
+            },
+            {
+              "priority": 102,
+              "tab_id": 5,
+              "tab_name": "video_auth_page"
+            },
+            {
+              "priority": 11,
+              "tab_id": 11,
+              "tab_name": "ec_reviews_tab"
+            }
+          ],
+          "max_tab_count": 3
+        },
+        "comment_top_bar_component": [
+          {
+            "action": {
+              "click_hot_area_type": 2,
+              "schema": "//search"
+            },
+            "biz_id": "765315377235056641",
+            "biz_type": 10,
+            "desc_prefix": {
+              "content": "Search:"
+            },
+            "desc_suffix": {
+              "content": "photos download app"
+            },
+            "extra": "",
+            "name": "search_keywords",
+            "tail_icon": {
+              "is_local": true,
+              "local_type": 1
+            },
+            "template_type": 2,
+            "tracer_info": ""
+          }
+        ],
+        "emoji_recommend_list": [
+          {
+            "emoji": "🙂",
+            "score": 11
+          },
+          {
+            "emoji": "😁",
+            "score": 10
+          },
+          {
+            "emoji": "🥰",
+            "score": 9
+          },
+          {
+            "emoji": "😂",
+            "score": 8
+          },
+          {
+            "emoji": "😳",
+            "score": 7
+          },
+          {
+            "emoji": "😏",
+            "score": 6
+          },
+          {
+            "emoji": "😅",
+            "score": 5
+          },
+          {
+            "emoji": "🥺",
+            "score": 4
+          },
+          {
+            "emoji": "😌",
+            "score": 3
+          },
+          {
+            "emoji": "😬",
+            "score": 2
+          },
+          {
+            "emoji": "😊",
+            "score": 1
+          }
+        ],
+        "has_author_comment": true,
+        "long_press_recommend_list": null,
+        "preload": {
+          "preds": "{\"item_post_comment\":0.0001883300853217169}"
+        },
+        "quick_comment": {
+          "enabled": true,
+          "rec_level": 0
+        },
+        "quick_comment_emoji_recommend_list": null,
+        "social_quick_comment": {
+          "enabled": false,
+          "rec_metrics": {
+            "non_social_enabled": "true",
+            "p_comment": "0",
+            "p_skip": "0",
+            "p_stay_time": "0"
+          }
+        }
+      },
+      "comment_topbar_info": null,
+      "commerce_config_data": null,
+      "commerce_info": {
+        "adv_promotable": false,
+        "auction_ad_invited": false,
+        "branded_content_type": 0,
+        "is_diversion_ad": 0,
+        "organic_log_extra": "{\"req_id\":\"20261001012539AADEBB72A125E5317498\"}",
+        "with_comment_filter_words": false
+      },
+      "content_desc": "",
+      "content_desc_extra": [],
+      "content_level": 0,
+      "content_model": {
+        "custom_biz": {
+          "aweme_trace": "20261001012539AADEBB72A125E5317498",
+          "high_quality_boost_info": {
+            "description": "",
+            "is_high_quality_post": false,
+            "link": ""
+          },
+          "high_quality_boost_info_v2": {}
+        },
+        "standard_biz": {
+          "ai_comment_photo": {
+            "enable_comment": true
+          },
+          "e_commerce": {
+            "ttec_content_tag": {
+              "recommendation_tag_consumer_str": "",
+              "recommendation_tag_creator_str": ""
+            }
+          },
+          "local_alliance_info": {
+            "alliance_item_label_text": "",
+            "alliance_item_label_type": 0
+          }
+        }
+      },
+      "content_original_type": 2,
+      "cover_labels": null,
+      "create_time": 1620676041,
+      "creation_info": {
+        "creation_used_functions": []
+      },
+      "creator_ai_comment": {
+        "eligible_video": false,
+        "has_ai_topic": false,
+        "not_eligible_reason": 213
+      },
+      "desc": "Reply to @prinxesskaylah I use this one all the time! #photography #appstodownload #appsyouneed",
+      "desc_language": "en",
+      "disable_search_trending_bar": false,
+      "distance": "",
+      "distribute_type": 1,
+      "ecosystem_perception_enhancement": null,
+      "follow_up_publish_from_id": 0,
+      "geofencing": null,
+      "geofencing_regions": null,
+      "green_screen_materials": null,
+      "group_id": "6960750581510130950",
+      "group_id_list": {
+        "GroupdIdList0": null,
+        "GroupdIdList1": null
+      },
+      "has_danmaku": false,
+      "has_promote_entry": 1,
+      "has_vs_entry": false,
+      "have_dashboard": false,
+      "hybrid_label": null,
+      "image_infos": null,
+      "interact_permission": {
+        "allow_adding_as_post": {
+          "status": 0
+        },
+        "allow_adding_to_story": 0,
+        "allow_create_sticker": {
+          "status": 0
+        },
+        "allow_story_switch_to_post": {
+          "status": 1
+        },
+        "duet": 0,
+        "duet_privacy_setting": 0,
+        "stitch": 0,
+        "stitch_privacy_setting": 0,
+        "upvote": 0
+      },
+      "interaction_stickers": [
+        {
+          "attr": "",
+          "index": 19,
+          "is_non_global": false,
+          "is_non_global_v2": false,
+          "material_index": 0,
+          "track_info": "[{\"x\":0.288,\"end_time\":3066.6667,\"p\":null,\"y\":0.4652,\"h\":0.0742,\"start_time\":2033.3333,\"r\":0,\"w\":0.4502,\"s\":1}]",
+          "type": 4
+        }
+      ],
+      "is_ads": false,
+      "is_description_translatable": true,
+      "is_hash_tag": 1,
+      "is_nff_or_nr": false,
+      "is_on_this_day": 0,
+      "is_paid_content": false,
+      "is_pgcshow": false,
+      "is_preview": 0,
+      "is_relieve": false,
+      "is_text_sticker_translatable": false,
+      "is_title_translatable": false,
+      "is_top": 0,
+      "is_vr": false,
+      "item_allow_ai_remix": 2,
+      "item_comment_settings": 0,
+      "item_duet": 0,
+      "item_react": 0,
+      "item_stitch": 0,
+      "label_top": {
+        "height": 720,
+        "uri": "tiktok-obj/1598708589477025.PNG",
+        "url_list": [
+          "https://example.invalid/media",
+          "https://example.invalid/media",
+          "https://example.invalid/media"
+        ],
+        "url_prefix": null,
+        "width": 720
+      },
+      "label_top_text": null,
+      "long_video": null,
+      "main_arch_common": "",
+      "mask_infos": [],
+      "meme_reg_info": {},
+      "misc_info": "{}",
+      "muf_comment_info_v2": null,
+      "music": {
+        "album": "",
+        "allow_offline_music_to_detail_page": false,
+        "artists": [],
+        "audition_duration": 31,
+        "author": "redacted",
+        "author_deleted": false,
+        "author_position": null,
+        "binded_challenge_id": 0,
+        "can_be_stitched": true,
+        "can_not_reuse": false,
+        "collect_stat": 0,
+        "commercial_right_type": 2,
+        "cover_large": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-avt-0068/e5ee0cf81a3b49dbb1dbd131be650ec8",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_medium": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-avt-0068/e5ee0cf81a3b49dbb1dbd131be650ec8",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_thumb": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-avt-0068/e5ee0cf81a3b49dbb1dbd131be650ec8",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "create_time": 1620676058,
+        "dmv_auto_show": false,
+        "duration": 31,
+        "duration_high_precision": {
+          "audition_duration_precision": 31,
+          "duration_precision": 31,
+          "shoot_duration_precision": 31,
+          "video_duration_precision": 31
+        },
+        "external_song_info": [],
+        "extra": "{\"amplitude_peak\":0,\"beats\":{},\"can_read\":true,\"can_reuse\":true,\"erase_type\":0,\"erase_uid\":0,\"extract_item_id\":6960750581510130950,\"from_user_id\":7575780923294598147,\"full_song_beat_info\":{},\"full_song_beats\":{},\"has_edited\":0,\"is_batch_take_down_music\":false,\"is_ugc_mapping\":false,\"is_used\":0,\"loudness_lufs\":0,\"music_vid\":\"v09942g40000c2corjc6nlqdlbve9sug\",\"owner_id\":6634337045078114310,\"resource_status\":0,\"review_unshelve_reason\":0,\"reviewed\":0,\"schedule_search_time\":0,\"sh_tag\":0}",
+        "has_commerce_right": true,
+        "has_commerce_right_strict": true,
+        "has_human_voice": true,
+        "id": 6960750497133235000,
+        "id_str": "6960750497133234949",
+        "is_audio_url_with_cookie": false,
+        "is_author_artist": false,
+        "is_commerce_music": true,
+        "is_commerce_music_strict": true,
+        "is_matched_metadata": false,
+        "is_original": false,
+        "is_original_sound": true,
+        "is_pgc": false,
+        "is_play_music": false,
+        "is_shooting_allow": true,
+        "log_extra": "{\"meta_song_matched_type\":\"not_found\",\"ttm_matched_type\":\"\",\"ttm_track_id\":\"\",\"matched_meta_song_id\":\"\",\"vid\":\"\",\"owner_id\":\"\"}",
+        "lyric_short_position": null,
+        "meme_song_info": {},
+        "mid": "6960750497133234949",
+        "multi_bit_rate_play_info": null,
+        "music_group_use_count": 0,
+        "music_ugid_use_count": 0,
+        "mute_share": false,
+        "mute_type": 0,
+        "offline_desc": "",
+        "owner_handle": "redacted",
+        "owner_id": "redacted",
+        "owner_nickname": "redacted",
+        "play_url": {
+          "height": 720,
+          "uri": "https://sf16-music.tiktokcdn-eu.com/obj/musically-maliva-obj/6960750556075903749.mp3",
+          "url_list": [
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "position": null,
+        "prevent_download": false,
+        "preview_end_time": 0,
+        "preview_start_time": 0,
+        "recommend_status": 100,
+        "search_highlight": null,
+        "sec_uid": "redacted",
+        "shoot_duration": 31,
+        "source_platform": 72,
+        "status": 1,
+        "tag_list": null,
+        "tag_list_v2": null,
+        "title": "original sound - redacted",
+        "tt_to_dsp_song_infos": null,
+        "uncert_artists": null,
+        "user_count": 0,
+        "video_duration": 31
+      },
+      "music_begin_time_in_ms": 0,
+      "music_selected_from": "original",
+      "music_title_style": 1,
+      "music_volume": "0.000000",
+      "need_trim_step": false,
+      "need_vs_entry": false,
+      "nickname_position": null,
+      "no_selected_music": false,
+      "operator_boost_info": null,
+      "origin_comment_ids": null,
+      "origin_volume": "0.000000",
+      "original_client_text": {
+        "markup_text": "<rc>Reply to <m id=\"8374\">@prinxesskaylah</m></rc> I use this one all the time! <h id=\"4099\">#photography</h> <h id=\"9764\">#appstodownload</h> <h id=\"8169\">#appsyouneed</h>",
+        "text_extra": [
+          {
+            "hashtag_id": "39238",
+            "hashtag_name": "photography",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "4099",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1661971229902854",
+            "hashtag_name": "appstodownload",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "9764",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1660954451752965",
+            "hashtag_name": "appsyouneed",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "8169",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "sec_uid": "redacted",
+            "sub_type": 2,
+            "tag_id": "8374",
+            "type": 0,
+            "user_id": "redacted"
+          }
+        ]
+      },
+      "paid_content_info": {
+        "paid_collection_id": 0
+      },
+      "picked_users": [],
+      "playlist_blocked": false,
+      "poi_re_tag_signal": 0,
+      "position": null,
+      "prevent_download": false,
+      "products_info": null,
+      "promote": {
+        "extra": "{\"is_self_post\":false,\"page_source\":\"challenge_aweme\",\"share_panel_icon_text_key\":\"\",\"store_country_code\":\"IT\",\"traffic_level\":0}",
+        "is_show_video_view": false,
+        "promote_traffic_tag": {
+          "need_track": false,
+          "traffic_level": 0,
+          "version": "2025v1"
+        },
+        "video_view_count": 0,
+        "video_view_schema": ""
+      },
+      "promote_capcut_toggle": 0,
+      "promote_icon_text": "Promote",
+      "promote_toast": "",
+      "promote_toast_key": "",
+      "question_list": null,
+      "quick_reply_emojis": [
+        "😍",
+        "😂",
+        "😳"
+      ],
+      "rate": 12,
+      "reference_tts_voice_ids": null,
+      "reference_voice_filter_ids": null,
+      "region": "US",
+      "right_products": null,
+      "risk_infos": {
+        "content": "",
+        "risk_sink": false,
+        "type": 0,
+        "vote": false,
+        "warn": false
+      },
+      "search_highlight": null,
+      "share_url": "redacted",
+      "smart_search_info": {
+        "ai_overview_intent_type": 0,
+        "ask_tako_intent_type": 0,
+        "find_similar_intent_type": 0,
+        "related_videos_intent_type": 0,
+        "title_smart_search_panel_type": 0
+      },
+      "social_interaction_blob": {
+        "auxiliary_model_content": "ChIKBPCfmI0KBPCfmIIKBPCfmLMaBAoAEgA="
+      },
+      "solaria_profile": {
+        "profile": "{\"PACK_VOD:vod_diversity_tier3\":\"10049\",\"play_time_prob_dist\":\"[800,0.575,2569.6806]\"}"
+      },
+      "sort_label": "",
+      "standard_component_info": {
+        "banner_enabled": true,
+        "button": {
+          "buttons": [
+            {
+              "key": {
+                "component_key": "bottom_button_quick_external_share"
+              },
+              "signal": {
+                "auto_display": true,
+                "code": -1,
+                "releasable": true
+              },
+              "ui": {
+                "template": {
+                  "actions": [
+                    {
+                      "events": [
+                        {
+                          "type": "bottom_button_quick_external_share_expose"
+                        },
+                        {
+                          "next": [
+                            {
+                              "next": [
+                                {
+                                  "params": "{\"buttons.button1.variant\":\"primary\"}",
+                                  "type": "update_vo"
+                                }
+                              ],
+                              "type": "bottom_button_quick_external_share_will_update"
+                            }
+                          ],
+                          "params": "{\"duration\":1000}",
+                          "type": "timer"
+                        }
+                      ],
+                      "key": "exposure_action"
+                    },
+                    {
+                      "events": [
+                        {
+                          "type": "exit_screen"
+                        },
+                        {
+                          "type": "bottom_button_quick_external_share_click"
+                        }
+                      ],
+                      "key": "click_button1"
+                    }
+                  ],
+                  "fields": "{\"buttons\":{\"button1\":{\"text\":\"quick_external_share\",\"variant\":\"secondary\",\"action_key\":\"click_button1\"}}}",
+                  "type": 1
+                },
+                "ui_type": 2
+              }
+            }
+          ],
+          "enable_standard_button": true
+        }
+      },
+      "statistics": {
+        "aweme_id": "6960750581510130950",
+        "collect_count": 3109,
+        "comment_count": 69,
+        "digg_count": 24302,
+        "download_count": 377,
+        "forward_count": 0,
+        "lose_comment_count": 0,
+        "lose_count": 0,
+        "play_count": 366378,
+        "repost_count": 0,
+        "share_count": 512,
+        "whatsapp_share_count": 27
+      },
+      "status": {
+        "allow_comment": true,
+        "allow_share": true,
+        "aweme_id": "6960750581510130950",
+        "download_status": 0,
+        "in_reviewing": false,
+        "is_delete": false,
+        "is_prohibited": false,
+        "private_status": 0,
+        "review_result": {
+          "review_status": 0
+        },
+        "reviewed": 0,
+        "self_see": false,
+        "violation_display_status": 0
+      },
+      "sticker_detail": {
+        "attributions": null,
+        "children": null,
+        "icon_url": {
+          "height": 720,
+          "uri": "cfaa5ce4a49351ceb195197df28a788b",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "id": "308867",
+        "linked_anchors": null,
+        "name": "Green Screen",
+        "owner_id": "",
+        "sec_uid": "",
+        "tags": null
+      },
+      "stickers": "308867",
+      "suggest_words": {
+        "feed_query_enable_videosug": false,
+        "suggest_words": [
+          {
+            "hint_text": "Search · ",
+            "qrec_virtual_enable": "",
+            "scene": "feed_bar",
+            "words": [
+              {
+                "penetrate_info": "{\"word_type_list\":\"\",\"words_type_to_dmp_list\":\"\",\"is_ramandan_promotion\":\"\",\"sug_user_id\":\"\",\"visualize_sug_product_id\":\"\",\"video_id\":\"\",\"ecom_intent\":\"0\",\"ecom_trigger_info\":\"\",\"is_time_sensitive\":\"0\",\"lvl1_category_id\":\"\",\"predict_ctr_score\":0.012554339512244979,\"generate_time\":\"0\",\"word_type_version_map\":\"\",\"lvl3_cate_list\":\"\",\"recall_reason\":\"video_top_counter_recall,global_video_top_counter_recall\",\"hot_level\":\"0\",\"ecom_trigger_info_map\":\"\",\"words_type_to_voucher_ids\":\"\",\"poi_card_id_list\":\"\"}",
+                "rich_sug_info": {
+                  "sug_icon_type": "",
+                  "sug_icon_uri": "",
+                  "sug_reason": "",
+                  "sug_reason_type": ""
+                },
+                "word": "photos download app",
+                "word_id": "765315377235056641",
+                "word_record": {
+                  "is_personalized": false,
+                  "qrec_json_info": "{\"is_four_vertical\":0}",
+                  "words_label": "",
+                  "words_lang": "en"
+                }
+              }
+            ]
+          },
+          {
+            "hint_text": "Search:",
+            "qrec_virtual_enable": "",
+            "scene": "comment_top",
+            "words": [
+              {
+                "penetrate_info": "{\"words_type_to_dmp_list\":\"\",\"poi_card_id_list\":\"\",\"is_ramandan_promotion\":\"\",\"predict_ctr_score\":0.02065433979703764,\"generate_time\":\"0\",\"lvl3_cate_list\":\"\",\"word_type_list\":\"\",\"recall_reason\":\"video_top_counter_recall,global_video_top_counter_recall\",\"words_type_to_voucher_ids\":\"\",\"word_type_version_map\":\"\",\"ecom_intent\":\"0\",\"ecom_trigger_info\":\"\",\"ecom_trigger_info_map\":\"\",\"lvl1_category_id\":\"\",\"is_time_sensitive\":\"0\",\"hot_level\":\"0\",\"sug_user_id\":\"\",\"visualize_sug_product_id\":\"\",\"video_id\":\"\"}",
+                "rich_sug_info": {
+                  "sug_icon_type": "",
+                  "sug_icon_uri": "",
+                  "sug_reason": "",
+                  "sug_reason_type": ""
+                },
+                "word": "photos download app",
+                "word_id": "765315377235056641",
+                "word_record": {
+                  "is_personalized": false,
+                  "qrec_json_info": "{\"is_four_vertical\":0}",
+                  "words_label": "",
+                  "words_lang": "en"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "support_danmaku": false,
+      "survey_info": null,
+      "tako_bubble_info": {
+        "tako_bubble_enable": false
+      },
+      "text_extra": [
+        {
+          "end": 24,
+          "sec_uid": "redacted",
+          "start": 9,
+          "sub_type": 2,
+          "tag_id": "8374",
+          "type": 0,
+          "user_id": "redacted"
+        },
+        {
+          "end": 66,
+          "hashtag_id": "39238",
+          "hashtag_name": "photography",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 54,
+          "tag_id": "4099",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 82,
+          "hashtag_id": "1661971229902854",
+          "hashtag_name": "appstodownload",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 67,
+          "tag_id": "9764",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 95,
+          "hashtag_id": "1660954451752965",
+          "hashtag_name": "appsyouneed",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 83,
+          "tag_id": "8169",
+          "type": 1,
+          "user_id": ""
+        }
+      ],
+      "text_sticker_major_lang": "un",
+      "title_language": "un",
+      "ttec_suggest_words": {
+        "ttec_suggest_words": null
+      },
+      "tts_voice_ids": null,
+      "ttt_product_recall_type": -2,
+      "uniqid_position": null,
+      "used_full_song": false,
+      "user_digged": 0,
+      "video": {
+        "CoverTsp": 2.216409614157783,
+        "ai_dynamic_cover": {
+          "uri": "tos-maliva-p-0068/3d3cce8b091f48e8906f523197644019_1620676044",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "ai_dynamic_cover_bak": {
+          "uri": "tos-maliva-p-0068/3d3cce8b091f48e8906f523197644019_1620676044",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "animated_cover": {
+          "uri": "tos-maliva-p-0068/3d3cce8b091f48e8906f523197644019_1620676044",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null
+        },
+        "big_thumbs": [],
+        "bit_rate": [
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 769990,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\"}",
+            "fps": 30,
+            "gear_name": "adapt_lower_720_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 3007966,
+              "file_cs": "c:0-27096-7116",
+              "file_hash": "309ddc4a7519781d0c8092b7093f0c04",
+              "height": 1280,
+              "uri": "v09044g40000c2corg2i76d76cs7kqb0",
+              "url_key": "v09044g40000c2corg2i76d76cs7kqb0_bytevc1_720p_769990",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 720
+            },
+            "quality_type": 14,
+            "video_extra": "{\"PktOffsetMap\":\"\",\"mvmaf\":\"\",\"ufq\":\"\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"\",\"dec_info\":\"\",\"gearvqm\":\"\",\"audio_bit_rate\":32067}"
+          },
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 382094,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\"}",
+            "fps": 30,
+            "gear_name": "lower_540_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 1492652,
+              "file_cs": "c:0-27096-b6b2",
+              "file_hash": "df0efd3cbdf507250a494daebcd9d16b",
+              "height": 1024,
+              "uri": "v09044g40000c2corg2i76d76cs7kqb0",
+              "url_key": "v09044g40000c2corg2i76d76cs7kqb0_bytevc1_540p_382094",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 576
+            },
+            "quality_type": 24,
+            "video_extra": "{\"PktOffsetMap\":\"\",\"mvmaf\":\"\",\"ufq\":\"\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"\",\"dec_info\":\"\",\"gearvqm\":\"\",\"audio_bit_rate\":32067}"
+          },
+          {
+            "HDR_bit": "",
+            "HDR_type": "",
+            "bit_rate": 264582,
+            "dub_infos": null,
+            "fid_profile_labels": "{\"sr_sharpness_level\":\"8\"}",
+            "fps": 30,
+            "gear_name": "lowest_540_1",
+            "is_bytevc1": 1,
+            "play_addr": {
+              "data_size": 1033592,
+              "file_cs": "c:0-27096-d420",
+              "file_hash": "ec8c9b3ee7fc52cff21e02e8c10fe5be",
+              "height": 1024,
+              "uri": "v09044g40000c2corg2i76d76cs7kqb0",
+              "url_key": "v09044g40000c2corg2i76d76cs7kqb0_bytevc1_540p_264582",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 576
+            },
+            "quality_type": 25,
+            "video_extra": "{\"PktOffsetMap\":\"\",\"mvmaf\":\"\",\"ufq\":\"\",\"volume_info_json\":\"\",\"transcode_feature_id\":\"\",\"dec_info\":\"\",\"gearvqm\":\"\",\"audio_bit_rate\":24080}"
+          }
+        ],
+        "bit_rate_audio": [],
+        "cdn_url_expired": 0,
+        "cla_info": {
+          "caption_infos": [
+            {
+              "caption_format": "webvtt",
+              "caption_length": 766,
+              "cla_subtitle_id": 7038074772299206000,
+              "complaint_id": 7038074772299206000,
+              "expire": 1793409971,
+              "is_auto_generated": true,
+              "is_original_caption": true,
+              "lang": "eng-US",
+              "language_code": "en",
+              "language_id": 2,
+              "source_tag": "",
+              "sub_id": -912801827,
+              "sub_version": "1",
+              "subtitle_type": 1,
+              "translation_type": 0,
+              "translator_id": 0,
+              "url": "https://v19-cla.tiktokcdn-eu.com/7076f264d634df33a6542fb07db733c2/6ae543b3/video/tos/alisg/tos-alisg-pv-0037/c7fbe6f5031c4d22bea486136328457b/?a=1233&bti=NXYpNDs8QGo6OjZAOm00NTAuYCMxNDNg&&bt=3971&ft=ef4~aGm.MPinSNvjV0bSZTzfu.XfD5IkaYlc&mime_type=video_mp4&rc=M3Q6Zjo5bGpyNTMzNzczM0BpM3Q6Zjo5bGpyNTMzNzczM0BfaHAzYTQvb2BgLS1kMTZzYSNfaHAzYTQvb2BgLS1kMTZzcw%3D%3D&vvpl=1&l=20261001012539AADEBB72A125E5317498&btag=e00048000",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "variant": "default"
+            }
+          ],
+          "captions_type": 1,
+          "creator_edited_caption_id": 0,
+          "enable_auto_caption": 0,
+          "has_original_audio": 0,
+          "hide_original_caption": false,
+          "is_author_dubbing_qualified": false,
+          "no_caption_reason": 0,
+          "no_caption_reason_v2": 0,
+          "original_language_info": {
+            "can_translate_realtime": false,
+            "can_translate_realtime_skip_translation_lang_check": true,
+            "first_subtitle_time": -1,
+            "is_burnin_caption": false,
+            "lang": "eng-US",
+            "language_code": "en",
+            "language_id": 2,
+            "original_caption_type": 1
+          },
+          "vertical_positions": null
+        },
+        "cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-p-0068/497154012c9b432fb55c8ee83ef2b3ca",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_is_custom": true,
+        "did_profile_labels": "",
+        "download_addr": {
+          "data_size": 3404624,
+          "file_cs": "c:0-26846-720b",
+          "height": 720,
+          "uri": "v09044g40000c2corg2i76d76cs7kqb0",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "download_no_watermark_addr": {
+          "data_size": 3343041,
+          "file_cs": "c:0-26846-720b",
+          "file_hash": "0bd41a8fe5a9c2473ae796d76b5732a3",
+          "height": 1024,
+          "uri": "v09044g40000c2corg2i76d76cs7kqb0",
+          "url_key": "v09044g40000c2corg2i76d76cs7kqb0_h264_540p_855763",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "duration": 31252,
+        "dynamic_cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-p-0068/3efa907c0d9e4dff8cc17bb7a108c9d9_1620676046",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "has_watermark": true,
+        "height": 1024,
+        "is_bytevc1": 0,
+        "is_callback": true,
+        "meta": "{\"LoudnessRange\":\"0\",\"LoudnessRangeEnd\":\"0\",\"LoudnessRangeStart\":\"0\",\"MaximumMomentaryLoudness\":\"0\",\"MaximumShortTermLoudness\":\"0\",\"Version\":\"0\",\"VolumeInfoJson\":\"{\\\"Loudness\\\":-14.9,\\\"Peak\\\":1,\\\"mean_volume\\\":-17.5,\\\"max_volume\\\":0}\",\"loudness\":\"-14.9\",\"peak\":\"1\",\"play_time_prob_dist\":\"[800,0.575,2569.6806]\",\"sp_extra_info\":\"{\\\"origin_width\\\":720,\\\"origin_height\\\":1280,\\\"origin_create_at\\\":1620676041}\",\"sr_score\":\"1.000\",\"vq_score\":\"0\"}",
+        "misc_download_addrs": "{\"suffix_scene\":{\"uri\":\"v09044g40000c2corg2i76d76cs7kqb0\",\"url_list\":[\"https://v45.tiktokcdn-eu.com/d6ec3f232859c90b5c0bbe0ab71d9c30/6abf0833/video/tos/alisg/tos-alisg-ve-37c799-sg/oApmRYYuggJNEfBckBmaUO3jRHmAzBApAQUe8O/?a=1233\\u0026bti=NXYpNDs8QGo6OjZAOm00NTAuYCMxNDNg\\u0026\\u0026bt=814\\u0026ft=td_Ls8s6oA-O12NvmtOqzIxRspx0~3_45SY\\u0026mime_type=video_mp4\\u0026rc=NzM3OTtnNjNoaTg8Ozk6N0BpM3Q6Zjo5bGpyNTMzNzczM0AxYWFgMDQuXi8xYzAtNDQwYSNfaHAzYTQvb2BgLS1kMTZzcw%3D%3D\\u0026vvpl=1\\u0026l=20261001012539AADEBB72A125E5317498\\u0026btag=e0008d000\",\"https://v19.tiktokcdn-eu.com/b456e83aa1acc69e6cc5020bedb5e704/6abf0833/video/tos/alisg/tos-alisg-ve-37c799-sg/oApmRYYuggJNEfBckBmaUO3jRHmAzBApAQUe8O/?a=1233\\u0026bti=NXYpNDs8QGo6OjZAOm00NTAuYCMxNDNg\\u0026\\u0026bt=814\\u0026ft=td_Ls8s6oA-O12NvmtOqzIxRspx0~3_45SY\\u0026mime_type=video_mp4\\u0026rc=NzM3OTtnNjNoaTg8Ozk6N0BpM3Q6Zjo5bGpyNTMzNzczM0AxYWFgMDQuXi8xYzAtNDQwYSNfaHAzYTQvb2BgLS1kMTZzcw%3D%3D\\u0026vvpl=1\\u0026l=20261001012539AADEBB72A125E5317498\\u0026btag=e00088000\",\"https://api16-normal-no1a.tiktokv.eu/aweme/v1/play/?video_id=v09044g40000c2corg2i76d76cs7kqb0\\u0026line=0\\u0026watermark=1\\u0026logo_name=tiktok_end\\u0026source=CHALLENGE_AWEME\\u0026file_id=3477760839f54f2ea0137d38c6d4d044\\u0026item_id=6960750581510130950\\u0026signaturev3=dmlkZW9faWQ7ZmlsZV9pZDtpdGVtX2lkLjViOTUwNDE0MjI1ODNiZjE5ODRjOTlmZjFmZDhkMzMy\\u0026shp=d05b14bd\\u0026shcp=-\"],\"width\":720,\"height\":720,\"data_size\":3663378,\"file_cs\":\"c:0-26846-720b\",\"url_prefix\":null}}",
+        "need_set_token": false,
+        "origin_cover": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-maliva-p-0068/5a499164f64f4022b99f918cfed5d9cc_1620676044",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "play_addr": {
+          "data_size": 3343041,
+          "file_cs": "c:0-26846-720b",
+          "file_hash": "0bd41a8fe5a9c2473ae796d76b5732a3",
+          "height": 1024,
+          "uri": "v09044g40000c2corg2i76d76cs7kqb0",
+          "url_key": "v09044g40000c2corg2i76d76cs7kqb0_h264_540p_855763",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "play_addr_bytevc1": {
+          "data_size": 3007966,
+          "file_cs": "c:0-27096-7116",
+          "file_hash": "309ddc4a7519781d0c8092b7093f0c04",
+          "height": 1280,
+          "uri": "v09044g40000c2corg2i76d76cs7kqb0",
+          "url_key": "v09044g40000c2corg2i76d76cs7kqb0_bytevc1_720p_769990",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "play_addr_h264": {
+          "data_size": 3343041,
+          "file_cs": "c:0-26846-720b",
+          "file_hash": "0bd41a8fe5a9c2473ae796d76b5732a3",
+          "height": 1024,
+          "uri": "v09044g40000c2corg2i76d76cs7kqb0",
+          "url_key": "v09044g40000c2corg2i76d76cs7kqb0_h264_540p_855763",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 576
+        },
+        "ratio": "540p",
+        "source_HDR_type": 0,
+        "tags": null,
+        "vid_profile_labels": "{\"tier3\":\"10049\"}",
+        "width": 576
+      },
+      "video_control": {
+        "allow_download": false,
+        "allow_duet": true,
+        "allow_dynamic_wallpaper": true,
+        "allow_music": true,
+        "allow_react": true,
+        "allow_stitch": true,
+        "draft_progress_bar": 1,
+        "prevent_download_type": 2,
+        "share_type": 0,
+        "show_progress_bar": 1,
+        "timer_status": 1
+      },
+      "video_labels": [],
+      "video_reply_info": {
+        "alias_comment_id": 6960749331146212000,
+        "aweme_id": 6954809040606154000,
+        "comment_id": 6958149759685166000
+      },
+      "video_text": [],
+      "visual_search_info": {
+        "fallback_vtag_enable": false,
+        "fallback_vtag_enable_type": 0,
+        "long_press_entrance_enable": false,
+        "long_press_entrance_enable_type": 0,
+        "screenshot_entrance_enable": 0,
+        "visual_search_intent_level": 0,
+        "vtag_enable": false,
+        "vtag_enable_type": 0
+      },
+      "voice_filter_ids": null,
+      "with_promotional_music": false,
+      "without_watermark": false,
+      "is_eligible_for_commission": false,
+      "is_paid_partnership": false,
+      "is_ad": false,
+      "url": "https://www.tiktok.com/@redacted/video/0",
+      "create_time_utc": "2021-05-10T19:47:21.000Z",
+      "shop_product_url": null
+    },
+    {
+      "added_sound_music_info": {
+        "album": "",
+        "allow_offline_music_to_detail_page": false,
+        "artists": [],
+        "audition_duration": 20,
+        "author": "redacted",
+        "author_deleted": false,
+        "author_position": null,
+        "binded_challenge_id": 0,
+        "can_be_stitched": true,
+        "can_not_reuse": false,
+        "collect_stat": 0,
+        "commercial_right_type": 2,
+        "cover_large": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-avt-0068/3b8d1e1d37882dd635cd44d952ddced1",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_medium": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-avt-0068/3b8d1e1d37882dd635cd44d952ddced1",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_thumb": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-avt-0068/3b8d1e1d37882dd635cd44d952ddced1",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "create_time": 1777830402,
+        "dmv_auto_show": false,
+        "duration": 20,
+        "duration_high_precision": {
+          "audition_duration_precision": 20.271,
+          "duration_precision": 20.271,
+          "shoot_duration_precision": 20.271,
+          "video_duration_precision": 20.271
+        },
+        "external_song_info": [],
+        "extra": "{\"aed_music_dur\":4,\"amplitude_peak\":0,\"beats\":{},\"can_read\":true,\"can_reuse\":true,\"erase_type\":0,\"erase_uid\":0,\"extract_item_id\":7635723375700315410,\"fg_top_song_id\":7658217085219571729,\"from_user_id\":7575780923294598147,\"full_song_beat_info\":{},\"full_song_beats\":{},\"has_edited\":0,\"is_batch_take_down_music\":false,\"is_ugc_mapping\":true,\"is_used\":1,\"loudness_lufs\":0,\"music_vid\":\"v10942g50000d7rojvfog65v3tct1540\",\"owner_id\":7464692889622512645,\"resource_status\":0,\"review_unshelve_reason\":0,\"reviewed\":1,\"schedule_search_time\":0,\"sh_tag\":0,\"similar_top_song_id\":7658226822532499473}",
+        "has_commerce_right": true,
+        "has_commerce_right_strict": false,
+        "has_human_voice": false,
+        "id": 7635723426100841000,
+        "id_str": "7635723426100841237",
+        "is_audio_url_with_cookie": false,
+        "is_author_artist": false,
+        "is_commerce_music": true,
+        "is_commerce_music_strict": false,
+        "is_matched_metadata": false,
+        "is_original": false,
+        "is_original_sound": true,
+        "is_pgc": false,
+        "is_play_music": false,
+        "is_shooting_allow": true,
+        "language": "English",
+        "log_extra": "{\"meta_song_matched_type\":\"not_found\",\"ttm_matched_type\":\"\",\"ttm_track_id\":\"\",\"matched_meta_song_id\":\"\",\"vid\":\"\",\"owner_id\":\"\"}",
+        "lyric_short_position": null,
+        "meme_song_info": {},
+        "mid": "7635723426100841237",
+        "multi_bit_rate_play_info": null,
+        "music_group_use_count": 0,
+        "music_ugid": 7635723426100841000,
+        "music_ugid_use_count": 0,
+        "mute_share": false,
+        "offline_desc": "",
+        "owner_handle": "redacted",
+        "owner_id": "redacted",
+        "owner_nickname": "redacted",
+        "play_url": {
+          "height": 720,
+          "uri": "https://sf16-music.tiktokcdn-eu.com/obj/tiktok-obj/7646870139689880328.mp3",
+          "url_list": [
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "position": null,
+        "prevent_download": false,
+        "preview_end_time": 0,
+        "preview_start_time": 0,
+        "recommend_status": 100,
+        "same_group_id_v3": 7658217834755246000,
+        "search_highlight": null,
+        "sec_uid": "redacted",
+        "shoot_duration": 20,
+        "sim_group_id_v3": 7658217834755246000,
+        "source_platform": 72,
+        "status": 1,
+        "strong_beat_url": {
+          "height": 720,
+          "uri": "https://sf77-ies-music-sg.tiktokcdn.com/obj/tiktok-obj/pattern/c3888f3111296d4b9f199b126774b156.json",
+          "url_list": [
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "style_value": [
+          152,
+          199
+        ],
+        "tag_list": null,
+        "tag_list_v2": null,
+        "theme_tags": [
+          "Dance"
+        ],
+        "theme_value": [
+          1
+        ],
+        "title": "original sound - redacted",
+        "tt_to_dsp_song_infos": null,
+        "uncert_artists": null,
+        "user_count": 0,
+        "video_duration": 20
+      },
+      "ai_remix_info": {
+        "has_entrance": false
+      },
+      "aigc_info": {
+        "aigc_label_type": 0,
+        "created_by_ai": false
+      },
+      "anchors": null,
+      "anchors_extras": "",
+      "animated_image_info": {
+        "effect": 0,
+        "type": 0
+      },
+      "author": {
+        "accept_private_policy": false,
+        "account_labels": null,
+        "account_region": "",
+        "ad_cover_url": null,
+        "advance_feature_item_order": null,
+        "advanced_feature_info": null,
+        "apple_account": 0,
+        "authority_status": 0,
+        "avatar_uri": "redacted",
+        "aweme_count": 0,
+        "bind_phone": "",
+        "bold_fields": null,
+        "can_message_follow_status_list": [
+          2
+        ],
+        "can_set_geofencing": null,
+        "cha_list": null,
+        "comment_filter_status": 0,
+        "comment_setting": 0,
+        "commerce_user_level": 0,
+        "cover_url": [],
+        "create_time": 0,
+        "custom_verify": "",
+        "cv_level": "",
+        "download_prompt_ts": 1775736204,
+        "download_setting": 0,
+        "duet_setting": 3,
+        "enabled_filter_all_comments": false,
+        "enterprise_verify_reason": "",
+        "events": null,
+        "fake_data_info": {},
+        "favoriting_count": 0,
+        "fb_expire_time": 0,
+        "follow_status": 0,
+        "follower_count": 0,
+        "follower_status": 0,
+        "followers_detail": null,
+        "following_count": 0,
+        "friends_status": 0,
+        "gender": 0,
+        "geofencing": null,
+        "google_account": "",
+        "has_email": false,
+        "has_facebook_token": false,
+        "has_insights": false,
+        "has_orders": false,
+        "has_twitter_token": false,
+        "has_youtube_token": false,
+        "hide_search": false,
+        "homepage_bottom_toast": null,
+        "ins_id": "",
+        "is_ad_fake": false,
+        "is_block": false,
+        "is_discipline_member": false,
+        "is_mute": 0,
+        "is_mute_lives": 0,
+        "is_mute_non_story_post": 0,
+        "is_mute_story": 0,
+        "is_phone_binded": false,
+        "is_star": false,
+        "item_list": null,
+        "language": "en",
+        "live_agreement": 0,
+        "live_commerce": false,
+        "live_verify": 0,
+        "mention_status": 1,
+        "mutual_relation_avatars": null,
+        "need_points": null,
+        "need_recommend": 0,
+        "nickname": "redacted",
+        "platform_sync_info": null,
+        "prevent_download": false,
+        "react_setting": 0,
+        "region": "AE",
+        "relative_users": null,
+        "reply_with_video_flag": 3,
+        "room_id": 0,
+        "search_highlight": null,
+        "sec_uid": "redacted",
+        "secret": 0,
+        "share_qrcode_uri": "",
+        "shield_comment_notice": 0,
+        "shield_digg_notice": 0,
+        "shield_edit_field_info": null,
+        "shield_follow_notice": 0,
+        "short_id": "0",
+        "show_image_bubble": false,
+        "signature": "redacted",
+        "special_account": {
+          "special_account_list": null
+        },
+        "special_lock": 1,
+        "status": 1,
+        "stitch_setting": 0,
+        "total_favorited": 0,
+        "tw_expire_time": 0,
+        "twitter_id": "",
+        "twitter_name": "",
+        "type_label": null,
+        "uid": "redacted",
+        "unique_id": "redacted",
+        "unique_id_modify_time": 1789137490,
+        "user_canceled": false,
+        "user_mode": 1,
+        "user_now_pack_info": {},
+        "user_period": 0,
+        "user_profile_guide": null,
+        "user_rate": 1,
+        "user_spark_info": {},
+        "user_tags": null,
+        "verification_type": 1,
+        "verify_info": "",
+        "video_icon": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "white_cover_url": null,
+        "with_commerce_entry": false,
+        "with_shop_entry": false,
+        "youtube_channel_id": "",
+        "youtube_channel_title": "",
+        "youtube_expire_time": 0
+      },
+      "author_user_id": "redacted",
+      "aweme_acl": {
+        "download_general": {
+          "code": 0,
+          "extra": "#",
+          "mute": false,
+          "show_type": 2,
+          "transcode": 3
+        },
+        "download_mask_panel": {
+          "code": 0,
+          "extra": "#",
+          "mute": false,
+          "show_type": 2,
+          "transcode": 3
+        },
+        "platform_list": null,
+        "press_action_list": null,
+        "share_action_list": [
+          {
+            "action_id": "create_sticker",
+            "code": 1,
+            "extra": "216",
+            "show_type": 1,
+            "toast_msg": "Create sticker isn’t available for this video"
+          }
+        ],
+        "share_general": {
+          "code": 0,
+          "extra": "#",
+          "mute": false,
+          "show_type": 2,
+          "transcode": 3
+        },
+        "share_list_status": 0
+      },
+      "aweme_id": "7640075157104545045",
+      "aweme_type": 150,
+      "banners": [
+        {
+          "key": {
+            "component_key": "bottom_banner_search_rs"
+          }
+        }
+      ],
+      "behind_the_song_music_ids": null,
+      "behind_the_song_video_music_ids": null,
+      "bodydance_score": 0,
+      "bottom_products": null,
+      "branded_content_accounts": null,
+      "c2pa_info": {
+        "aigc_src": "",
+        "c2pa_extra_data": "{\"aigc_percentage_type\":0}",
+        "dedup_err": "",
+        "dedup_src": "",
+        "first_aigc_src": "",
+        "first_src": "",
+        "is_capcut": false,
+        "is_tiktok": false,
+        "last_aigc_src": "",
+        "last_src": "",
+        "total_audio": 0,
+        "total_err": 0,
+        "total_img": 0,
+        "total_src": 0,
+        "total_vid": 0,
+        "upload_dur": 0
+      },
+      "cc_template_info": {
+        "author_name": "",
+        "clip_count": 0,
+        "desc": "",
+        "duration_milliseconds": 0,
+        "related_music_id": "",
+        "template_id": ""
+      },
+      "cha_list": [
+        {
+          "author": {
+            "account_labels": null,
+            "ad_cover_url": null,
+            "advance_feature_item_order": null,
+            "advanced_feature_info": null,
+            "bold_fields": null,
+            "can_message_follow_status_list": null,
+            "can_set_geofencing": null,
+            "cha_list": null,
+            "cover_url": null,
+            "events": null,
+            "followers_detail": null,
+            "geofencing": null,
+            "homepage_bottom_toast": null,
+            "item_list": null,
+            "mutual_relation_avatars": null,
+            "need_points": null,
+            "platform_sync_info": null,
+            "relative_users": null,
+            "search_highlight": null,
+            "shield_edit_field_info": null,
+            "type_label": null,
+            "user_profile_guide": null,
+            "user_tags": null,
+            "white_cover_url": null
+          },
+          "banner_list": null,
+          "cha_attrs": null,
+          "cha_name": "Viral",
+          "cid": "20884",
+          "collect_stat": 0,
+          "connect_music": [],
+          "desc": "¡descubre las canciones en tendencia! 🔥➡️ https://bit.ly/TendenciasTikTok_LATAM",
+          "extra_attr": {
+            "is_live": false
+          },
+          "hashtag_profile": "musically-maliva-obj/4321dd2ed3acc737461c4254f0c55add.png",
+          "is_challenge": 0,
+          "is_commerce": false,
+          "is_pgcshow": false,
+          "schema": "aweme://aweme/challenge/detail?cid=20884",
+          "search_highlight": null,
+          "show_items": null,
+          "sub_type": 0,
+          "type": 2,
+          "use_count": 0,
+          "user_count": 0,
+          "view_count": 0
+        }
+      ],
+      "challenge_position": null,
+      "cmt_swt": false,
+      "collect_stat": 0,
+      "comment_at_tako_info": {
+        "show_tako_account": 0
+      },
+      "comment_config": {
+        "comment_panel_show_tab_config": {
+          "comment_tab_info_config": [
+            {
+              "priority": 100,
+              "tab_id": 2,
+              "tab_name": "like_list"
+            },
+            {
+              "priority": 101,
+              "tab_id": 3,
+              "tab_name": "view_list"
+            },
+            {
+              "priority": -100,
+              "tab_id": 4,
+              "tab_name": "story2viewer_list"
+            },
+            {
+              "priority": 102,
+              "tab_id": 5,
+              "tab_name": "video_auth_page"
+            },
+            {
+              "priority": 11,
+              "tab_id": 11,
+              "tab_name": "ec_reviews_tab"
+            }
+          ],
+          "max_tab_count": 3
+        },
+        "comment_top_bar_component": [
+          {
+            "action": {
+              "click_hot_area_type": 2,
+              "schema": "//search"
+            },
+            "biz_id": "7183157570780564506",
+            "biz_type": 10,
+            "desc_prefix": {
+              "content": "Search:"
+            },
+            "desc_suffix": {
+              "content": "apps you need on your ipad"
+            },
+            "extra": "",
+            "name": "search_keywords",
+            "tail_icon": {
+              "is_local": true,
+              "local_type": 1
+            },
+            "template_type": 2,
+            "tracer_info": ""
+          }
+        ],
+        "emoji_recommend_list": [
+          {
+            "emoji": "🙂",
+            "score": 11
+          },
+          {
+            "emoji": "😁",
+            "score": 10
+          },
+          {
+            "emoji": "🥰",
+            "score": 9
+          },
+          {
+            "emoji": "😂",
+            "score": 8
+          },
+          {
+            "emoji": "😳",
+            "score": 7
+          },
+          {
+            "emoji": "😏",
+            "score": 6
+          },
+          {
+            "emoji": "😅",
+            "score": 5
+          },
+          {
+            "emoji": "🥺",
+            "score": 4
+          },
+          {
+            "emoji": "😌",
+            "score": 3
+          },
+          {
+            "emoji": "😬",
+            "score": 2
+          },
+          {
+            "emoji": "😊",
+            "score": 1
+          }
+        ],
+        "has_author_comment": true,
+        "has_visual_comment": true,
+        "long_press_recommend_list": null,
+        "preload": {
+          "preds": "{\"item_post_comment\":0.0004972863954077886}"
+        },
+        "quick_comment": {
+          "enabled": false,
+          "rec_level": 0
+        },
+        "quick_comment_emoji_recommend_list": null,
+        "social_quick_comment": {
+          "enabled": false,
+          "rec_metrics": {
+            "non_social_enabled": "false",
+            "p_comment": "0",
+            "p_skip": "0",
+            "p_stay_time": "0"
+          }
+        }
+      },
+      "comment_topbar_info": null,
+      "commerce_config_data": null,
+      "commerce_info": {
+        "adv_promotable": false,
+        "auction_ad_invited": false,
+        "branded_content_type": 0,
+        "is_diversion_ad": 0,
+        "organic_log_extra": "{\"req_id\":\"20261001012539AADEBB72A125E5317498\"}",
+        "with_comment_filter_words": false
+      },
+      "content_desc": "",
+      "content_desc_extra": [],
+      "content_level": 1,
+      "content_model": {
+        "custom_biz": {
+          "aweme_trace": "20261001012539AADEBB72A125E5317498",
+          "high_quality_boost_info": {
+            "description": "",
+            "is_high_quality_post": false,
+            "link": ""
+          },
+          "high_quality_boost_info_v2": {}
+        },
+        "standard_biz": {
+          "ai_comment_photo": {
+            "enable_comment": true
+          },
+          "e_commerce": {
+            "ttec_content_tag": {
+              "recommendation_tag_consumer_str": "",
+              "recommendation_tag_creator_str": ""
+            }
+          },
+          "local_alliance_info": {
+            "alliance_item_label_text": "",
+            "alliance_item_label_type": 0
+          },
+          "tts_voice_info": {
+            "tts_voice_attr": "[]",
+            "tts_voice_reuse_params": "[{\"start_x\":0.651,\"speaker_id\":\"\",\"transform_y\":0.42640000581741333,\"end_time\":0,\"transform_x\":0,\"stream_speaker_id\":\"\",\"start_time\":0,\"voice_resource_id\":\"\",\"color\":-1,\"border_color\":\"0x000000\",\"text_str\":\"YouTube music\",\"text_style\":0,\"is_voice_clone\":false,\"align\":0,\"scale\":1.2152,\"start_y\":0.1017,\"layer\":0,\"rotation\":0,\"bg_mode\":4,\"font_resource_id\":\"6792500966827495950\"}]"
+          },
+          "vc_filter_info": {
+            "vc_filter_attr": "[]"
+          }
+        }
+      },
+      "content_original_type": 1,
+      "content_size_type": 2,
+      "content_type": "multi_photo",
+      "cover_labels": null,
+      "create_time": 1778843625,
+      "creation_info": {
+        "creation_used_functions": [
+          "select_music",
+          "text",
+          "high_quality_upload"
+        ]
+      },
+      "creator_ai_comment": {
+        "eligible_video": false,
+        "has_ai_topic": false,
+        "not_eligible_reason": 213
+      },
+      "desc": "!  !  ! MUST HAVES.!   !  ! #viral #fypp #ipad #musthaves #appsyouneed ",
+      "desc_language": "en",
+      "disable_search_trending_bar": false,
+      "distance": "",
+      "distribute_type": 1,
+      "ecosystem_perception_enhancement": null,
+      "follow_up_publish_from_id": -1,
+      "geofencing": null,
+      "geofencing_regions": null,
+      "green_screen_materials": null,
+      "group_id": "7640075157104545045",
+      "group_id_list": {
+        "GroupdIdList0": [
+          7640075157104545000
+        ],
+        "GroupdIdList1": [
+          7640075157104545000
+        ]
+      },
+      "has_danmaku": false,
+      "has_vs_entry": false,
+      "have_dashboard": false,
+      "hybrid_label": null,
+      "image_infos": null,
+      "image_post_info": {
+        "image_post_cover": {
+          "bitrate_images": [],
+          "display_image": {
+            "data_size": 0,
+            "height": 480,
+            "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+            "url_list": [
+              "https://example.invalid/media",
+              "https://example.invalid/media"
+            ],
+            "url_prefix": null,
+            "width": 640
+          },
+          "owner_watermark_image": {
+            "data_size": 0,
+            "height": 2160,
+            "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+            "url_list": [
+              "https://example.invalid/media",
+              "https://example.invalid/media"
+            ],
+            "url_prefix": null,
+            "width": 2880
+          },
+          "thumbnail": {
+            "data_size": 0,
+            "height": 2160,
+            "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+            "url_list": [
+              "https://example.invalid/media",
+              "https://example.invalid/media"
+            ],
+            "url_prefix": null,
+            "width": 2880
+          },
+          "user_watermark_image": {
+            "data_size": 0,
+            "height": 2160,
+            "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+            "url_list": [
+              "https://example.invalid/media",
+              "https://example.invalid/media"
+            ],
+            "url_prefix": null,
+            "width": 2880
+          }
+        },
+        "images": [
+          {
+            "bitrate_images": [],
+            "display_image": {
+              "data_size": 0,
+              "height": 810,
+              "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 1080
+            },
+            "ocr_language": "multi",
+            "owner_watermark_image": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            },
+            "thumbnail": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            },
+            "user_watermark_image": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            }
+          },
+          {
+            "bitrate_images": [],
+            "display_image": {
+              "data_size": 0,
+              "height": 810,
+              "uri": "tos-alisg-i-photomode-sg/e1ab989a32334566ad4085f7421bbfce",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 1080
+            },
+            "ocr_language": "multi",
+            "owner_watermark_image": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/e1ab989a32334566ad4085f7421bbfce",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            },
+            "thumbnail": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/e1ab989a32334566ad4085f7421bbfce",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            },
+            "user_watermark_image": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/e1ab989a32334566ad4085f7421bbfce",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            }
+          },
+          {
+            "bitrate_images": [],
+            "display_image": {
+              "data_size": 0,
+              "height": 1440,
+              "uri": "tos-alisg-i-photomode-sg/1a8da375be4f484e8354ba359422af23",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 1080
+            },
+            "ocr_language": "multi",
+            "owner_watermark_image": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/1a8da375be4f484e8354ba359422af23",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            },
+            "thumbnail": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/1a8da375be4f484e8354ba359422af23",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            },
+            "user_watermark_image": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/1a8da375be4f484e8354ba359422af23",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            }
+          },
+          {
+            "bitrate_images": [],
+            "display_image": {
+              "data_size": 0,
+              "height": 810,
+              "uri": "tos-alisg-i-photomode-sg/3cff76cc9dee47ca98cc5b6a8d2ed95b",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 1080
+            },
+            "ocr_language": "multi",
+            "owner_watermark_image": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/3cff76cc9dee47ca98cc5b6a8d2ed95b",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            },
+            "thumbnail": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/3cff76cc9dee47ca98cc5b6a8d2ed95b",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            },
+            "user_watermark_image": {
+              "data_size": 0,
+              "height": 2160,
+              "uri": "tos-alisg-i-photomode-sg/3cff76cc9dee47ca98cc5b6a8d2ed95b",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2880
+            }
+          },
+          {
+            "bitrate_images": [],
+            "display_image": {
+              "data_size": 0,
+              "height": 1440,
+              "uri": "tos-alisg-i-photomode-sg/136f0cb75ae04672856b73f690fbc339",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 1080
+            },
+            "ocr_language": "en",
+            "owner_watermark_image": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/136f0cb75ae04672856b73f690fbc339",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            },
+            "thumbnail": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/136f0cb75ae04672856b73f690fbc339",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            },
+            "user_watermark_image": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/136f0cb75ae04672856b73f690fbc339",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            }
+          },
+          {
+            "bitrate_images": [],
+            "display_image": {
+              "data_size": 0,
+              "height": 1440,
+              "uri": "tos-alisg-i-photomode-sg/d6396bf184394229943bbc0f8f847ccc",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 1080
+            },
+            "ocr_language": "multi",
+            "owner_watermark_image": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/d6396bf184394229943bbc0f8f847ccc",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            },
+            "thumbnail": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/d6396bf184394229943bbc0f8f847ccc",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            },
+            "user_watermark_image": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/d6396bf184394229943bbc0f8f847ccc",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            }
+          },
+          {
+            "bitrate_images": [],
+            "display_image": {
+              "data_size": 0,
+              "height": 1440,
+              "uri": "tos-alisg-i-photomode-sg/92248d7f9c494203ab9277786158bbd8",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 1080
+            },
+            "ocr_language": "multi",
+            "owner_watermark_image": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/92248d7f9c494203ab9277786158bbd8",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            },
+            "thumbnail": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/92248d7f9c494203ab9277786158bbd8",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            },
+            "user_watermark_image": {
+              "data_size": 0,
+              "height": 2880,
+              "uri": "tos-alisg-i-photomode-sg/92248d7f9c494203ab9277786158bbd8",
+              "url_list": [
+                "https://example.invalid/media",
+                "https://example.invalid/media"
+              ],
+              "url_prefix": null,
+              "width": 2160
+            }
+          }
+        ],
+        "music_volume": 0.5,
+        "post_extra": "{\"photo_cover_shrink\":false,\"photo_blurhash\":false,\"photo_progressive\":false}",
+        "title": "Apps  you need  !  !  !",
+        "translation_info": {
+          "image_major_language": "multi",
+          "target_language": "",
+          "translatable": false
+        }
+      },
+      "interact_permission": {
+        "allow_adding_as_post": {
+          "status": 0
+        },
+        "allow_adding_to_story": 0,
+        "allow_create_sticker": {
+          "status": 2
+        },
+        "allow_story_switch_to_post": {
+          "status": 1
+        },
+        "duet": 0,
+        "duet_privacy_setting": 0,
+        "stitch": 0,
+        "stitch_privacy_setting": 0,
+        "upvote": 0
+      },
+      "interaction_stickers": null,
+      "is_ads": false,
+      "is_description_translatable": true,
+      "is_hash_tag": 1,
+      "is_nff_or_nr": false,
+      "is_on_this_day": 0,
+      "is_paid_content": false,
+      "is_pgcshow": false,
+      "is_preview": 0,
+      "is_relieve": false,
+      "is_text_sticker_translatable": false,
+      "is_title_translatable": true,
+      "is_top": 0,
+      "is_vr": false,
+      "item_allow_ai_remix": 2,
+      "item_comment_settings": 0,
+      "item_duet": 1,
+      "item_react": 0,
+      "item_stitch": 1,
+      "label_top": {
+        "height": 720,
+        "uri": "tiktok-obj/1598708589477025.PNG",
+        "url_list": [
+          "https://example.invalid/media",
+          "https://example.invalid/media",
+          "https://example.invalid/media"
+        ],
+        "url_prefix": null,
+        "width": 720
+      },
+      "label_top_text": null,
+      "long_video": null,
+      "main_arch_common": "",
+      "mask_infos": [],
+      "meme_reg_info": {},
+      "misc_info": "{}",
+      "muf_comment_info_v2": null,
+      "music": {
+        "album": "",
+        "allow_offline_music_to_detail_page": false,
+        "artists": [],
+        "audition_duration": 20,
+        "author": "redacted",
+        "author_deleted": false,
+        "author_position": null,
+        "binded_challenge_id": 0,
+        "can_be_stitched": true,
+        "can_not_reuse": false,
+        "collect_stat": 0,
+        "commercial_right_type": 2,
+        "cover_large": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-avt-0068/3b8d1e1d37882dd635cd44d952ddced1",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_medium": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-avt-0068/3b8d1e1d37882dd635cd44d952ddced1",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "cover_thumb": {
+          "data_size": 0,
+          "height": 720,
+          "uri": "tos-alisg-avt-0068/3b8d1e1d37882dd635cd44d952ddced1",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "create_time": 1777830402,
+        "dmv_auto_show": false,
+        "duration": 20,
+        "duration_high_precision": {
+          "audition_duration_precision": 20.271,
+          "duration_precision": 20.271,
+          "shoot_duration_precision": 20.271,
+          "video_duration_precision": 20.271
+        },
+        "external_song_info": [],
+        "extra": "{\"aed_music_dur\":4,\"amplitude_peak\":0,\"beats\":{},\"can_read\":true,\"can_reuse\":true,\"erase_type\":0,\"erase_uid\":0,\"extract_item_id\":7635723375700315410,\"fg_top_song_id\":7658217085219571729,\"from_user_id\":7575780923294598147,\"full_song_beat_info\":{},\"full_song_beats\":{},\"has_edited\":0,\"is_batch_take_down_music\":false,\"is_ugc_mapping\":true,\"is_used\":1,\"loudness_lufs\":0,\"music_vid\":\"v10942g50000d7rojvfog65v3tct1540\",\"owner_id\":7464692889622512645,\"resource_status\":0,\"review_unshelve_reason\":0,\"reviewed\":1,\"schedule_search_time\":0,\"sh_tag\":0,\"similar_top_song_id\":7658226822532499473}",
+        "has_commerce_right": true,
+        "has_commerce_right_strict": false,
+        "has_human_voice": false,
+        "id": 7635723426100841000,
+        "id_str": "7635723426100841237",
+        "is_audio_url_with_cookie": false,
+        "is_author_artist": false,
+        "is_commerce_music": true,
+        "is_commerce_music_strict": false,
+        "is_matched_metadata": false,
+        "is_original": false,
+        "is_original_sound": true,
+        "is_pgc": false,
+        "is_play_music": false,
+        "is_shooting_allow": true,
+        "language": "English",
+        "log_extra": "{\"meta_song_matched_type\":\"not_found\",\"ttm_matched_type\":\"\",\"ttm_track_id\":\"\",\"matched_meta_song_id\":\"\",\"vid\":\"\",\"owner_id\":\"\"}",
+        "lyric_short_position": null,
+        "meme_song_info": {},
+        "mid": "7635723426100841237",
+        "multi_bit_rate_play_info": null,
+        "music_group_use_count": 0,
+        "music_ugid": 7635723426100841000,
+        "music_ugid_use_count": 0,
+        "mute_share": false,
+        "mute_type": 0,
+        "offline_desc": "",
+        "owner_handle": "redacted",
+        "owner_id": "redacted",
+        "owner_nickname": "redacted",
+        "play_url": {
+          "height": 720,
+          "uri": "https://sf16-music.tiktokcdn-eu.com/obj/tiktok-obj/7646870139689880328.mp3",
+          "url_list": [
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "position": null,
+        "prevent_download": false,
+        "preview_end_time": 0,
+        "preview_start_time": 0,
+        "recommend_status": 100,
+        "same_group_id_v3": 7658217834755246000,
+        "search_highlight": null,
+        "sec_uid": "redacted",
+        "shoot_duration": 20,
+        "sim_group_id_v3": 7658217834755246000,
+        "source_platform": 72,
+        "status": 1,
+        "strong_beat_url": {
+          "height": 720,
+          "uri": "https://sf77-ies-music-sg.tiktokcdn.com/obj/tiktok-obj/pattern/c3888f3111296d4b9f199b126774b156.json",
+          "url_list": [
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "style_value": [
+          152,
+          199
+        ],
+        "tag_list": null,
+        "tag_list_v2": null,
+        "theme_tags": [
+          "Dance"
+        ],
+        "theme_value": [
+          1
+        ],
+        "title": "original sound - redacted",
+        "tt_to_dsp_song_infos": null,
+        "uncert_artists": null,
+        "user_count": 0,
+        "video_duration": 20
+      },
+      "music_begin_time_in_ms": 0,
+      "music_end_time_in_ms": 500,
+      "music_selected_from": "slideshow_rec",
+      "music_title_style": 1,
+      "music_volume": "50.000000",
+      "need_trim_step": false,
+      "need_vs_entry": false,
+      "nickname_position": null,
+      "no_selected_music": false,
+      "operator_boost_info": null,
+      "origin_comment_ids": null,
+      "origin_volume": "0.000000",
+      "original_client_text": {
+        "markup_text": "!  !  ! MUST HAVES.!   !  ! <h id=\"79\">#viral</h> <h id=\"106\">#fypp</h> <h id=\"151\">#ipad</h> <h id=\"218\">#musthaves</h> <h id=\"387\">#appsyouneed</h> ",
+        "text_extra": [
+          {
+            "hashtag_id": "20884",
+            "hashtag_name": "viral",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "79",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1616966643636229",
+            "hashtag_name": "fypp",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "106",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "87674",
+            "hashtag_name": "ipad",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "151",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "16170281",
+            "hashtag_name": "musthaves",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "218",
+            "type": 1,
+            "user_id": ""
+          },
+          {
+            "hashtag_id": "1660954451752965",
+            "hashtag_name": "appsyouneed",
+            "is_commerce": false,
+            "sec_uid": "",
+            "tag_id": "387",
+            "type": 1,
+            "user_id": ""
+          }
+        ]
+      },
+      "paid_content_info": {
+        "paid_collection_id": 0
+      },
+      "picked_users": [],
+      "playlist_blocked": false,
+      "poi_re_tag_signal": 0,
+      "position": null,
+      "prevent_download": false,
+      "products_info": null,
+      "question_list": null,
+      "quick_reply_emojis": [
+        "😍",
+        "😂",
+        "😳"
+      ],
+      "rate": 12,
+      "reference_tts_voice_ids": null,
+      "reference_voice_filter_ids": null,
+      "region": "AE",
+      "retry_type": 0,
+      "right_products": null,
+      "risk_infos": {
+        "content": "",
+        "risk_sink": false,
+        "type": 0,
+        "vote": false,
+        "warn": false
+      },
+      "search_highlight": null,
+      "share_url": "redacted",
+      "shoot_tab_name": "video_600",
+      "smart_search_info": {
+        "ai_overview_intent_type": 0,
+        "ask_tako_intent_type": 0,
+        "find_similar_intent_type": 0,
+        "related_videos_intent_type": 0,
+        "title_smart_search_panel_type": 0
+      },
+      "social_interaction_blob": {
+        "auxiliary_model_content": "ChIKBPCfmI0KBPCfmIIKBPCfmLMaBAoAEgA="
+      },
+      "solaria_profile": {},
+      "sort_label": "",
+      "standard_component_info": {
+        "banner_enabled": true,
+        "button": {
+          "buttons": [
+            {
+              "key": {
+                "component_key": "bottom_button_quick_external_share"
+              },
+              "signal": {
+                "auto_display": true,
+                "code": -1,
+                "releasable": true
+              },
+              "ui": {
+                "template": {
+                  "actions": [
+                    {
+                      "events": [
+                        {
+                          "type": "bottom_button_quick_external_share_expose"
+                        },
+                        {
+                          "next": [
+                            {
+                              "next": [
+                                {
+                                  "params": "{\"buttons.button1.variant\":\"primary\"}",
+                                  "type": "update_vo"
+                                }
+                              ],
+                              "type": "bottom_button_quick_external_share_will_update"
+                            }
+                          ],
+                          "params": "{\"duration\":1000}",
+                          "type": "timer"
+                        }
+                      ],
+                      "key": "exposure_action"
+                    },
+                    {
+                      "events": [
+                        {
+                          "type": "exit_screen"
+                        },
+                        {
+                          "type": "bottom_button_quick_external_share_click"
+                        }
+                      ],
+                      "key": "click_button1"
+                    }
+                  ],
+                  "fields": "{\"buttons\":{\"button1\":{\"text\":\"quick_external_share\",\"variant\":\"secondary\",\"action_key\":\"click_button1\"}}}",
+                  "type": 1
+                },
+                "ui_type": 2
+              }
+            }
+          ],
+          "enable_standard_button": true
+        }
+      },
+      "statistics": {
+        "aweme_id": "7640075157104545045",
+        "collect_count": 24288,
+        "comment_count": 359,
+        "digg_count": 46014,
+        "download_count": 782,
+        "forward_count": 0,
+        "lose_comment_count": 0,
+        "lose_count": 0,
+        "play_count": 721918,
+        "repost_count": 0,
+        "share_count": 2775,
+        "whatsapp_share_count": 107
+      },
+      "status": {
+        "allow_comment": true,
+        "allow_share": true,
+        "aweme_id": "7640075157104545045",
+        "download_status": 0,
+        "in_reviewing": false,
+        "is_delete": false,
+        "is_prohibited": false,
+        "private_status": 0,
+        "review_result": {
+          "review_status": 0
+        },
+        "reviewed": 1,
+        "self_see": false,
+        "violation_display_status": 0
+      },
+      "suggest_words": {
+        "feed_query_enable_videosug": false,
+        "suggest_words": [
+          {
+            "hint_text": "Search · ",
+            "qrec_virtual_enable": "",
+            "scene": "feed_bar",
+            "words": [
+              {
+                "penetrate_info": "{\"ecom_intent\":\"0\",\"hot_level\":\"0\",\"poi_card_id_list\":\"\",\"sug_user_id\":\"\",\"video_id\":\"\",\"generate_time\":\"0\",\"is_time_sensitive\":\"0\",\"word_type_list\":\"\",\"lvl1_category_id\":\"\",\"recall_reason\":\"global_video_top_counter_recall,video_sar_top_counter_passive_recall,global_video_sar_top_counter_passive_recall\",\"is_ramandan_promotion\":\"\",\"words_type_to_voucher_ids\":\"\",\"lvl3_cate_list\":\"\",\"ecom_trigger_info\":\"\",\"ecom_trigger_info_map\":\"\",\"word_type_version_map\":\"\",\"predict_ctr_score\":0.0024024279092806117,\"visualize_sug_product_id\":\"\",\"words_type_to_dmp_list\":\"\"}",
+                "rich_sug_info": {
+                  "sug_icon_type": "",
+                  "sug_icon_uri": "",
+                  "sug_reason": "",
+                  "sug_reason_type": ""
+                },
+                "word": "app you need to download on your phone",
+                "word_id": "2600235787355528761",
+                "word_record": {
+                  "is_personalized": false,
+                  "qrec_json_info": "{\"is_four_vertical\":0}",
+                  "words_label": "",
+                  "words_lang": "en"
+                }
+              }
+            ]
+          },
+          {
+            "hint_text": "Search:",
+            "qrec_virtual_enable": "",
+            "scene": "comment_top",
+            "words": [
+              {
+                "penetrate_info": "{\"is_ramandan_promotion\":\"\",\"ecom_intent\":\"2\",\"word_type_list\":\"\",\"predict_ctr_score\":0.032448665131988255,\"sug_user_id\":\"\",\"words_type_to_voucher_ids\":\"\",\"video_id\":\"\",\"recall_reason\":\"global_video_top_counter_recall,video_sar_top_counter_passive_recall,video_top_counter_recall,global_video_sar_top_counter_passive_recall\",\"visualize_sug_product_id\":\"\",\"ecom_trigger_info_map\":\"\",\"generate_time\":\"0\",\"lvl1_category_id\":\"\",\"word_type_version_map\":\"\",\"is_time_sensitive\":\"0\",\"ecom_trigger_info\":\"\",\"hot_level\":\"0\",\"lvl3_cate_list\":\"\",\"words_type_to_dmp_list\":\"\",\"poi_card_id_list\":\"\"}",
+                "rich_sug_info": {
+                  "sug_icon_type": "",
+                  "sug_icon_uri": "",
+                  "sug_reason": "",
+                  "sug_reason_type": ""
+                },
+                "word": "apps you need on your ipad",
+                "word_id": "7183157570780564506",
+                "word_record": {
+                  "is_personalized": false,
+                  "qrec_json_info": "{\"is_four_vertical\":0}",
+                  "words_label": "",
+                  "words_lang": "en"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "support_danmaku": false,
+      "survey_info": null,
+      "tako_bubble_info": {
+        "tako_bubble_enable": false
+      },
+      "text_extra": [
+        {
+          "end": 34,
+          "hashtag_id": "20884",
+          "hashtag_name": "viral",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 28,
+          "tag_id": "79",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 40,
+          "hashtag_id": "1616966643636229",
+          "hashtag_name": "fypp",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 35,
+          "tag_id": "106",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 46,
+          "hashtag_id": "87674",
+          "hashtag_name": "ipad",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 41,
+          "tag_id": "151",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 57,
+          "hashtag_id": "16170281",
+          "hashtag_name": "musthaves",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 47,
+          "tag_id": "218",
+          "type": 1,
+          "user_id": ""
+        },
+        {
+          "end": 70,
+          "hashtag_id": "1660954451752965",
+          "hashtag_name": "appsyouneed",
+          "is_commerce": false,
+          "sec_uid": "",
+          "start": 58,
+          "tag_id": "387",
+          "type": 1,
+          "user_id": ""
+        }
+      ],
+      "text_sticker_major_lang": "un",
+      "title_language": "en",
+      "ttec_suggest_words": {
+        "ttec_suggest_words": null
+      },
+      "tts_voice_ids": null,
+      "uniqid_position": null,
+      "used_full_song": false,
+      "user_digged": 0,
+      "video": {
+        "ai_dynamic_cover": {
+          "data_size": 0,
+          "height": 480,
+          "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 640
+        },
+        "ai_dynamic_cover_bak": {
+          "data_size": 0,
+          "height": 480,
+          "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 640
+        },
+        "big_thumbs": [],
+        "bit_rate": [],
+        "bit_rate_audio": [],
+        "cdn_url_expired": 0,
+        "cla_info": {
+          "caption_infos": null,
+          "captions_type": 0,
+          "creator_edited_caption_id": 0,
+          "enable_auto_caption": 0,
+          "has_original_audio": 0,
+          "hide_original_caption": false,
+          "is_author_dubbing_qualified": false,
+          "no_caption_reason": 3,
+          "no_caption_reason_v2": 3,
+          "vertical_positions": null
+        },
+        "cover": {
+          "data_size": 0,
+          "height": 480,
+          "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 640
+        },
+        "download_addr": {
+          "height": 720,
+          "uri": "",
+          "url_list": [],
+          "url_prefix": null,
+          "width": 720
+        },
+        "duration": 0,
+        "dynamic_cover": {
+          "data_size": 0,
+          "height": 480,
+          "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 640
+        },
+        "has_watermark": false,
+        "height": 0,
+        "is_bytevc1": 0,
+        "is_callback": false,
+        "meta": "{}",
+        "need_set_token": false,
+        "origin_cover": {
+          "data_size": 0,
+          "height": 480,
+          "uri": "tos-alisg-i-photomode-sg/d1b3b28617df4dff8199d4cd0669feb3",
+          "url_list": [
+            "https://example.invalid/media",
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 640
+        },
+        "play_addr": {
+          "height": 720,
+          "uri": "https://sf16-music.tiktokcdn-eu.com/obj/tiktok-obj/7646870139689880328.mp3",
+          "url_key": "7635723426100841237",
+          "url_list": [
+            "https://example.invalid/media"
+          ],
+          "url_prefix": null,
+          "width": 720
+        },
+        "ratio": "720p",
+        "tags": null,
+        "width": 0
+      },
+      "video_control": {
+        "allow_download": true,
+        "allow_duet": false,
+        "allow_dynamic_wallpaper": true,
+        "allow_music": true,
+        "allow_react": true,
+        "allow_stitch": false,
+        "draft_progress_bar": 0,
+        "prevent_download_type": 0,
+        "share_type": 1,
+        "show_progress_bar": 0,
+        "timer_status": 1
+      },
+      "video_labels": [],
+      "video_text": [],
+      "visual_search_info": {
+        "fallback_vtag_enable": false,
+        "fallback_vtag_enable_type": 0,
+        "long_press_entrance_enable": false,
+        "long_press_entrance_enable_type": 0,
+        "screenshot_entrance_enable": 0,
+        "visual_search_intent_level": 0,
+        "vtag_enable": false,
+        "vtag_enable_type": 0
+      },
+      "voice_filter_ids": null,
+      "with_promotional_music": false,
+      "without_watermark": false,
+      "is_eligible_for_commission": false,
+      "is_paid_partnership": false,
+      "is_ad": false,
+      "url": "https://www.tiktok.com/@redacted/video/0",
+      "create_time_utc": "2026-05-15T11:13:45.000Z",
+      "shop_product_url": null
+    }
+  ]
+}

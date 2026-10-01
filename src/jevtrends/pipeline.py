@@ -1,5 +1,6 @@
 """Runs the stages in order with budget checks, resume support and run status updates (spec §5.1, §12)."""
 
+from collections.abc import Awaitable, Callable
 from pathlib import Path
 
 from jevtrends.budget import STAGE_ORDER, BudgetGuard, Decision, Projection, remaining_work
@@ -55,14 +56,16 @@ def check_budget(ctx: RunContext, stage: str) -> None:
                              f"(already spent ${spent:.2f})")
 
 
-async def run_pipeline(ctx: RunContext, reports_dir: Path) -> Path:
-    stage = "collect"
+async def run_stages(ctx, stages: list[tuple[str, Callable[[object], Awaitable[None]]]],
+                     check: Callable[[object, str], None]) -> None:
+    """Runs each unfinished stage after a budget check and keeps the run's status accurate; shared with UGC."""
+    stage = stages[0][0] if stages else ""
     try:
-        for stage in STAGE_ORDER[:-1]:
+        for stage, run in stages:
             if ctx.store.stage_done(ctx.run_id, stage):
                 continue
-            check_budget(ctx, stage)
-            await STAGES[stage](ctx)
+            check(ctx, stage)
+            await run(ctx)
             ctx.store.mark_stage_done(ctx.run_id, stage)
     except BudgetExceeded as exc:
         ctx.store.set_run_status(ctx.run_id, "budget_exceeded")
@@ -77,6 +80,10 @@ async def run_pipeline(ctx: RunContext, reports_dir: Path) -> Path:
         ctx.store.add_note(ctx.run_id, f"Attempt stopped at {stage}: {exc!r}")
         raise
     ctx.store.set_run_status(ctx.run_id, "completed", finished=True)
+
+
+async def run_pipeline(ctx: RunContext, reports_dir: Path) -> Path:
+    await run_stages(ctx, [(stage, STAGES[stage]) for stage in STAGE_ORDER[:-1]], check_budget)
     path = write_report(ctx.store, ctx.run_id, reports_dir)
     ctx.store.mark_stage_done(ctx.run_id, "report")
     return path

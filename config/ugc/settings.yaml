@@ -1,0 +1,77 @@
+scan:
+  lookback_days: 14
+  max_videos: 600
+  region: US
+  search_pages_per_query: 2
+  top_search: true
+thresholds:
+  gate_keep: 0.25
+  relevant: 0.50
+  promotional: 0.50
+  trend_member: 0.50
+  brand_risk: 0.50
+  borderline: [0.35, 0.65]
+enrich:
+  transcript_max_words: 1500
+  comments_top_videos: 100
+  comments_per_video: 20
+  comment_max_chars: 300
+  comments_refresh_days: 7
+vision:
+  enabled: true
+  slides_per_post: 3
+  max_long_edge: 960
+  max_image_bytes: 3000000
+  on_screen_text_max_chars: 400
+sounds:
+  popular_count: 50
+  popular_period_days: 7
+  sample_pages: 1
+  niche_min_videos: 3
+  report_count: 20
+  trusted_licensing_flag: ""       # set from Task 1's decision D5
+trends:
+  discover_max_digest_tokens: 80000
+  videos_per_candidate: 8
+  max_candidates_per_facet: 15
+  min_support: 3.0
+  min_creators: 3
+  none_rate_warning: 0.30          # formats and hooks only
+  self_check_min_agreement: 0.5
+  momentum_recent_fraction: 0.333
+  momentum_pseudo_count: 2
+  performance_pseudo_count: 2
+  follower_floor: 1000
+  evidence_per_trend: 12
+  pair_min_videos: 2.0
+  pair_min_lift: 1.5
+ranking:
+  weights: {momentum: 0.25, performance: 0.25, fit: 0.30, breadth: 0.10, ease: 0.10}
+briefs:
+  quotas: {format: 3, hook: 2, sound: 2, topic: 2, need: 2}
+  min_briefs: 5
+  top_picks: 15
+models:
+  jev: typesafe/jev-1.13
+  llm: anthropic/claude-opus-5.5         # slug confirmed in Task 1
+  vision: anthropic/claude-haiku-4.5     # slug confirmed in Task 1
+  llm_effort: medium
+pricing:                                 # for projections; actual spend comes from API usage
+  jev_input_per_mtok: 0.042
+  llm_input_per_mtok: 4.00
+  llm_output_per_mtok: 20.00
+  vision_input_per_mtok: 1.00
+  vision_output_per_mtok: 5.00
+  tokens_per_image: 700
+  vision_expected_output_tokens: 150
+  scrapecreators_per_credit: 0.00188
+  discover_expected_output_tokens: 25000
+  brief_expected_output_tokens: 5000
+budget:
+  max_usd_per_scan: 5.00
+concurrency: {jev: 16, scraper: 5, llm: 5, vision: 8}
+retries: {max_attempts: 4, base_delay_s: 1, max_delay_s: 30}
+failure:
+  max_item_failure_rate: 0.20
+llm:
+  use_json_schema: true

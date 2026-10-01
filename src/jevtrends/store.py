@@ -5,6 +5,8 @@ import sqlite3
 from datetime import UTC, datetime
 from pathlib import Path
 
+from pydantic import BaseModel
+
 from jevtrends.config import NicheConfig, Settings
 from jevtrends.models import Answer, Enrichment, Trend, TrendScore, Video
 
@@ -56,8 +58,12 @@ class Store:
             Path(path).parent.mkdir(parents=True, exist_ok=True)
         self.conn = sqlite3.connect(str(path))
         self.conn.row_factory = sqlite3.Row
-        self.conn.executescript(SCHEMA)
+        self.conn.executescript(self.schema())
         self.conn.commit()
+
+    def schema(self) -> str:
+        """Tables to create; the UGC store adds its own (UGC spec §8)."""
+        return SCHEMA
 
     def close(self) -> None:
         self.conn.close()
@@ -67,7 +73,7 @@ class Store:
         self.conn.commit()
 
     # --- runs -------------------------------------------------------------
-    def create_run(self, params: dict, settings: Settings, niches: NicheConfig, started_at: datetime) -> int:
+    def create_run(self, params: dict, settings: BaseModel, niches: BaseModel, started_at: datetime) -> int:
         cur = self.conn.execute(
             "INSERT INTO runs (started_at, status, params, settings_snapshot, niches_snapshot) VALUES (?, ?, ?, ?, ?)",
             (started_at.isoformat(), "running", json.dumps(params), settings.model_dump_json(), niches.model_dump_json()),
@@ -75,20 +81,23 @@ class Store:
         self.conn.commit()
         return int(cur.lastrowid)
 
-    def get_run(self, run_id: int) -> dict:
+    def _run_row(self, run_id: int) -> sqlite3.Row:
         row = self.conn.execute("SELECT * FROM runs WHERE id = ?", (run_id,)).fetchone()
         if row is None:
             raise KeyError(f"run {run_id} not found")
-        return {
-            "id": row["id"],
-            "started_at": datetime.fromisoformat(row["started_at"]),
-            "finished_at": row["finished_at"],
-            "status": row["status"],
-            "params": json.loads(row["params"]),
-            "settings": Settings.model_validate_json(row["settings_snapshot"]),
-            "niches": NicheConfig.model_validate_json(row["niches_snapshot"]),
-            "stage_status": json.loads(row["stage_status"]),
-        }
+        return row
+
+    def run_basics(self, run_id: int) -> dict:
+        """Fields every pipeline's runs share; config snapshots are parsed by get_run."""
+        row = self._run_row(run_id)
+        return {"id": row["id"], "started_at": datetime.fromisoformat(row["started_at"]),
+                "finished_at": row["finished_at"], "status": row["status"], "params": json.loads(row["params"]),
+                "stage_status": json.loads(row["stage_status"])}
+
+    def get_run(self, run_id: int) -> dict:
+        row = self._run_row(run_id)
+        return {**self.run_basics(run_id), "settings": Settings.model_validate_json(row["settings_snapshot"]),
+                "niches": NicheConfig.model_validate_json(row["niches_snapshot"])}
 
     def list_runs(self) -> list[dict]:
         rows = self.conn.execute("SELECT id, started_at, status FROM runs ORDER BY id").fetchall()
@@ -100,32 +109,32 @@ class Store:
                     (status, _now() if finished else None, run_id))
 
     def mark_stage_done(self, run_id: int, stage: str) -> None:
-        status = self.get_run(run_id)["stage_status"]
+        status = self.run_basics(run_id)["stage_status"]
         status[stage] = "done"
         self._write("UPDATE runs SET stage_status = ? WHERE id = ?", (json.dumps(status), run_id))
 
     def stage_done(self, run_id: int, stage: str) -> bool:
-        return self.get_run(run_id)["stage_status"].get(stage) == "done"
+        return self.run_basics(run_id)["stage_status"].get(stage) == "done"
 
     def add_note(self, run_id: int, note: str) -> None:
-        params = self.get_run(run_id)["params"]
+        params = self.run_basics(run_id)["params"]
         notes = params.setdefault("notes", [])
         if note not in notes:
             notes.append(note)
             self._write("UPDATE runs SET params = ? WHERE id = ?", (json.dumps(params), run_id))
 
     def notes(self, run_id: int) -> list[str]:
-        return self.get_run(run_id)["params"].get("notes", [])
+        return self.run_basics(run_id)["params"].get("notes", [])
 
     def mark_query_done(self, run_id: int, query: str) -> None:
-        params = self.get_run(run_id)["params"]
+        params = self.run_basics(run_id)["params"]
         done = params.setdefault("collect_done", [])
         if query not in done:
             done.append(query)
             self._write("UPDATE runs SET params = ? WHERE id = ?", (json.dumps(params), run_id))
 
     def done_queries(self, run_id: int) -> set[str]:
-        return set(self.get_run(run_id)["params"].get("collect_done", []))
+        return set(self.run_basics(run_id)["params"].get("collect_done", []))
 
     def query_counts(self, run_id: int) -> dict[str, int]:
         """Videos each seed query contributed, counting a video for the first query that found it."""

@@ -37,3 +37,28 @@ def test_scrapecreators_fixtures_hold_no_personal_identifiers(name):
         elif key in ("url", "share_url") and "/@" in text and "/@redacted" not in text:
             leaks.append(path)
     assert leaks == []
+
+
+UGC = CONTRACT / "ugc"
+UGC_SC_FIXTURES = ["sc_hashtag.json", "sc_top.json", "sc_songs_popular.json", "sc_songs_popular_cml.json",
+                   "sc_song_videos.json"]
+
+
+@pytest.mark.parametrize("name", UGC_SC_FIXTURES)
+def test_ugc_fixtures_hold_no_personal_identifiers_or_signed_links(name):
+    path = UGC / name
+    if not path.exists():
+        pytest.skip(f"{name} not recorded")
+    leaks = []
+    for where, key, value in walk(json.loads(path.read_text())):
+        text = value if isinstance(value, str) else ""
+        if key in IDENTIFYING and value not in (None, "", 0) and not str(value).startswith("redacted"):
+            leaks.append(where)
+        elif key == "author" and isinstance(value, str) and value != "redacted":
+            leaks.append(where)
+        elif key in ("url", "share_url") and "/@" in text and "/@redacted" not in text:
+            leaks.append(where)
+        elif key in ("url_list", "images") and isinstance(value, list) and any(
+                isinstance(v, str) and v != "https://example.invalid/media" for v in value):
+            leaks.append(where)
+    assert leaks == []
