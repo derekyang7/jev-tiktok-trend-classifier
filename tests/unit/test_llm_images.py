@@ -66,3 +66,18 @@ async def test_timeout_estimate_counts_image_tokens():
         await llm.complete_json("s" * 40, "u" * 40, Out, max_tokens=100, images=[ImagePart(b"x")])
     assert err.value.estimated is True
     assert err.value.input_tokens == (40 + 40 + 4 * 700) // 4
+
+
+class Titled(BaseModel):
+    title: str
+    default: str
+    tags: list[str]
+
+
+def test_strict_schema_keeps_fields_named_title_or_default():
+    from jevtrends.llm.client import strict_schema
+
+    schema = strict_schema(Titled)
+    assert set(schema["properties"]) == {"title", "default", "tags"}
+    assert set(schema["required"]) == {"title", "default", "tags"}
+    assert "title" not in schema and "title" not in schema["properties"]["title"]  # the keyword is still dropped

@@ -56,19 +56,21 @@ def content_chars(content: str | list, image_tokens: int) -> int:
 def strict_schema(model: type[BaseModel]) -> dict:
     """JSON schema with closed objects and every property required.
 
-    Drops "default" and "title" keywords; safe because no output model has fields with those names.
+    Drops the "default" and "title" keywords, but never from a "properties" mapping, where they are field names
+    (the UGC brief has a `title` field).
     """
     schema = model.model_json_schema()
 
-    def fix(node: object) -> None:
+    def fix(node: object, is_properties: bool = False) -> None:
         if isinstance(node, dict):
-            node.pop("default", None)
-            node.pop("title", None)
+            if not is_properties:
+                node.pop("default", None)
+                node.pop("title", None)
             if node.get("type") == "object" and "properties" in node:
                 node["additionalProperties"] = False
                 node["required"] = list(node["properties"])
-            for value in node.values():
-                fix(value)
+            for key, value in node.items():
+                fix(value, is_properties=key == "properties" and not is_properties)
         elif isinstance(node, list):
             for item in node:
                 fix(item)
