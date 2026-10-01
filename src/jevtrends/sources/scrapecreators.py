@@ -1,18 +1,40 @@
 """ScrapeCreators TikTok adapter (spec §4.2). Field names verified by Task 1's contract fixtures."""
 
+import re
 from datetime import UTC, datetime
 
 import httpx
 
 from jevtrends.config import RetriesCfg
 from jevtrends.http import FatalAPIError, send_with_retry
-from jevtrends.models import Comment, Video
+from jevtrends.models import Comment, SoundInfo, Video
 from jevtrends.sources.base import CommentsResult, SearchPage, TranscriptResult
 
 BASE_URL = "https://api.scrapecreators.com"
 # Per-video errors (no captions, photo posts, private or deleted videos) mean "unavailable";
 # 401/402 (key or credits) stay fatal.
 UNAVAILABLE_STATUS = {400, 403, 404, 422}
+LICENSING_KEYS = ("is_commerce_music", "is_commerce_music_strict", "has_commerce_right", "has_commerce_right_strict",
+                  "commercial_right_type")
+HASHTAG = re.compile(r"#(\w+)")
+
+
+def first_url(node: object) -> str | None:
+    """The first link in a TikTok media object ({"url_list": [...]}), or the node itself if it is a link."""
+    if isinstance(node, str):
+        return node or None
+    urls = node.get("url_list") if isinstance(node, dict) else None
+    return next((url for url in urls or [] if isinstance(url, str) and url), None)
+
+
+def parse_sound(music: dict | None) -> SoundInfo | None:
+    music = music or {}
+    sound_id = str(music.get("id_str") or music.get("id") or "")
+    if not sound_id:
+        return None
+    return SoundInfo(id=sound_id, title=music.get("title") or "", author=music.get("author") or "",
+                     is_original=bool(music.get("is_original_sound")), use_count=int(music.get("user_count") or 0),
+                     licensing={key: music[key] for key in LICENSING_KEYS if key in music})
 
 
 def date_posted_for(lookback_days: int) -> str:
@@ -27,6 +49,10 @@ def date_posted_for(lookback_days: int) -> str:
 def parse_video(info: dict) -> Video:
     author = info.get("author") or {}
     stats = info.get("statistics") or {}
+    media = info.get("video") or {}
+    commerce = info.get("commerce_info") or {}
+    slides = [first_url(image.get("display_image")) for image in (info.get("image_post_info") or {}).get("images") or []
+              if isinstance(image, dict)]
     handle = author.get("unique_id") or ""
     video_id = str(info["aweme_id"])
     return Video(
@@ -45,7 +71,32 @@ def parse_video(info: dict) -> Video:
         shares=int(stats.get("share_count") or 0),
         language=info.get("desc_language") or None,
         raw={k: v for k, v in info.items() if k != "video"},
+        duration_ms=int(media["duration"]) if media.get("duration") else None,
+        is_slideshow=any(slides),
+        # `cover` is a JPEG; `origin_cover` is HEIC, which Pillow can't read (contract check D6).
+        cover_url=first_url(media.get("cover")) or first_url(media.get("origin_cover")),
+        slide_urls=[url for url in slides if url],
+        sound_info=parse_sound(info.get("music")),
+        author_followers=int(author["follower_count"]) if author.get("follower_count") is not None else None,
+        saves=int(stats.get("collect_count") or 0),
+        editing_features=[str(f) for f in (info.get("creation_info") or {}).get("creation_used_functions") or []],
+        anchors=[a["keyword"] for a in info.get("anchors") or [] if isinstance(a, dict) and a.get("keyword")],
+        ad_flags={"is_ad": bool(info.get("is_ad")), "is_paid_partnership": bool(info.get("is_paid_partnership")),
+                  "branded_content_type": int(commerce.get("branded_content_type") or 0)},
     )
+
+
+def parse_top_item(item: dict) -> Video:
+    """Top-search items use `id`, `content_type` and a flat `images` list (UGC spec §4.2); normalize, then parse."""
+    info = dict(item)
+    info["aweme_id"] = str(item.get("aweme_id") or item.get("id"))
+    if item.get("content_type") == "multi_photo" and not item.get("image_post_info"):
+        urls = [first_url(image) if not isinstance(image, dict) or "url_list" in image
+                else first_url(image.get("display_image")) for image in item.get("images") or []]
+        info["image_post_info"] = {"images": [{"display_image": {"url_list": [url]}} for url in urls if url]}
+    if not item.get("text_extra"):
+        info["text_extra"] = [{"hashtag_name": tag} for tag in HASHTAG.findall(item.get("desc") or "")]
+    return parse_video(info)
 
 
 def vtt_to_text(vtt: str | None) -> str | None:

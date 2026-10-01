@@ -8,6 +8,17 @@ from pydantic import BaseModel, Field
 TrendKind = Literal["behavior_need", "product_traction", "complaint_workaround"]
 
 
+class SoundInfo(BaseModel):
+    """The sound a video uses. `licensing` keeps TikTok's raw, undocumented flags (UGC spec §2.3)."""
+
+    id: str
+    title: str = ""
+    author: str = ""
+    is_original: bool = False
+    use_count: int = 0
+    licensing: dict[str, bool | int | None] = Field(default_factory=dict)
+
+
 class Video(BaseModel):
     id: str
     url: str
@@ -24,6 +35,17 @@ class Video(BaseModel):
     shares: int = 0
     language: str | None = None
     raw: dict = Field(default_factory=dict)
+    # Filled for the UGC pipeline (UGC spec §5.2); V1 ignores them.
+    duration_ms: int | None = None
+    is_slideshow: bool = False
+    cover_url: str | None = None
+    slide_urls: list[str] = Field(default_factory=list)
+    sound_info: SoundInfo | None = None
+    author_followers: int | None = None
+    saves: int = 0
+    editing_features: list[str] = Field(default_factory=list)
+    anchors: list[str] = Field(default_factory=list)
+    ad_flags: dict[str, bool | int] = Field(default_factory=dict)
 
 
 class Comment(BaseModel):
@@ -31,13 +53,23 @@ class Comment(BaseModel):
     likes: int = 0
 
 
+class VisionRead(BaseModel):
+    """On-screen text and setup read from a video's cover frame or first slides (UGC spec §6.4)."""
+
+    on_screen_text: str = ""
+    setup: str = ""
+    status: Literal["ok", "no_image", "error"] = "ok"
+    model: str = ""
+
+
 class Enrichment(BaseModel):
     video_id: str
     transcript: str | None = None
-    transcript_status: Literal["ok", "missing", "error"] | None = None
+    transcript_status: Literal["ok", "missing", "error", "not_applicable"] | None = None
     transcript_fetched_at: datetime | None = None
     comments: list[Comment] | None = None
     comments_fetched_at: datetime | None = None
+    vision: VisionRead | None = None
 
 
 class Answer(BaseModel):
