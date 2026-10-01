@@ -8,7 +8,7 @@ import httpx
 from jevtrends.config import RetriesCfg
 from jevtrends.http import FatalAPIError, send_with_retry
 from jevtrends.models import Comment, SoundInfo, Video
-from jevtrends.sources.base import CommentsResult, SearchPage, TranscriptResult
+from jevtrends.sources.base import CommentsResult, SearchPage, Song, SongsPage, TranscriptResult
 
 BASE_URL = "https://api.scrapecreators.com"
 # Per-video errors (no captions, photo posts, private or deleted videos) mean "unavailable";
@@ -90,6 +90,9 @@ def parse_top_item(item: dict) -> Video:
     """Top-search items use `id`, `content_type` and a flat `images` list (UGC spec §4.2); normalize, then parse."""
     info = dict(item)
     info["aweme_id"] = str(item.get("aweme_id") or item.get("id"))
+    created = item.get("create_time")
+    if isinstance(created, str) and not created.isdigit():  # Top search sends ISO 8601 times (contract check D2)
+        info["create_time"] = int(datetime.fromisoformat(created.replace("Z", "+00:00")).timestamp())
     if item.get("content_type") == "multi_photo" and not item.get("image_post_info"):
         urls = [first_url(image) if not isinstance(image, dict) or "url_list" in image
                 else first_url(image.get("display_image")) for image in item.get("images") or []]
@@ -97,6 +100,28 @@ def parse_top_item(item: dict) -> Video:
     if not item.get("text_extra"):
         info["text_extra"] = [{"hashtag_name": tag} for tag in HASHTAG.findall(item.get("desc") or "")]
     return parse_video(info)
+
+
+def parse_song(item: dict) -> Song:
+    points = sorted((p for p in item.get("trend") or [] if isinstance(p, dict)), key=lambda p: p.get("time") or 0)
+    flag = item.get("if_cml")
+    return Song(sound_id=str(item.get("clip_id") or item.get("song_id") or ""), title=item.get("title") or "",
+                author=item.get("author") or "", rank=int(item.get("rank") or 0), link=item.get("link") or "",
+                commercial=flag if isinstance(flag, bool) else None,
+                trend=[float(p.get("value") or 0.0) for p in points])
+
+
+def unwrap_data(data: dict) -> dict:
+    """Some list endpoints nest their payload under "data"."""
+    return data["data"] if isinstance(data.get("data"), dict) else data
+
+
+def aweme_list_page(data: dict) -> SearchPage:
+    videos = [parse_video(info) for info in data.get("aweme_list") or []
+              if isinstance(info, dict) and info.get("aweme_id") and info.get("create_time")]
+    more = data.get("has_more") in (None, 1, True)
+    return SearchPage(videos=videos, next_cursor=data.get("cursor") if videos and more else None,
+                      credits=int(data.get("credits_charged", 1)))
 
 
 def vtt_to_text(vtt: str | None) -> str | None:
@@ -158,3 +183,50 @@ class ScrapeCreatorsSource:
         raw.sort(key=lambda c: int(c.get("digg_count") or 0), reverse=True)
         comments = [Comment(text=c["text"].strip()[:max_chars], likes=int(c.get("digg_count") or 0)) for c in raw[:limit]]
         return CommentsResult(comments=comments, credits=int(data.get("credits_charged", 1)))
+
+    async def _get_or_unavailable(self, path: str, params: dict) -> dict | None:
+        """Like _get, but a per-item client error returns None instead of stopping the run."""
+        try:
+            return await self._get(path, params)
+        except FatalAPIError as exc:
+            if exc.status in UNAVAILABLE_STATUS:
+                return None
+            raise
+
+    async def search_hashtag(self, hashtag: str, region: str, cursor: int | None = None) -> SearchPage:
+        params: dict = {"hashtag": hashtag.lstrip("#"), "region": region}
+        if cursor is not None:
+            params["cursor"] = cursor
+        data = await self._get_or_unavailable("/v1/tiktok/search/hashtag", params)
+        return aweme_list_page(data) if data is not None else SearchPage(videos=[], next_cursor=None, credits=1)
+
+    async def search_top(self, query: str, lookback_days: int, region: str,
+                         cursor: int | None = None) -> SearchPage:
+        params: dict = {"query": query, "publish_time": date_posted_for(lookback_days), "sort_by": "relevance",
+                        "region": region}
+        if cursor is not None:
+            params["cursor"] = cursor
+        data = await self._get("/v1/tiktok/search/top", params)
+        videos = [parse_top_item(item) for item in data.get("items") or []
+                  if isinstance(item, dict) and (item.get("id") or item.get("aweme_id")) and item.get("create_time")]
+        more = data.get("has_more") in (None, 1, True)
+        return SearchPage(videos=videos, next_cursor=data.get("cursor") if videos and more else None,
+                          credits=int(data.get("credits_charged", 1)))
+
+    async def popular_songs(self, period_days: int, country: str, page: int, commercial_only: bool) -> SongsPage:
+        params: dict = {"page": page, "timePeriod": period_days, "rankType": "popular", "countryCode": country}
+        if commercial_only:
+            params["commercialMusic"] = "true"
+        data = await self._get("/v1/tiktok/songs/popular", params)
+        body = unwrap_data(data)
+        songs = [parse_song(item) for item in body.get("sound_list") or []
+                 if isinstance(item, dict) and (item.get("clip_id") or item.get("song_id"))]
+        more = bool((body.get("pagination") or {}).get("has_more")) and bool(songs)
+        return SongsPage(songs=songs, has_more=more, credits=int(data.get("credits_charged", 1)))
+
+    async def song_videos(self, sound_id: str, cursor: int | None = None) -> SearchPage:
+        params: dict = {"clipId": sound_id}
+        if cursor is not None:
+            params["cursor"] = cursor
+        data = await self._get_or_unavailable("/v1/tiktok/song/videos", params)
+        return aweme_list_page(data) if data is not None else SearchPage(videos=[], next_cursor=None, credits=1)
