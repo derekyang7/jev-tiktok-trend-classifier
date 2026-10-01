@@ -62,8 +62,27 @@ async def popular_candidates(ctx: UgcRunContext) -> tuple[list[Song], set[str]]:
     return interleave(popular, approved, ctx.settings.sounds.popular_count), approved_ids
 
 
+def match_rounded_ids(ctx: UgcRunContext, songs: list[Song]) -> None:
+    """Top search rounds sound ids to doubles: swap each for an exact id from this run that rounds the same."""
+    corpus = ctx.store.get_videos(relevant_videos(ctx))
+    known = [song.sound_id for song in songs] + [video.sound_info.id for video in corpus.values()
+                                                 if video.sound_info and not video.sound_info.id_rounded]
+    exact = {float(sound_id): sound_id for sound_id in known if sound_id.isdigit()}
+    for video in corpus.values():
+        info = video.sound_info
+        if info and info.id_rounded and info.id.isdigit() and float(info.id) in exact:
+            ctx.store.upsert_video(video.model_copy(update={"sound_info": info.model_copy(
+                update={"id": exact[float(info.id)], "id_rounded": False})}))
+
+
+def most_viewed_use(corpus: dict, sound_id: str) -> str:
+    uses = [video for video in corpus.values() if video.sound_info and video.sound_info.id == sound_id]
+    return max(uses, key=lambda video: video.views or 0).url
+
+
 async def build_candidates(ctx: UgcRunContext) -> list[SoundCandidate]:
     songs, approved_ids = await popular_candidates(ctx)
+    match_rounded_ids(ctx, songs)
     corpus = ctx.store.get_videos(relevant_videos(ctx))
     uses = Counter(video.sound_info.id for video in corpus.values() if video.sound_info)
     niche_ids = {sound_id for sound_id, count in uses.items() if count >= ctx.settings.sounds.niche_min_videos}
@@ -76,9 +95,14 @@ async def build_candidates(ctx: UgcRunContext) -> list[SoundCandidate]:
     info = {video.sound_info.id: video.sound_info for video in corpus.values() if video.sound_info}
     for sound_id, _ in uses.most_common():
         if sound_id in niche_ids and sound_id not in listed:
+            rounded = info[sound_id].id_rounded  # no sound page to link to, so link a video that uses it
             candidates.append(SoundCandidate(sound_id=sound_id, title=info[sound_id].title,
                                              author=info[sound_id].author, source=["niche"],
-                                             use_count=info[sound_id].use_count))
+                                             use_count=info[sound_id].use_count,
+                                             link=most_viewed_use(corpus, sound_id) if rounded else ""))
+    if any(sound_id in info and info[sound_id].id_rounded for sound_id in (c.sound_id for c in candidates)):
+        ctx.store.add_note(ctx.run_id, "Top search rounds sound ids, so sounds found only there link to a video "
+                                       "that uses them instead of the sound's page.")
     return candidates
 
 

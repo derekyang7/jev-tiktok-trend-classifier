@@ -32,9 +32,10 @@ def parse_sound(music: dict | None) -> SoundInfo | None:
     sound_id = str(music.get("id_str") or music.get("id") or "")
     if not sound_id:
         return None
+    rounded = not music.get("id_str") and isinstance(music.get("id"), int) and music["id"] > 2**53
     return SoundInfo(id=sound_id, title=music.get("title") or "", author=music.get("author") or "",
                      is_original=bool(music.get("is_original_sound")), use_count=int(music.get("user_count") or 0),
-                     licensing={key: music[key] for key in LICENSING_KEYS if key in music})
+                     licensing={key: music[key] for key in LICENSING_KEYS if key in music}, id_rounded=rounded)
 
 
 def date_posted_for(lookback_days: int) -> str:

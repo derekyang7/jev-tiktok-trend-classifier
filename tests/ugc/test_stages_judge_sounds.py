@@ -131,3 +131,21 @@ async def test_the_observed_outage_response_also_degrades():
     await run_sounds(ctx)
     assert [s.sound_id for s in ctx.store.list_sounds(ctx.run_id)] == ["777"]
     assert any("popular-songs list was unavailable" in note for note in ctx.store.notes(ctx.run_id))
+
+
+async def test_rounded_sound_ids_take_the_exact_id_from_the_run_or_link_to_a_video():
+    exact, rounded, lone = "7406303806911842123", "7406303806911842000", "7519513157066705000"  # first two: same double
+    ctx = make_ugc_ctx(source=FakeUgcSource(fail_songs=TransientAPIError("scrapecreators", 503, "down")),
+                       jev=FakeJev(rules=RULES))
+    passed(ctx, make_video(id="k", author_handle="c0", caption="app tip", sound_info=SoundInfo(id=exact)),
+           *[make_video(id=f"t{i}", author_handle=f"c{i + 1}", caption="app tip",
+                        sound_info=SoundInfo(id=rounded, id_rounded=True)) for i in range(2)],
+           *[make_video(id=f"l{i}", author_handle=f"d{i}", caption="app tip", views=100 * (i + 1),
+                        sound_info=SoundInfo(id=lone, id_rounded=True)) for i in range(3)])
+    await run_judge(ctx)
+    await run_sounds(ctx)
+    sounds = {s.sound_id: s for s in ctx.store.list_sounds(ctx.run_id)}
+    assert sorted(sounds) == [exact, lone]
+    assert sounds[exact].niche_creators == 3 and sounds[exact].link == ""
+    assert sounds[lone].link == "https://www.tiktok.com/@d2/video/l2"  # the most-viewed video using it
+    assert any("Top search rounds sound ids" in note for note in ctx.store.notes(ctx.run_id))

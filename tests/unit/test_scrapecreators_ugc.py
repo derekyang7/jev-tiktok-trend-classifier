@@ -7,8 +7,8 @@ import pytest
 
 from jevtrends.config import RetriesCfg
 from jevtrends.http import FatalAPIError
-from jevtrends.sources.scrapecreators import (ScrapeCreatorsSource, aweme_list_page, parse_song, parse_top_item,
-                                              unwrap_data)
+from jevtrends.sources.scrapecreators import (ScrapeCreatorsSource, aweme_list_page, parse_song, parse_sound,
+                                              parse_top_item, unwrap_data)
 
 UGC_CONTRACT = Path(__file__).resolve().parents[1] / "fixtures" / "contract" / "ugc"
 AWEME = {"aweme_id": "9", "desc": "apps #apps", "create_time": 1790380800, "author": {"unique_id": "a"},
@@ -111,3 +111,10 @@ def test_parse_top_item_reads_iso_create_time():
     video = parse_top_item(item)
     assert video.posted_at == datetime(2026, 9, 4, 9, 57, 58, tzinfo=UTC)
     assert video.sound_info.id == "991"
+
+
+def test_parse_sound_flags_ids_rounded_upstream():
+    # Top search sends music.id as a JSON number already rounded to a double, with no id_str (first full run)
+    assert parse_sound({"id": 7406303806911842000, "title": "Elegant"}).id_rounded
+    assert not parse_sound({"id_str": "7406303806911842123", "id": 7406303806911842000}).id_rounded
+    assert not parse_sound({"id": 9}).id_rounded

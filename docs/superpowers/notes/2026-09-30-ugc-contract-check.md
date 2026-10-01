@@ -54,6 +54,11 @@ Cost: about $0.25 (ScrapeCreators ~35 credits; Opus ~$0.11; Haiku ~$0.03; Jev < 
   (`…crop-80-heic:500:800.heic`), so all 39 no-image videos in the 100-video pilot came from Top search.
   **Decision (user):** add `pillow-heif`; `prepare_image` converts HEIC to JPEG. Six real Top-search covers converted.
 
+- **First full run (2026-10-01):** Top-search `music` objects carry only `id` as a JSON number already rounded
+  to a double upstream (for example `7406303806911842000`), with no `id_str`; keyword search sends an exact
+  `id_str`. All 259 Top-search sounds in run 2 had rounded ids. `parse_sound` flags them, the sounds stage swaps
+  each for an exact id from the run that rounds the same, and sounds left rounded link to a video that uses them.
+
 ## D7 Claude on OpenRouter
 
 - `anthropic/claude-opus-5.5` and `anthropic/claude-haiku-4.5` work with `response_format: json_schema` (strict).

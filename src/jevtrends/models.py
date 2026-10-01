@@ -17,6 +17,7 @@ class SoundInfo(BaseModel):
     is_original: bool = False
     use_count: int = 0
     licensing: dict[str, bool | int | None] = Field(default_factory=dict)
+    id_rounded: bool = False  # Top search sends the id as a JSON number already rounded to a double upstream
 
 
 class Video(BaseModel):
