@@ -25,6 +25,7 @@ TEMPLATES = Path(__file__).resolve().parent.parent / "templates"
 FACET_LABELS = {"format": "Format", "hook": "Hook", "sound": "Sound", "topic": "Topic", "need": "Need"}
 SECTIONS = [("Formats and hooks", ("format", "hook")), ("Sounds", ("sound",)), ("Topics and memes", ("topic",)),
             ("Needs and angles", ("need",))]
+SEARCH_TYPES = ("keyword", "hashtag", "top")  # funnel order; stored rows come back in video-id order
 
 
 def sound_url(sound: SoundCandidate) -> str:
@@ -107,9 +108,11 @@ def build_ugc_report_data(store: UgcStore, run_id: int, weights: dict[str, float
                          "others": [e for e in within if not e["brief"]],
                          "sound_rows": within[:settings.sounds.report_count]})
 
-    by_type: Counter = Counter()
+    found: Counter = Counter()
     for key, count in store.query_counts(run_id).items():
-        by_type[key.partition(":")[0]] += count
+        found[key.partition(":")[0]] += count
+    by_type = {kind: found[kind] for kind in SEARCH_TYPES if found[kind]}
+    by_type.update({kind: n for kind, n in found.items() if kind not in SEARCH_TYPES})
     enrichments = {video_id: store.get_enrichment(video_id) for video_id in survivors}
     vision = Counter(e.vision.status if e and e.vision else "not read" for e in enrichments.values())
     transcripts = Counter(e.transcript_status if e and e.transcript_status else "not fetched"
@@ -127,7 +130,7 @@ def build_ugc_report_data(store: UgcStore, run_id: int, weights: dict[str, float
         "run_id": run_id, "date": run["started_at"].date().isoformat(), "status": run["status"],
         "niche_name": ctx.niche.name, "product_name": ctx.product.name if ctx.product else "",
         "lookback_days": settings.scan.lookback_days,
-        "funnel": {"collected": len(store.run_video_ids(run_id)), "by_type": dict(by_type),
+        "funnel": {"collected": len(store.run_video_ids(run_id)), "by_type": by_type,
                    "passed": len(survivors), "relevant": len(relevant), "images_read": vision.get("ok", 0),
                    "facets": facet_counts, "sounds": len(sounds)},
         "cost": store.spend_by_provider(run_id), "total_cost": store.total_spend(run_id), "notes": store.notes(run_id),
