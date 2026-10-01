@@ -1,6 +1,7 @@
 import io
 
 import httpx
+import pillow_heif
 from PIL import Image
 
 from jevtrends.config import RetriesCfg
@@ -34,6 +35,15 @@ def test_prepare_image_passes_small_supported_images_through_and_shrinks_large_o
         assert image.size == (540, 960) and image.format == "JPEG"
     assert shrunk.media_type == "image/jpeg"
     assert prepare_image(b"not an image", 960) is None
+
+
+def test_prepare_image_converts_heic_covers_to_jpeg():
+    buffer = io.BytesIO()  # Top-search covers are HEIC only (pilot run, 2026-10-01)
+    pillow_heif.from_pillow(Image.new("RGB", (100, 160), "white")).save(buffer, quality=50)
+    part = prepare_image(buffer.getvalue(), 960)
+    assert part is not None and part.media_type == "image/jpeg"
+    with Image.open(io.BytesIO(part.data)) as image:
+        assert image.format == "JPEG" and image.size == (100, 160)
 
 
 async def test_image_fetcher_sends_no_api_key_and_maps_errors_and_size_to_none():

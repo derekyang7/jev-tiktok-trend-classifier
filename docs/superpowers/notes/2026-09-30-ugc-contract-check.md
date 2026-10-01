@@ -50,6 +50,9 @@ Cost: about $0.25 (ScrapeCreators ~35 credits; Opus ~$0.11; Haiku ~$0.03; Jev < 
 - Haiku read the same on-screen text from real covers at full size and at 960 px (minor OCR differences both
   ways), so `vision.max_long_edge: 960` stays.
 - **Decision (user):** use the JPEG `cover`; no `pillow-heif`. `parse_video` prefers `cover`, then `origin_cover`.
+- **Pilot update (2026-10-01):** keyword-search covers are JPEG, but Top-search `cover` links are HEIC too
+  (`…crop-80-heic:500:800.heic`), so all 39 no-image videos in the 100-video pilot came from Top search.
+  **Decision (user):** add `pillow-heif`; `prepare_image` converts HEIC to JPEG. Six real Top-search covers converted.
 
 ## D7 Claude on OpenRouter
 

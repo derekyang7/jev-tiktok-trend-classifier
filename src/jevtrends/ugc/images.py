@@ -4,10 +4,13 @@ import io
 
 import httpx
 from PIL import Image, UnidentifiedImageError
+from pillow_heif import register_heif_opener
 
 from jevtrends.config import RetriesCfg
 from jevtrends.http import APIError, send_with_retry
 from jevtrends.llm.client import ImagePart
+
+register_heif_opener()  # Top-search covers are HEIC only; prepare_image converts them to JPEG
 
 ACCEPTED = {"JPEG": "image/jpeg", "PNG": "image/png", "WEBP": "image/webp", "GIF": "image/gif"}
 IMAGE_TIMEOUT = httpx.Timeout(30.0)
