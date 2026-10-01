@@ -147,6 +147,7 @@ No trends of this kind in this run.
 - Failed items: {% if diagnostics.failures %}{% for stage, n in diagnostics.failures.items() %}{{ stage }} {{ n }}{% if not loop.last %}, {% endif %}{% endfor %}{% else %}none{% endif %}
 
 - Sound licensing: {% for label, n in diagnostics.licensing.items() %}{{ label|replace("_", " ") }} {{ n }}{% if not loop.last %}, {% endif %}{% else %}no sounds{% endfor %} (sources: {{ diagnostics.licensing_sources|join(", ") or "none verified; check TikTok's Commercial Music Library before using a sound" }})
+- Momentum compares the share of a trend's videos posted in the last {{ "%.1f"|format(diagnostics.momentum_recent_days) }} days with the whole sample's share, pulling small trends toward 1×. It counts posts, not view growth, so treat it as a rough signal.
 - Ranking weights: {% for key, value in diagnostics.weights.items() %}{{ key }} {{ value }}{% if not loop.last %}, {% endif %}{% endfor %}
 
 

@@ -146,6 +146,7 @@ def build_ugc_report_data(store: UgcStore, run_id: int, weights: dict[str, float
             "vision": dict(vision), "transcripts": dict(transcripts), "failures": store.failures_by_stage(run_id),
             "licensing": dict(Counter(s.business_use for s in sounds.values())),
             "licensing_sources": sorted({s.business_use_source for s in sounds.values() if s.business_use_source}),
+            "momentum_recent_days": settings.scan.lookback_days * settings.trends.momentum_recent_fraction,
             "weights": weights or settings.ranking.weights},
         "settings_yaml": yaml.safe_dump(settings.model_dump(mode="json"), sort_keys=False),
     }

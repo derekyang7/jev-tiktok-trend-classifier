@@ -51,6 +51,13 @@ async def test_images_read_counts_only_relevant_videos():
     assert "Vision: ok 2" in text  # the diagnostics still cover every gate survivor
 
 
+async def test_diagnostics_state_the_momentum_caveat():
+    ctx = await briefed_ctx()
+    text = render_ugc_report(ctx.store, ctx.run_id)
+    assert ("- Momentum compares the share of a trend's videos posted in the last 4.7 days with the whole "
+            "sample's share") in text
+
+
 async def test_weights_override_reranks_without_model_calls():
     ctx = await briefed_ctx()
     calls = (len(ctx.jev.calls), len(ctx.llm.calls))
