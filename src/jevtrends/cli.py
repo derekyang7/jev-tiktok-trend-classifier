@@ -187,3 +187,8 @@ def evaluate(run_id: int) -> None:
     for bucket in m["calibration"]:
         typer.echo(f"  {bucket['range']}: n={bucket['count']} predicted {_fmt(bucket['predicted'])} "
                    f"observed {_fmt(bucket['observed'])}")
+
+
+from jevtrends.ugc.cli import ugc_app  # noqa: E402  (mounted last; jevtrends.ugc.cli imports this module lazily)
+
+app.add_typer(ugc_app, name="ugc")
