@@ -21,6 +21,7 @@ from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.images import ImageFetcher
 from jevtrends.ugc.niche_draft import draft_niche, render_niche_yaml
 from jevtrends.ugc.pipeline import estimate_ugc, run_ugc_pipeline
+from jevtrends.ugc.review import compute_review_metrics, review_items
 from jevtrends.ugc.stages.report import write_ugc_report
 from jevtrends.ugc.store import UgcStore
 
@@ -177,3 +178,47 @@ def niche_draft(niche_id: str, description: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(render_niche_yaml(niche_id, out, date.today()))
     typer.echo(f"Wrote {path} for ${cost:.2f}. Review and edit it before running a scan.")
+
+
+def show_video(store: UgcStore, video_id: str) -> None:
+    video, enrichment = store.get_video(video_id), store.get_enrichment(video_id)
+    on_screen = enrichment.vision.on_screen_text if enrichment and enrichment.vision else ""
+    typer.echo(f"  {video.url}\n    caption: {video.caption[:160]}")
+    if on_screen:
+        typer.echo(f"    on screen: {on_screen[:160]}")
+
+
+@ugc_app.command()
+def review(run_id: int, trends: int = 20) -> None:
+    """Review a run's top trends and their tags (interactive). Ctrl-C stops; answers so far are saved."""
+    store = UgcStore(ugc_db_path())
+    items = review_items(store, run_id, trends)
+    typer.echo(f"{len(items)} trends to review.")
+    for index, item in enumerate(items, start=1):
+        trend = item.trend
+        typer.echo(f"\n[{index}/{len(items)}] {trend.facet}: {trend.name}\n  {trend.template or trend.usage or trend.definition}")
+        for video_id in item.evidence:
+            show_video(store, video_id)
+        store.add_review(run_id, trend.trend_id, "", "real", typer.confirm("Is this a real, distinct trend?"))
+        store.add_review(run_id, trend.trend_id, "", "would_brief", typer.confirm("Would you brief a creator on it?"))
+        for video_id, _ in item.members:
+            show_video(store, video_id)
+            store.add_review(run_id, trend.trend_id, video_id, "fits",
+                             typer.confirm(f"Does this video fit '{trend.name}'?"))
+
+
+def _fmt(value: float | None) -> str:
+    return "n/a" if value is None else f"{value:.2f}"
+
+
+@ugc_app.command(name="eval")
+def evaluate(run_id: int) -> None:
+    """Print review metrics: trends worth briefing, tagging precision per facet, a suggested threshold."""
+    m = compute_review_metrics(UgcStore(ugc_db_path()), run_id)
+    typer.echo(f"Would brief: {m['would_brief']} of {m['reviewed']} reviewed trends (target 5-15 per report); "
+               f"real, distinct trends: {m['real']}")
+    for facet, stats in m["per_facet"].items():
+        typer.echo(f"  {facet}: {stats['would_brief']} would brief of {stats['reviewed']}; tagging precision "
+                   f"{_fmt(stats['precision'])} on {stats['checked']} checked (target 0.80)")
+    typer.echo(f"Suggested trend_member threshold: {_fmt(m['suggested_threshold'])} "
+               "(rough: small samples give rough estimates)")
