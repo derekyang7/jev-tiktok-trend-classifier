@@ -115,6 +115,8 @@ def build_ugc_report_data(store: UgcStore, run_id: int, weights: dict[str, float
     by_type.update({kind: n for kind, n in found.items() if kind not in SEARCH_TYPES})
     enrichments = {video_id: store.get_enrichment(video_id) for video_id in survivors}
     vision = Counter(e.vision.status if e and e.vision else "not read" for e in enrichments.values())
+    images_read = sum(1 for v in relevant if enrichments[v] and enrichments[v].vision
+                      and enrichments[v].vision.status == "ok")  # look runs before judge, on every survivor
     transcripts = Counter(e.transcript_status if e and e.transcript_status else "not fetched"
                           for e in enrichments.values())
     facet_counts = {facet: {"proposed": sum(1 for t in trends.values() if t.facet == facet),
@@ -131,7 +133,7 @@ def build_ugc_report_data(store: UgcStore, run_id: int, weights: dict[str, float
         "niche_name": ctx.niche.name, "product_name": ctx.product.name if ctx.product else "",
         "lookback_days": settings.scan.lookback_days,
         "funnel": {"collected": len(store.run_video_ids(run_id)), "by_type": by_type,
-                   "passed": len(survivors), "relevant": len(relevant), "images_read": vision.get("ok", 0),
+                   "passed": len(survivors), "relevant": len(relevant), "images_read": images_read,
                    "facets": facet_counts, "sounds": len(sounds)},
         "cost": store.spend_by_provider(run_id), "total_cost": store.total_spend(run_id), "notes": store.notes(run_id),
         "top_picks": entries[:settings.briefs.top_picks], "sections": sections,

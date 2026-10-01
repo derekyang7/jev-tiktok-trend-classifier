@@ -1,9 +1,11 @@
 import pytest
 
+from jevtrends.models import Answer, Enrichment, VisionRead
 from jevtrends.ugc.models import SoundCandidate
 from jevtrends.ugc.stages.brief import DISCLOSURE_LINE, run_brief
 from jevtrends.ugc.stages.report import build_ugc_report_data, render_ugc_report, sound_url, write_ugc_report
 from tests.fakes import FakeLLM
+from tests.helpers import make_video
 from tests.ugc.fakes import make_ugc_ctx
 from tests.ugc.test_stage_brief import brief_out, ranked_world
 
@@ -34,6 +36,19 @@ async def test_report_has_header_top_picks_sections_sounds_and_diagnostics():
     assert "| 1 | [Song](https://www.tiktok.com/music/song-777) | approved |" in text
     assert "## Topics and memes\n\nNo trends of this kind in this run." in text
     assert "## Diagnostics" in text and "Settings used" in text and "Sound licensing: approved 1" in text
+
+
+async def test_images_read_counts_only_relevant_videos():
+    ctx = await briefed_ctx()  # look runs before judge, so off-niche gate survivors have images read too
+    ctx.store.upsert_video(make_video(id="off"))
+    ctx.store.add_run_video(ctx.run_id, "off", "keyword:apps you need")
+    ctx.store.upsert_judgment(ctx.run_id, "video", "off", "ugc_gate.relevant", 1, Answer(value=0.9))
+    ctx.store.upsert_judgment(ctx.run_id, "video", "off", "ugc_judge.relevant", 1, Answer(value=0.1))
+    for video_id in (ctx.store.run_video_ids(ctx.run_id)[0], "off"):
+        ctx.store.upsert_enrichment(Enrichment(video_id=video_id, vision=VisionRead(on_screen_text="x")))
+    text = render_ugc_report(ctx.store, ctx.run_id)
+    assert "9 passed gate → 8 relevant → 1 images read" in text
+    assert "Vision: ok 2" in text  # the diagnostics still cover every gate survivor
 
 
 async def test_weights_override_reranks_without_model_calls():
