@@ -32,18 +32,11 @@ class StageFailed(Exception):
     """More than failure.max_item_failure_rate of a stage's items failed (spec §12.2)."""
 
 
-@dataclass
-class RunContext:
-    run_id: int
-    store: Store
-    settings: Settings
-    niches: NicheConfig
-    source: Source
-    jev: JevLike
-    llm: LLMLike
-    budget: BudgetGuard
-    now: datetime
-    limits: dict[str, int] = field(default_factory=dict)
+class ContextHelpers:
+    """API-call recording and Jev helpers shared by V1's and the UGC version's run contexts.
+
+    Subclasses provide `run_id`, `store`, `settings` (with `pricing` and `failure`) and `jev`.
+    """
 
     def record_jev(self, stage: str, result: JevResult) -> None:
         cost = result.input_tokens * self.settings.pricing.jev_input_per_mtok / 1e6
@@ -78,7 +71,21 @@ class RunContext:
         return self.store.get_answers(self.run_id, subject_type, question.id, question.version)
 
 
-async def run_items(ctx: RunContext, stage: str, provider: str, items: Sequence,
+@dataclass
+class RunContext(ContextHelpers):
+    run_id: int
+    store: Store
+    settings: Settings
+    niches: NicheConfig
+    source: Source
+    jev: JevLike
+    llm: LLMLike
+    budget: BudgetGuard
+    now: datetime
+    limits: dict[str, int] = field(default_factory=dict)
+
+
+async def run_items(ctx: ContextHelpers, stage: str, provider: str, items: Sequence,
                     fn: Callable[[object], Awaitable[None]], concurrency: int, total: int | None = None) -> int:
     """Runs fn(item) with bounded concurrency; item failures are recorded and counted.
 

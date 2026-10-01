@@ -1,6 +1,7 @@
 """Cost projection and trimming decisions (spec §12.1)."""
 
 import math
+from collections.abc import Callable
 from dataclasses import dataclass, field, replace
 
 from jevtrends.config import PricingCfg, Settings
@@ -46,6 +47,42 @@ class Decision:
     trims: list[str] = field(default_factory=list)
 
 
+@dataclass
+class Trimmable:
+    """Optional work the guard may cut, listed in the order it is cut (spec §12.1)."""
+
+    name: str
+    units: int
+    unit_cost: float
+    minimum: int
+    note: Callable[[int, int], str]  # (kept, original) -> the trim note
+
+
+@dataclass
+class TrimResult:
+    ok: bool
+    units: dict[str, int]
+    projected: float
+    trims: list[str] = field(default_factory=list)
+
+
+def trim_to_fit(available: float, fixed_cost: float, items: list[Trimmable]) -> TrimResult:
+    """Cuts each item in order, as little as needed, until fixed_cost plus the remaining items fit."""
+    units = {item.name: item.units for item in items}
+
+    def total() -> float:
+        return fixed_cost + sum(units[item.name] * item.unit_cost for item in items)
+
+    trims: list[str] = []
+    for item in items:
+        if total() > available and units[item.name] > item.minimum and item.unit_cost > 0:
+            cut = min(units[item.name] - item.minimum, math.ceil((total() - available) / item.unit_cost))
+            units[item.name] -= cut
+            trims.append(item.note(units[item.name], item.units))
+    projected = total()
+    return TrimResult(ok=projected <= available, units=units, projected=projected, trims=trims)
+
+
 class BudgetGuard:
     def __init__(self, cap_usd: float, pricing: PricingCfg):
         self.cap = cap_usd
@@ -69,26 +106,17 @@ class BudgetGuard:
         return Projection(scraper=scraper, jev=self.jev_cost(work.jev_chars), llm=llm)
 
     def decide(self, spent: float, work: RemainingWork, min_briefs: int) -> Decision:
-        available = self.cap - spent
-        comments, briefs, trims = work.comment_requests, work.brief_count, []
-
-        def total() -> float:
-            return self.project(replace(work, comment_requests=comments, brief_count=briefs)).total
-
         # Briefs go first (lowest-ranked dropped); comments carry the complaint signal, so they are trimmed last.
-        if total() > available and briefs > min_briefs:
-            per_brief = self.llm_cost(CHARS["brief"], self.pricing.brief_expected_output_tokens)
-            cut = min(briefs - min_briefs, math.ceil((total() - available) / per_brief))
-            briefs -= cut
-            trims.append(f"{briefs} briefs written instead of {work.brief_count}")
-        if total() > available and comments:
-            cut = min(comments, math.ceil((total() - available) / self.scraper_cost(1)))
-            comments -= cut
-            trims.append(f"comments fetched for {comments} videos instead of {work.comment_requests}")
-        projected = total()
-        return Decision(ok=projected <= available, comment_requests=comments, brief_count=briefs,
-                        projected=projected, trims=trims)
-
+        per_brief = self.llm_cost(CHARS["brief"], self.pricing.brief_expected_output_tokens)
+        fixed = self.project(replace(work, comment_requests=0, brief_count=0)).total
+        result = trim_to_fit(self.cap - spent, fixed, [
+            Trimmable("briefs", work.brief_count, per_brief, min(min_briefs, work.brief_count),
+                      lambda kept, was: f"{kept} briefs written instead of {was}"),
+            Trimmable("comments", work.comment_requests, self.scraper_cost(1), 0,
+                      lambda kept, was: f"comments fetched for {kept} videos instead of {was}"),
+        ])
+        return Decision(ok=result.ok, comment_requests=result.units["comments"],
+                        brief_count=result.units["briefs"], projected=result.projected, trims=result.trims)
 
 def remaining_work(from_stage: str, counts: dict[str, int], settings: Settings,
                    comment_videos: int, max_briefs: int) -> RemainingWork:
