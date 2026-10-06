@@ -140,6 +140,7 @@ Each run prints the path of its report, `reports/<date>-scan-<run>.md`. The repo
 | `scripts/scan.sh label <run>` | Label a sample of 100 videos in your terminal (interactive) |
 | `scripts/scan.sh eval <run>` | Precision, recall, calibration and a suggested threshold, from your labels |
 
+
 ## V2: UGC and ad trends
 
 The UGC version looks at one niche per scan and finds five kinds of trend:
