@@ -1,7 +1,6 @@
 """Stage 2: lenient Jev check that a video could be about the niche, from caption and hashtags (UGC spec §6.2)."""
 
-from jevtrends.stages.context import run_items
-from jevtrends.stages.gate import gate_state
+from jevtrends.core.context import gate_state, run_items
 from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.questions import gate_question
 

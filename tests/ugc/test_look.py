@@ -4,8 +4,8 @@ import httpx
 import pillow_heif
 from PIL import Image
 
-from jevtrends.config import RetriesCfg
-from jevtrends.models import Answer
+from jevtrends.core.config import RetriesCfg
+from jevtrends.core.models import Answer
 from jevtrends.ugc.images import ImageFetcher, prepare_image
 from jevtrends.ugc.prompts import VisionOut
 from jevtrends.ugc.stages.look import run_look

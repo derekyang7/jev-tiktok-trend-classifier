@@ -6,9 +6,9 @@ import httpx
 from PIL import Image, UnidentifiedImageError
 from pillow_heif import register_heif_opener
 
-from jevtrends.config import RetriesCfg
-from jevtrends.http import APIError, send_with_retry
-from jevtrends.llm.client import ImagePart
+from jevtrends.core.config import RetriesCfg
+from jevtrends.core.http import APIError, send_with_retry
+from jevtrends.core.llm import ImagePart
 
 register_heif_opener()  # Top-search covers are HEIC only; prepare_image converts them to JPEG
 

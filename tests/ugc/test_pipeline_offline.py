@@ -3,17 +3,16 @@ from pathlib import Path
 
 import pytest
 
-from jevtrends.http import FatalAPIError
-from jevtrends.llm.prompts import EvidenceRef
-from jevtrends.models import SoundInfo
-from jevtrends.pipeline import BudgetExceeded
-from jevtrends.sources.base import Song
+from jevtrends.core.context import BudgetExceeded
+from jevtrends.core.http import FatalAPIError
+from jevtrends.core.llm import EvidenceRef
+from jevtrends.core.models import SoundInfo
+from jevtrends.core.sources.base import Song
 from jevtrends.ugc.config import load_niche, load_ugc_settings
 from jevtrends.ugc.pipeline import estimate_ugc, run_ugc_pipeline
 from jevtrends.ugc.prompts import Beat, Candidate, DiscoverOut, SoundNote, SoundPick, UgcBriefOut
 from jevtrends.ugc.store import UgcStore
-from tests.fakes import FakeJev, FakeLLM
-from tests.helpers import make_video
+from tests.helpers import FakeJev, FakeLLM, make_video
 from tests.ugc.fakes import FakeImages, FakeUgcSource, FakeVision, make_ugc_ctx, sequential, tiny_png
 
 CONFIG = Path(__file__).resolve().parents[2] / "config" / "ugc"

@@ -1,6 +1,6 @@
 """Jev question catalog for the UGC version (UGC spec §7). Wording is verbatim; bump `version` whenever it changes."""
 
-from jevtrends.jev.questions import IS_PROMOTIONAL, NONE_OF_THESE, Question
+from jevtrends.core.jev import IS_PROMOTIONAL, NONE_OF_THESE, Question
 from jevtrends.ugc.config import NicheProfile
 from jevtrends.ugc.models import FacetTrend
 

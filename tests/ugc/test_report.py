@@ -1,11 +1,10 @@
 import pytest
 
-from jevtrends.models import Answer, Enrichment, VisionRead
+from jevtrends.core.models import Answer, Enrichment, VisionRead
 from jevtrends.ugc.models import SoundCandidate
 from jevtrends.ugc.stages.brief import DISCLOSURE_LINE, run_brief
 from jevtrends.ugc.stages.report import build_ugc_report_data, render_ugc_report, sound_url, write_ugc_report
-from tests.fakes import FakeLLM
-from tests.helpers import make_video
+from tests.helpers import FakeLLM, make_video
 from tests.ugc.fakes import make_ugc_ctx
 from tests.ugc.test_stage_brief import brief_out, ranked_world
 

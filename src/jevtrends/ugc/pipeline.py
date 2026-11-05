@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from jevtrends.pipeline import BudgetExceeded, run_stages
+from jevtrends.core.context import BudgetExceeded, run_stages
 from jevtrends.ugc.budget import (GATE_PASS_RATE, SLIDESHOW_RATE, UGC_STAGE_ORDER, UgcDecision, UgcProjection,
                                   decide_ugc, project_ugc, ugc_remaining_work)
 from jevtrends.ugc.config import NicheProfile, UgcSettings

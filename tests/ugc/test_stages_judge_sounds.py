@@ -1,12 +1,11 @@
 import pytest
 
-from jevtrends.http import FatalAPIError, TransientAPIError
-from jevtrends.models import Answer, Enrichment, SoundInfo, VisionRead
-from jevtrends.sources.base import Song
+from jevtrends.core.http import FatalAPIError, TransientAPIError
+from jevtrends.core.models import Answer, Enrichment, SoundInfo, VisionRead
+from jevtrends.core.sources.base import Song
 from jevtrends.ugc.stages.judge import promotional_videos, relevant_videos, run_judge, ugc_video_state
 from jevtrends.ugc.stages.sounds import interleave, run_sounds
-from tests.fakes import FakeJev
-from tests.helpers import make_video
+from tests.helpers import FakeJev, make_video
 from tests.ugc.fakes import FakeUgcSource, make_ugc_ctx
 
 RULES = {"relevant": lambda state, key: 0.1 if "cat" in state["caption"] or "dance" in state["caption"] else 0.9,

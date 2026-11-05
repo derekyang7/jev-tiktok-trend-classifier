@@ -3,10 +3,9 @@
 from collections import Counter
 from itertools import zip_longest
 
-from jevtrends.http import APIError
-from jevtrends.sources.base import Song
-from jevtrends.stages.context import run_items
-from jevtrends.stages.gate import gate_state
+from jevtrends.core.context import gate_state, run_items
+from jevtrends.core.http import APIError
+from jevtrends.core.sources.base import Song
 from jevtrends.ugc import scoring
 from jevtrends.ugc.context import UgcRunContext, is_account_error
 from jevtrends.ugc.models import FacetTrend, SoundCandidate

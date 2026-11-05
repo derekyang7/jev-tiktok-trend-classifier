@@ -5,7 +5,7 @@ from pathlib import Path
 import yaml
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-from jevtrends.config import BudgetCfg, ConcurrencyCfg, FailureCfg, LlmCfg, PricingCfg, RetriesCfg
+from jevtrends.core.config import BudgetCfg, ConcurrencyCfg, FailureCfg, LlmCfg, PricingCfg, RetriesCfg
 from jevtrends.ugc.models import FACETS
 
 WEIGHT_KEYS = {"momentum", "performance", "fit", "breadth", "ease"}

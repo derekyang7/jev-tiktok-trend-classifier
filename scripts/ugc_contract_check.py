@@ -20,7 +20,7 @@ import httpx
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from contract_check import scrub  # noqa: E402  (V1's deep redaction of creator identifiers)
+from opportunities_contract_check import scrub  # noqa: E402  (V1's deep redaction of creator identifiers)
 
 OUT = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "contract" / "ugc"
 OPENROUTER = "https://openrouter.ai/api/v1"

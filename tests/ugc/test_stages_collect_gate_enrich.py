@@ -2,13 +2,12 @@ from datetime import UTC, datetime
 
 import pytest
 
-from jevtrends.http import FatalAPIError, TransientAPIError
-from jevtrends.models import Answer, Comment
+from jevtrends.core.http import FatalAPIError, TransientAPIError
+from jevtrends.core.models import Answer, Comment
 from jevtrends.ugc.stages.collect import run_collect
 from jevtrends.ugc.stages.enrich import run_enrich
 from jevtrends.ugc.stages.gate import gate_survivors, run_gate
-from tests.fakes import FakeJev
-from tests.helpers import make_video
+from tests.helpers import FakeJev, make_video
 from tests.ugc.fakes import FakeUgcSource, make_ugc_ctx, sequential
 
 

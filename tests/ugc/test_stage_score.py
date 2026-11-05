@@ -3,11 +3,10 @@ from datetime import UTC, datetime
 
 import pytest
 
-from jevtrends.models import Answer
+from jevtrends.core.models import Answer
 from jevtrends.ugc.models import FacetTrend, SoundCandidate
 from jevtrends.ugc.stages.score import run_score
-from tests.fakes import FakeJev
-from tests.helpers import make_video
+from tests.helpers import FakeJev, make_video
 from tests.ugc.fakes import make_ugc_ctx
 
 RECENT, OLD = datetime(2026, 9, 29, tzinfo=UTC), datetime(2026, 9, 20, tzinfo=UTC)

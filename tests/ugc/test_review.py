@@ -6,7 +6,7 @@ from typer.testing import CliRunner
 from jevtrends.cli import app
 from jevtrends.ugc.review import compute_review_metrics, review_items
 from jevtrends.ugc.store import UgcStore
-from tests.fakes import FakeLLM
+from tests.helpers import FakeLLM
 from tests.ugc.test_stage_brief import ranked_world
 
 runner = CliRunner()

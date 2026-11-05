@@ -1,10 +1,10 @@
 import json
 
-from jevtrends.llm.prompts import EvidenceRef
+from jevtrends.core.llm import EvidenceRef
 from jevtrends.ugc.models import SoundCandidate, UgcTrendScore
 from jevtrends.ugc.prompts import Beat, SoundPick, UgcBriefOut
 from jevtrends.ugc.stages.brief import DISCLOSURE_LINE, ensure_disclosure, run_brief, selected_briefs
-from tests.fakes import FakeLLM
+from tests.helpers import FakeLLM
 from tests.ugc.test_stage_score import scored_world
 
 

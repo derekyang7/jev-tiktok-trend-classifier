@@ -7,7 +7,7 @@ from jevtrends.ugc.config import RunProfiles, UgcSettings, load_niche
 from jevtrends.ugc.niche_draft import draft_niche, render_niche_yaml
 from jevtrends.ugc.prompts import NicheDraftOut
 from jevtrends.ugc.store import UgcStore
-from tests.fakes import FakeLLM
+from tests.helpers import FakeLLM
 from tests.ugc.fakes import NOW, niche
 
 ROOT = Path(__file__).resolve().parents[2]

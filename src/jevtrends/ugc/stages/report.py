@@ -7,10 +7,10 @@ from pathlib import Path
 import yaml
 from jinja2 import Environment, FileSystemLoader
 
-from jevtrends import scoring as base
-from jevtrends.jev.questions import NONE_OF_THESE
-from jevtrends.models import Video
-from jevtrends.stages.judge import truncate_words
+from jevtrends.core import scoring as base
+from jevtrends.core.context import truncate_words
+from jevtrends.core.jev import NONE_OF_THESE
+from jevtrends.core.models import Video
 from jevtrends.ugc import scoring
 from jevtrends.ugc.context import UgcRunContext, ugc_report_context
 from jevtrends.ugc.models import LLM_FACETS, FacetTrend, SoundCandidate

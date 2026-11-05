@@ -1,13 +1,12 @@
 import pytest
 
-from jevtrends.models import Answer, Comment, Enrichment, SoundInfo, VisionRead
-from jevtrends.stages.context import StageFailed
+from jevtrends.core.context import StageFailed
+from jevtrends.core.models import Answer, Comment, Enrichment, SoundInfo, VisionRead
 from jevtrends.ugc.models import FacetTrend, SoundCandidate
 from jevtrends.ugc.prompts import Candidate, DiscoverOut, SoundNote
 from jevtrends.ugc.stages.assign import run_assign
 from jevtrends.ugc.stages.discover import clean_candidates, run_discover, sound_digest_line, video_digest_line
-from tests.fakes import FakeJev, FakeLLM
-from tests.helpers import make_video
+from tests.helpers import FakeJev, FakeLLM, make_video
 from tests.ugc.fakes import make_ugc_ctx
 
 

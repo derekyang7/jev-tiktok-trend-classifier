@@ -3,7 +3,7 @@
 import math
 from dataclasses import dataclass, field, replace
 
-from jevtrends.budget import BudgetGuard, Trimmable, trim_to_fit
+from jevtrends.core.budget import BudgetGuard, Trimmable, trim_to_fit
 from jevtrends.ugc.config import UgcSettings
 
 UGC_STAGE_ORDER = ["collect", "gate", "enrich", "look", "judge", "sounds", "discover", "assign", "score", "brief",
