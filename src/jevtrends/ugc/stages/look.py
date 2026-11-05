@@ -1,9 +1,8 @@
 """Stage 4: the vision model reads each survivor's cover frame or first slides (UGC spec §6.4)."""
 
-from jevtrends.llm.client import ImagePart, LLMOutputError
-from jevtrends.models import Enrichment, VisionRead
-from jevtrends.stages.context import run_items
-from jevtrends.stages.judge import truncate_words
+from jevtrends.core.context import run_items, truncate_words
+from jevtrends.core.llm import ImagePart, LLMOutputError
+from jevtrends.core.models import Enrichment, VisionRead
 from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.images import prepare_image
 from jevtrends.ugc.prompts import VISION_SYSTEM, VisionOut, vision_user_prompt

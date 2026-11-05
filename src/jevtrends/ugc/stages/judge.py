@@ -1,8 +1,7 @@
 """Stage 5: per-video Jev judgment, now with on-screen text: about the niche? promotional? (UGC spec §6.5)."""
 
-from jevtrends.models import Enrichment, Video
-from jevtrends.stages.context import run_items
-from jevtrends.stages.judge import truncate_words
+from jevtrends.core.context import run_items, truncate_words
+from jevtrends.core.models import Enrichment, Video
 from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.questions import PROMOTIONAL, relevant_question
 from jevtrends.ugc.stages.gate import gate_survivors

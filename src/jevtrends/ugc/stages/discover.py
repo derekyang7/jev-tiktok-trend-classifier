@@ -2,10 +2,9 @@
 
 import math
 
-from jevtrends.llm.client import LLMOutputError
-from jevtrends.models import Enrichment, Video
-from jevtrends.stages.context import StageFailed
-from jevtrends.stages.discover import clip
+from jevtrends.core.context import StageFailed, clip
+from jevtrends.core.llm import LLMOutputError
+from jevtrends.core.models import Enrichment, Video
 from jevtrends.ugc import scoring
 from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.models import LLM_FACETS, FacetTrend, SoundCandidate

@@ -2,8 +2,8 @@
 
 from datetime import timedelta
 
-from jevtrends.models import Enrichment
-from jevtrends.stages.context import run_items
+from jevtrends.core.context import run_items
+from jevtrends.core.models import Enrichment
 from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.stages.gate import gate_survivors
 

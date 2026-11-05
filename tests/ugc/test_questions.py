@@ -1,4 +1,4 @@
-from jevtrends.jev.questions import IS_PROMOTIONAL, NONE_OF_THESE, payload
+from jevtrends.core.jev import IS_PROMOTIONAL, NONE_OF_THESE, payload
 from jevtrends.ugc.config import NicheProfile
 from jevtrends.ugc.models import FacetTrend
 from jevtrends.ugc.questions import (BRAND_RISK, EASE, FIT, PRODUCT_FIT, PROMOTIONAL, assign_question, gate_question,

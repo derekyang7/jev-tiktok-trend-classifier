@@ -8,13 +8,13 @@ from pathlib import Path
 import httpx
 import typer
 
-from jevtrends.budget import BudgetGuard
-from jevtrends.http import APIError
-from jevtrends.jev.client import JevClient
-from jevtrends.llm.client import LLMClient
-from jevtrends.pipeline import BudgetExceeded
-from jevtrends.sources.scrapecreators import ScrapeCreatorsSource
-from jevtrends.stages.context import StageFailed
+from jevtrends.core.budget import BudgetGuard
+from jevtrends.core.config import require_keys
+from jevtrends.core.context import BudgetExceeded, StageFailed
+from jevtrends.core.http import APIError
+from jevtrends.core.jev import JevClient
+from jevtrends.core.llm import LLMClient
+from jevtrends.core.sources.scrapecreators import ScrapeCreatorsSource
 from jevtrends.ugc.config import (RunProfiles, UgcSettings, load_niche, load_product, load_ugc_settings,
                                   parse_ugc_weights)
 from jevtrends.ugc.context import UgcRunContext
@@ -38,12 +38,6 @@ def ugc_db_path() -> Path:
 
 def ugc_reports_dir() -> Path:
     return Path(os.environ.get("JEVTRENDS_UGC_REPORTS_DIR", "reports/ugc"))
-
-
-def require_keys() -> dict[str, str]:
-    from jevtrends.cli import require_keys as require  # imported here: jevtrends.cli mounts this module
-
-    return require()
 
 
 def load_profiles(niche_id: str, product_id: str | None) -> RunProfiles:

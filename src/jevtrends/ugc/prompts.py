@@ -4,7 +4,7 @@ import json
 
 from pydantic import BaseModel
 
-from jevtrends.llm.prompts import EvidenceRef
+from jevtrends.core.llm import EvidenceRef
 
 
 class VisionOut(BaseModel):

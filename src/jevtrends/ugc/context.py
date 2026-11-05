@@ -5,11 +5,11 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Protocol
 
-from jevtrends.budget import BudgetGuard
-from jevtrends.http import FatalAPIError
-from jevtrends.llm.client import ImagePart, LLMResult
-from jevtrends.sources.base import UgcSource
-from jevtrends.stages.context import ContextHelpers, JevLike, LLMLike
+from jevtrends.core.budget import BudgetGuard
+from jevtrends.core.context import ContextHelpers, JevLike, LLMLike
+from jevtrends.core.http import FatalAPIError
+from jevtrends.core.llm import ImagePart, LLMResult
+from jevtrends.core.sources.base import UgcSource
 from jevtrends.ugc.config import NicheProfile, ProductProfile, UgcSettings
 from jevtrends.ugc.store import UgcStore
 

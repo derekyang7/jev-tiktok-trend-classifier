@@ -1,6 +1,6 @@
 import json
 
-from jevtrends.llm.client import strict_schema
+from jevtrends.core.llm import strict_schema
 from jevtrends.ugc.prompts import (BRIEF_SYSTEM, NICHE_DRAFT_SYSTEM, VISION_SYSTEM, DiscoverOut, NicheDraftOut,
                                    UgcBriefOut, VisionOut, brief_user_prompt, discover_system, discover_user_prompt,
                                    niche_draft_user_prompt, vision_user_prompt)

@@ -5,15 +5,15 @@ from datetime import UTC, datetime
 
 from PIL import Image
 
-from jevtrends.budget import BudgetGuard
-from jevtrends.http import FatalAPIError
-from jevtrends.llm.client import ImagePart, LLMOutputError, LLMResult
-from jevtrends.sources.base import SearchPage, Song, SongsPage
+from jevtrends.core.budget import BudgetGuard
+from jevtrends.core.http import FatalAPIError
+from jevtrends.core.llm import ImagePart, LLMOutputError, LLMResult
+from jevtrends.core.sources.base import SearchPage, Song, SongsPage
 from jevtrends.ugc.config import NicheProfile, ProductProfile, RunProfiles, UgcSettings
 from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.prompts import VisionOut
 from jevtrends.ugc.store import UgcStore
-from tests.fakes import FakeJev, FakeLLM, FakeSource
+from tests.helpers import FakeJev, FakeLLM, FakeSource
 
 NOW = datetime(2026, 10, 1, 12, tzinfo=UTC)
 

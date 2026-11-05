@@ -2,7 +2,7 @@
 
 import json
 
-from jevtrends.store import SCHEMA, Store, _now
+from jevtrends.core.store import CORE_SCHEMA, Store, _now
 from jevtrends.ugc.config import RunProfiles, UgcSettings
 from jevtrends.ugc.models import FacetTrend, SoundCandidate, UgcTrendScore
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS ugc_reviews (
 
 class UgcStore(Store):
     def schema(self) -> str:
-        return SCHEMA + UGC_SCHEMA
+        return CORE_SCHEMA + UGC_SCHEMA
 
     def get_run(self, run_id: int) -> dict:
         row = self._run_row(run_id)

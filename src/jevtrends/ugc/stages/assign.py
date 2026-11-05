@@ -1,8 +1,8 @@
 """Stage 8: Jev tags each relevant video on every facet with candidates; weak candidates are pruned (UGC spec §6.8)."""
 
-from jevtrends import scoring as base
-from jevtrends.jev.questions import NONE_OF_THESE, Question
-from jevtrends.stages.context import run_items
+from jevtrends.core import scoring as base
+from jevtrends.core.context import run_items
+from jevtrends.core.jev import NONE_OF_THESE, Question
 from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.models import LLM_FACETS, FacetTrend
 from jevtrends.ugc.questions import assign_question

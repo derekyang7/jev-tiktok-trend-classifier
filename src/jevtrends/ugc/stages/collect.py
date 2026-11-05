@@ -4,10 +4,9 @@ import asyncio
 import math
 from datetime import timedelta
 
-from jevtrends.http import APIError
-from jevtrends.sources.base import SearchPage
-from jevtrends.stages.collect import is_english_or_unknown
-from jevtrends.stages.context import run_items
+from jevtrends.core.context import is_english_or_unknown, run_items
+from jevtrends.core.http import APIError
+from jevtrends.core.sources.base import SearchPage
 from jevtrends.ugc.context import UgcRunContext, is_account_error
 
 

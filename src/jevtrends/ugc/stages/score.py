@@ -2,12 +2,11 @@
 
 import statistics
 
-from jevtrends import scoring as base
-from jevtrends.jev.questions import Question
-from jevtrends.models import Enrichment, Video
-from jevtrends.stages.context import run_items
-from jevtrends.stages.judge import truncate_words
-from jevtrends.stages.score import evidence_set
+from jevtrends.core import scoring as base
+from jevtrends.core.context import run_items, truncate_words
+from jevtrends.core.jev import Question
+from jevtrends.core.models import Enrichment, Video
+from jevtrends.core.scoring import evidence_set
 from jevtrends.ugc import scoring
 from jevtrends.ugc.context import UgcRunContext
 from jevtrends.ugc.models import FacetTrend, UgcTrendScore
