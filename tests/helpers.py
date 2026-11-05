@@ -1,27 +1,15 @@
 """Shared test helpers and deterministic stand-ins for ScrapeCreators, Jev, and the LLM."""
 
 from collections.abc import Callable
-import contextlib
 from datetime import UTC, datetime
-import sys
 
 from pydantic import BaseModel
 
 from jevtrends.core.http import TransientAPIError
 from jevtrends.core.jev import JevResult
 from jevtrends.core.llm import LLMOutputError, LLMResult
-from jevtrends.core.models import Answer, Comment, Enrichment, SoundInfo, Video, VisionRead
+from jevtrends.core.models import Answer, Comment, Video
 from jevtrends.core.sources.base import CommentsResult, SearchPage, TranscriptResult
-
-with contextlib.suppress(ImportError):
-    import jevtrends.models as _legacy_models
-
-    for _name, _cls in (("Answer", Answer), ("Comment", Comment), ("Enrichment", Enrichment),
-                        ("SoundInfo", SoundInfo), ("Video", Video), ("VisionRead", VisionRead)):
-        setattr(_legacy_models, _name, _cls)
-        for _mod_name, _mod in list(sys.modules.items()):
-            if _mod_name.startswith("jevtrends") and hasattr(_mod, _name):
-                setattr(_mod, _name, _cls)
 
 
 def make_video(**overrides) -> Video:
@@ -40,8 +28,6 @@ def make_video(**overrides) -> Video:
         "comment_count": 10,
     }
     fields.update(overrides)
-    if isinstance(fields.get("sound_info"), BaseModel) and not isinstance(fields["sound_info"], SoundInfo):
-        fields["sound_info"] = SoundInfo.model_validate(fields["sound_info"].model_dump())
     return Video(**fields)
 
 
