@@ -4,7 +4,7 @@
 
 | | V1: startup opportunities | V2: UGC and ad trends |
 |---|---|---|
-| Command | `jevtrends scan` | `jevtrends ugc scan` |
+| Command | `jevtrends opportunities scan` | `jevtrends ugc scan` |
 | Finds | What people do, want, buy and struggle with | The formats, hooks, sounds, topics and needs that are working in one niche |
 | Scope | 11 business niches at once, last 30 days, up to 1,000 videos | One niche per scan, last 14 days, up to 600 videos |
 | Writes | Up to 20 opportunity briefs: who it affects, the need, startup angles, risks | Up to 11 creator briefs: concept, hooks, shot-by-shot beats, sound, dos and don'ts. Can be tailored to your product |
@@ -68,14 +68,14 @@ The CLI reads two environment variables, `OPENROUTER_API_KEY` and `SCRAPECREATOR
 
 `scripts/scan.sh <command>` loads the keys from that file, then runs `uv run jevtrends <command>`. It never prints the keys. If `JEVTRENDS_SECRETS_FILE` isn't set, it looks for `~/Repos/.env.secrets`.
 
-The examples below use `scripts/scan.sh`. If you exported the keys instead, type `uv run jevtrends` in its place. `uv run jevtrends --help` and `uv run jevtrends ugc --help` list every command and option.
+The examples below use `scripts/scan.sh`. If you exported the keys instead, type `uv run jevtrends` in its place. `uv run jevtrends --help`, `uv run jevtrends opportunities --help` and `uv run jevtrends ugc --help` list every command and option.
 
 ## Check the cost first
 
 `--estimate` prints a scan's projected cost and exits. It needs no keys and calls no APIs.
 
 ```bash
-uv run jevtrends scan --estimate
+uv run jevtrends opportunities scan --estimate
 uv run jevtrends ugc scan --niche consumer_apps --estimate
 ```
 
@@ -107,20 +107,20 @@ V1 scans 11 niches at once:
 - home, family and pets;
 - food and beverage.
 
-Each niche in `config/niches.yaml` says what it covers, what it doesn't, and which TikTok searches to run. Edit them to match what you care about.
+Each niche in `config/opportunities/niches.yaml` says what it covers, what it doesn't, and which TikTok searches to run. Edit them to match what you care about.
 
 Run a small pilot first, then the full scan:
 
 ```bash
-scripts/scan.sh scan --max-videos 100 --budget 2
-scripts/scan.sh scan
+scripts/scan.sh opportunities scan --max-videos 100 --budget 2
+scripts/scan.sh opportunities scan
 ```
 
 In testing:
 - **Pilot:** $0.67, about 5 minutes.
 - **Full scan** (1,000 videos from the last 30 days): $4.19, about 13 minutes.
 
-Each run prints the path of its report, `reports/<date>-scan-<run>.md`. The report has:
+Each run prints the path of its report, `reports/opportunities/<date>-scan-<run>.md`. The report has:
 - **a header:** the funnel (collected → passed the filter → signals → trends), the cost and any notes;
 - **the top opportunities,** ranked;
 - **a section for each niche,** plus "Outside your niches". Each briefed trend there has:
@@ -133,12 +133,12 @@ Each run prints the path of its report, `reports/<date>-scan-<run>.md`. The repo
 
 | Command | What it does |
 |---|---|
-| `scripts/scan.sh scan [--lookback-days N] [--max-videos N] [--budget USD]` | Run a scan. Defaults come from `config/settings.yaml` |
-| `scripts/scan.sh runs` | List runs with their status and cost |
-| `scripts/scan.sh resume <run> [--budget USD]` | Continue a failed or budget-stopped run, redoing only missing work |
-| `scripts/scan.sh report <run> [--weights momentum=0.3,pain=0.2,spend=0.2,underserved=0.2,breadth=0.1]` | Re-rank and re-render a report without calling any model. The five weights must sum to 1 |
-| `scripts/scan.sh label <run>` | Label a sample of 100 videos in your terminal (interactive) |
-| `scripts/scan.sh eval <run>` | Precision, recall, calibration and a suggested threshold, from your labels |
+| `scripts/scan.sh opportunities scan [--lookback-days N] [--max-videos N] [--budget USD]` | Run a scan. Defaults come from `config/opportunities/settings.yaml` |
+| `scripts/scan.sh opportunities runs` | List runs with their status and cost |
+| `scripts/scan.sh opportunities resume <run> [--budget USD]` | Continue a failed or budget-stopped run, redoing only missing work |
+| `scripts/scan.sh opportunities report <run> [--weights momentum=0.3,pain=0.2,spend=0.2,underserved=0.2,breadth=0.1]` | Re-rank and re-render a report without calling any model. The five weights must sum to 1 |
+| `scripts/scan.sh opportunities label <run>` | Label a sample of 100 videos in your terminal (interactive) |
+| `scripts/scan.sh opportunities eval <run>` | Precision, recall, calibration and a suggested threshold, from your labels |
 
 
 ## V2: UGC and ad trends
@@ -239,31 +239,32 @@ A brief contains:
 
 | Path | What it holds |
 |---|---|
-| `config/settings.yaml` | V1 settings: window, video count, thresholds, ranking weights, briefs, models, pricing and budget |
-| `config/niches.yaml` | V1 niches |
+| `config/opportunities/settings.yaml` | V1 settings: window, video count, thresholds, ranking weights, briefs, models, pricing and budget |
+| `config/opportunities/niches.yaml` | V1 niches |
 | `config/ugc/settings.yaml` | UGC settings: the same kinds of options, plus vision, sounds and brief quotas |
 | `config/ugc/niches/*.yaml` | UGC niches, one per file |
 | `config/ugc/products/*.yaml` | UGC product profiles, git-ignored except `example.yaml` |
-| `data/jevtrends.db`, `data/ugc.db` | SQLite databases: every video, judgment, trend and API call (git-ignored) |
-| `reports/`, `reports/ugc/` | Markdown reports (git-ignored) |
+| `data/opportunities.db`, `data/ugc.db` | SQLite databases: every video, judgment, trend and API call (git-ignored) |
+| `reports/opportunities/`, `reports/ugc/` | Markdown reports (git-ignored) |
 
 Each run stores the settings it used, so editing a setting only affects later runs. To keep files somewhere else, set these environment variables:
-- V1: `JEVTRENDS_CONFIG_DIR`, `JEVTRENDS_DB` and `JEVTRENDS_REPORTS_DIR`;
+- V1: `JEVTRENDS_OPPORTUNITIES_CONFIG_DIR`, `JEVTRENDS_OPPORTUNITIES_DB` and `JEVTRENDS_OPPORTUNITIES_REPORTS_DIR`;
 - UGC: `JEVTRENDS_UGC_CONFIG_DIR`, `JEVTRENDS_UGC_DB` and `JEVTRENDS_UGC_REPORTS_DIR`.
 
 ## Development
 
 - `uv run pytest -q` runs the offline test suite.
 - Each version has a script that checks the live APIs it depends on, then saves redacted responses as test fixtures:
-  - V1: `scripts/with-secrets.sh uv run python scripts/contract_check.py`, under $0.10;
+  - V1: `scripts/with-secrets.sh uv run python scripts/opportunities_contract_check.py`, under $0.10;
   - UGC: `scripts/with-secrets.sh uv run python scripts/ugc_contract_check.py`, about $0.50.
 - Design specs, implementation plans and notes from real runs are in `docs/superpowers/`.
 
 ```text
-src/jevtrends/        V1 pipeline, shared API clients (Jev, Claude, ScrapeCreators) and the CLI
-src/jevtrends/ugc/    the UGC version
-config/               settings, niches and product profiles
-scripts/              key-loading helpers and live API checks
-tests/                offline tests and recorded API responses
-docs/superpowers/     specs, plans and run notes
+src/jevtrends/core/           shared API clients (Jev, Claude, ScrapeCreators), store, budget and scoring
+src/jevtrends/opportunities/  V1 startup opportunities pipeline and CLI
+src/jevtrends/ugc/            V2 UGC and ad trends pipeline and CLI
+config/                       settings, niches and product profiles
+scripts/                      key-loading helpers and live API checks
+tests/                        offline tests and recorded API responses
+docs/superpowers/             specs, plans and run notes
 ```
