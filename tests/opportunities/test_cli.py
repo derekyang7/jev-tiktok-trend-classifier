@@ -3,7 +3,9 @@ from pathlib import Path
 from typer.testing import CliRunner
 
 from jevtrends.cli import app
+from jevtrends.core.jev import JEV_URL, TYPESAFE_JEV_URL
 from jevtrends.core.models import Answer
+from jevtrends.opportunities.cli import _execute
 from jevtrends.opportunities.config import Settings
 from jevtrends.opportunities.store import OpportunitiesStore
 from tests.helpers import make_video
@@ -75,3 +77,32 @@ def test_label_command_records_labels_and_reprompts_invalid_type(tmp_path):
     labels = {row["field"]: row["value"] for row in OpportunitiesStore(tmp_path / "db.sqlite").list_labels()}
     assert labels == {"is_signal": True, "signal_type": "behavior_need", "niches": ["fintech_payments"],
                       "is_promotional": False}
+
+
+async def test_execute_uses_typesafe_key_for_jev_and_openrouter_for_llm(tmp_path, monkeypatch):
+    captured = {}
+
+    async def fake_run_pipeline(ctx, out_dir):
+        captured["ctx"] = ctx
+        return out_dir / "report.md"
+
+    monkeypatch.setattr("jevtrends.opportunities.cli.run_pipeline", fake_run_pipeline)
+    store = OpportunitiesStore(tmp_path / "db.sqlite")
+    settings = Settings()
+    niches = test_niches()
+    run_id = store.create_run({}, settings, niches, NOW)
+
+    keys_with_ts = {"OPENROUTER_API_KEY": "or-k", "SCRAPECREATORS_API_KEY": "sc-k", "TYPESAFE_API_KEY": "ts-k"}
+    await _execute(store, run_id, settings, niches, NOW, keys_with_ts)
+    assert captured["ctx"].jev.api_key == "ts-k"
+    assert captured["ctx"].jev.url == TYPESAFE_JEV_URL
+    assert captured["ctx"].jev.model == "jev-1.13"
+    assert captured["ctx"].llm.api_key == "or-k"
+
+    keys_without_ts = {"OPENROUTER_API_KEY": "or-k", "SCRAPECREATORS_API_KEY": "sc-k"}
+    await _execute(store, run_id, settings, niches, NOW, keys_without_ts)
+    assert captured["ctx"].jev.api_key == "or-k"
+    assert captured["ctx"].jev.url == JEV_URL
+    assert captured["ctx"].jev.model == "typesafe/jev-1.13"
+    store.close()
+

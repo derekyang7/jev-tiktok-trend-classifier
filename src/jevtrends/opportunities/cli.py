@@ -44,7 +44,7 @@ async def _execute(store: OpportunitiesStore, run_id: int, settings: Settings, n
         ctx = RunContext(
             run_id=run_id, store=store, settings=settings, niches=niches,
             source=ScrapeCreatorsSource(http, keys["SCRAPECREATORS_API_KEY"], settings.retries),
-            jev=JevClient(http, keys["OPENROUTER_API_KEY"], settings.models.jev, settings.retries),
+            jev=JevClient.from_keys(http, keys, settings.models.jev, settings.retries),
             llm=LLMClient(http, keys["OPENROUTER_API_KEY"], settings.models.llm, settings.retries,
                           settings.llm.use_json_schema),
             budget=BudgetGuard(settings.budget.max_usd_per_scan, settings.pricing), now=started_at)

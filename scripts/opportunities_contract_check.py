@@ -15,6 +15,7 @@ import httpx
 
 OUT = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "contract" / "opportunities"
 OPENROUTER = "https://openrouter.ai/api"
+TYPESAFE = "https://api.typesafe.ai"
 SC = "https://api.scrapecreators.com"
 JEV_MODEL = "typesafe/jev-1.13"
 LLM_MODEL = "anthropic/claude-opus-5"
@@ -76,7 +77,18 @@ JEV_BODY = {
 }
 
 
-async def check_jev(client: httpx.AsyncClient, key: str) -> bool:
+async def check_jev(client: httpx.AsyncClient, key: str, typesafe_key: str = "") -> bool:
+    if typesafe_key:
+        print("Jev via TypeSafe")
+        url = f"{TYPESAFE}/v1/systemone"
+        body = {**JEV_BODY, "model": JEV_MODEL.removeprefix("typesafe/")}
+        resp = await client.post(url, json=body, headers={"Authorization": f"Bearer {typesafe_key}"})
+        print(f"  POST {url} -> {resp.status_code}")
+        if resp.status_code == 200:
+            save("jev_systemone.json", {"endpoint": url, "response": resp.json()})
+            return True
+        print(f"  body: {resp.text[:300]}")
+        return False
     print("Jev via OpenRouter")
     headers = {"Authorization": f"Bearer {key}"}
     for path in ("/v1/systemone", "/alpha/decisions"):
@@ -182,13 +194,14 @@ def scrub_fixtures() -> int:
 async def main() -> int:
     if "--scrub-fixtures" in sys.argv:
         return scrub_fixtures()
-    keys = {name: os.environ.get(name, "") for name in ("OPENROUTER_API_KEY", "SCRAPECREATORS_API_KEY")}
+    keys = {name: os.environ.get(name, "").strip() for name in ("OPENROUTER_API_KEY", "SCRAPECREATORS_API_KEY")}
     missing = [name for name, value in keys.items() if not value]
     if missing:
         print(f"Missing environment variables: {missing}. Run via scripts/with-secrets.sh.")
         return 2
+    typesafe_key = os.environ.get("TYPESAFE_API_KEY", "").strip()
     async with httpx.AsyncClient(timeout=120) as client:
-        jev_ok = await check_jev(client, keys["OPENROUTER_API_KEY"])
+        jev_ok = await check_jev(client, keys["OPENROUTER_API_KEY"], typesafe_key)
         llm_ok = await check_llm(client, keys["OPENROUTER_API_KEY"])
         sc_ok = await check_scrapecreators(client, keys["SCRAPECREATORS_API_KEY"])
     print(f"\nRESULT jev={jev_ok} llm={llm_ok} scrapecreators={sc_ok}")

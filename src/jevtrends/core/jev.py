@@ -1,4 +1,4 @@
-"""Jev (TypeSafe System One) client via OpenRouter and shared question primitives (spec §4.1, §7)."""
+"""Jev (TypeSafe System One) client via TypeSafe or OpenRouter and shared question primitives (spec §4.1, §7)."""
 
 from dataclasses import dataclass
 
@@ -9,6 +9,7 @@ from jevtrends.core.http import send_with_retry
 from jevtrends.core.models import Answer
 
 JEV_URL = "https://openrouter.ai/api/v1/systemone"  # change here if Task 1 found a different endpoint
+TYPESAFE_JEV_URL = "https://api.typesafe.ai/v1/systemone"
 NONE_OF_THESE = "none_of_these"
 
 
@@ -63,9 +64,16 @@ class JevClient:
     def __init__(self, client: httpx.AsyncClient, api_key: str, model: str, retries: RetriesCfg, url: str = JEV_URL):
         self.client = client
         self.api_key = api_key
-        self.model = model
-        self.retries = retries
         self.url = url
+        self.model = model.removeprefix("typesafe/") if url == TYPESAFE_JEV_URL else model
+        self.retries = retries
+
+    @classmethod
+    def from_keys(cls, client: httpx.AsyncClient, keys: dict[str, str], model: str,
+                  retries: RetriesCfg) -> "JevClient":
+        if typesafe_key := keys.get("TYPESAFE_API_KEY", "").strip():
+            return cls(client, typesafe_key, model, retries, url=TYPESAFE_JEV_URL)
+        return cls(client, keys["OPENROUTER_API_KEY"], model, retries, url=JEV_URL)
 
     async def ask(self, state: dict, questions: dict[str, dict]) -> JevResult:
         response = await send_with_retry(

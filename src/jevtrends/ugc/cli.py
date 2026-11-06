@@ -57,7 +57,7 @@ async def _execute(store: UgcStore, run_id: int, settings: UgcSettings, profiles
         ctx = UgcRunContext(
             run_id=run_id, store=store, settings=settings, niche=profiles.niche, product=profiles.product,
             source=ScrapeCreatorsSource(http, keys["SCRAPECREATORS_API_KEY"], settings.retries),
-            jev=JevClient(http, openrouter, settings.models.jev, settings.retries),
+            jev=JevClient.from_keys(http, keys, settings.models.jev, settings.retries),
             llm=LLMClient(http, openrouter, settings.models.llm, settings.retries, settings.llm.use_json_schema,
                           effort=settings.models.llm_effort or None),
             vision=LLMClient(http, openrouter, settings.models.vision, settings.retries, settings.llm.use_json_schema,

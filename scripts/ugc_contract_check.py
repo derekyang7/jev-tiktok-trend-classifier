@@ -24,6 +24,7 @@ from opportunities_contract_check import scrub  # noqa: E402  (V1's deep redacti
 
 OUT = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "contract" / "ugc"
 OPENROUTER = "https://openrouter.ai/api/v1"
+TYPESAFE = "https://api.typesafe.ai/v1"
 SC = "https://api.scrapecreators.com"
 OPUS = "anthropic/claude-opus-5.5"
 HAIKU = "anthropic/claude-haiku-4.5"
@@ -327,10 +328,14 @@ async def check_haiku(client: httpx.AsyncClient, key: str, covers: list[bytes]) 
     return True
 
 
-async def check_jev(client: httpx.AsyncClient, key: str) -> bool:
-    print("Jev (D8)")
+async def check_jev(client: httpx.AsyncClient, key: str, typesafe_key: str = "") -> bool:
+    provider = "TypeSafe" if typesafe_key else "OpenRouter"
+    base = TYPESAFE if typesafe_key else OPENROUTER
+    auth_key = typesafe_key or key
+    model = "jev-1.13" if typesafe_key else "typesafe/jev-1.13"
+    print(f"Jev via {provider} (D8)")
     niche = {"name": "Consumer apps", "covers": "Apps people use in everyday life", "not_for": "Business software"}
-    gate = {"model": "typesafe/jev-1.13",
+    gate = {"model": model,
             "state": {"caption": "5 apps that feel illegal to know #apps", "hashtags": ["apps"]},
             "questions": {"relevant": {
                 "type": "noul",
@@ -339,8 +344,8 @@ async def check_jev(client: httpx.AsyncClient, key: str) -> bool:
                 "criteria": {"true": "The caption or hashtags hint at anything the niche covers.",
                              "false": "They clearly point to something else."}}}}
     none = {"what": "None of the options clearly fits this video."}
-    choices = {"model": "typesafe/jev-1.13", "state": {"caption": "POV: you finally found an app that tracks habits",
-                                                       "on_screen_text": "POV: you finally found the app"},
+    choices = {"model": model, "state": {"caption": "POV: you finally found an app that tracks habits",
+                                         "on_screen_text": "POV: you finally found the app"},
                "questions": {facet: {"type": "choice", "instructions": f"Which of these {facet}s fits this video?",
                                      "criteria": {f"{facet[0]}01": {"what": option}, "none_of_these": none}}
                              for facet, option in (("format", "Green-screen reaction over app screenshots"),
@@ -349,8 +354,8 @@ async def check_jev(client: httpx.AsyncClient, key: str) -> bool:
                                                    ("need", "I can't stay consistent with habits"))}}
     results = {}
     for name, body in (("gate", gate), ("choices", choices)):
-        resp = await client.post(f"{OPENROUTER}/systemone", json=body, headers={"Authorization": f"Bearer {key}"})
-        print(f"  {name}: POST /systemone -> {resp.status_code}")
+        resp = await client.post(f"{base}/systemone", json=body, headers={"Authorization": f"Bearer {auth_key}"})
+        print(f"  {name}: POST {base}/systemone -> {resp.status_code}")
         results[name] = {"status": resp.status_code, "response": resp.json() if resp.status_code == 200 else resp.text[:300]}
     save("jev_ugc.json", results)
     return all(r["status"] == 200 for r in results.values())
@@ -378,12 +383,13 @@ async def check_sound_alternatives(client: httpx.AsyncClient, key: str) -> None:
 
 
 async def main() -> int:
-    keys = {name: os.environ.get(name, "") for name in ("OPENROUTER_API_KEY", "SCRAPECREATORS_API_KEY")}
+    keys = {name: os.environ.get(name, "").strip() for name in ("OPENROUTER_API_KEY", "SCRAPECREATORS_API_KEY")}
     missing = [name for name, value in keys.items() if not value]
     if missing:
         print(f"Missing environment variables: {missing}. Run via scripts/with-secrets.sh.")
         return 2
     sc, orkey = keys["SCRAPECREATORS_API_KEY"], keys["OPENROUTER_API_KEY"]
+    tskey = os.environ.get("TYPESAFE_API_KEY", "").strip()
     async with httpx.AsyncClient(timeout=120) as client:
         hashtag_ok, hashtag_items = await check_hashtag(client, sc)
         top_ok, _ = await check_top(client, sc)
@@ -401,7 +407,7 @@ async def main() -> int:
         images_ok, covers = await check_images(client, [i for i in hashtag_items if not i.get("image_post_info")])
         opus_ok = await check_opus(client, orkey)
         haiku_ok = await check_haiku(client, orkey, covers)
-        jev_ok = await check_jev(client, orkey)
+        jev_ok = await check_jev(client, orkey, tskey)
     results = {"hashtag": hashtag_ok, "top": top_ok, "songs": songs_ok, "song_videos": song_videos_ok,
                "images": images_ok, "opus": opus_ok, "haiku": haiku_ok, "jev": jev_ok}
     print("\nRESULT " + " ".join(f"{name}={ok}" for name, ok in results.items()))

@@ -5,7 +5,8 @@ import httpx
 import pytest
 
 from jevtrends.core.config import RetriesCfg
-from jevtrends.core.jev import IS_PROMOTIONAL, JEV_URL, NONE_OF_THESE, JevClient, Question, parse_answer, payload
+from jevtrends.core.jev import (IS_PROMOTIONAL, JEV_URL, NONE_OF_THESE, TYPESAFE_JEV_URL, JevClient, Question,
+                                parse_answer, payload)
 from jevtrends.core.models import Answer
 
 CONTRACT = Path(__file__).resolve().parents[1] / "fixtures" / "contract" / "opportunities" / "jev_systemone.json"
@@ -49,6 +50,48 @@ async def test_ask_posts_model_state_questions_and_parses_usage():
     assert seen["body"]["questions"]["maybe_signal"]["type"] == "noul"
     assert result.answers["maybe_signal"].value == 0.7
     assert result.input_tokens == 321
+
+
+async def test_from_keys_prefers_typesafe_and_strips_model_prefix():
+    seen = {}
+
+    def handler(request):
+        seen["url"] = str(request.url)
+        seen["auth"] = request.headers["authorization"]
+        seen["body"] = json.loads(request.content)
+        return httpx.Response(200, json={"model": "jev-1.13", "answers": {"maybe_signal": {"type": "noul", "noul": 0.8}},
+                                         "usage": {"input_tokens": 120, "output_tokens": 12}})
+
+    keys = {"OPENROUTER_API_KEY": "or-k", "SCRAPECREATORS_API_KEY": "sc-k", "TYPESAFE_API_KEY": "ts-k"}
+    client = JevClient.from_keys(httpx.AsyncClient(transport=httpx.MockTransport(handler)), keys, "typesafe/jev-1.13",
+                                 RetriesCfg(max_attempts=1))
+    result = await client.ask({"caption": "hi"}, payload([GATE_Q]))
+    assert seen["url"] == TYPESAFE_JEV_URL == "https://api.typesafe.ai/v1/systemone"
+    assert seen["auth"] == "Bearer ts-k"
+    assert seen["body"]["model"] == "jev-1.13"
+    assert result.answers["maybe_signal"].value == 0.8
+    assert result.input_tokens == 120
+
+
+async def test_from_keys_falls_back_to_openrouter_when_typesafe_key_absent():
+    seen = {}
+
+    def handler(request):
+        seen["url"] = str(request.url)
+        seen["auth"] = request.headers["authorization"]
+        seen["body"] = json.loads(request.content)
+        return httpx.Response(200, json={"model": "typesafe/jev-1.13",
+                                         "answers": {"maybe_signal": {"type": "noul", "noul": 0.6}},
+                                         "usage": {"input_tokens": 200, "output_tokens": 8}})
+
+    keys = {"OPENROUTER_API_KEY": "or-k", "SCRAPECREATORS_API_KEY": "sc-k"}
+    client = JevClient.from_keys(httpx.AsyncClient(transport=httpx.MockTransport(handler)), keys, "typesafe/jev-1.13",
+                                 RetriesCfg(max_attempts=1))
+    result = await client.ask({"caption": "hi"}, payload([GATE_Q]))
+    assert seen["url"] == JEV_URL
+    assert seen["auth"] == "Bearer or-k"
+    assert seen["body"]["model"] == "typesafe/jev-1.13"
+    assert result.input_tokens == 200
 
 
 async def test_ask_rejects_missing_answers():
