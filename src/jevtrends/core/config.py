@@ -6,15 +6,20 @@ import typer
 from pydantic import BaseModel
 
 KEYS = ("OPENROUTER_API_KEY", "SCRAPECREATORS_API_KEY")
+OPTIONAL_KEYS = ("TYPESAFE_API_KEY",)
 
 
 def require_keys() -> dict[str, str]:
-    missing = [name for name in KEYS if not os.environ.get(name)]
+    missing = [name for name in KEYS if not os.environ.get(name, "").strip()]
     if missing:
         typer.echo(f"Missing {', '.join(missing)}. Run commands through scripts/scan.sh, which loads the keys "
                    "from ~/Repos/.env.secrets.", err=True)
         raise typer.Exit(2)
-    return {name: os.environ[name] for name in KEYS}
+    found = {name: os.environ[name].strip() for name in KEYS}
+    for name in OPTIONAL_KEYS:
+        if value := os.environ.get(name, "").strip():
+            found[name] = value
+    return found
 
 
 class PricingCfg(BaseModel):
