@@ -3,6 +3,8 @@ from pathlib import Path
 from typer.testing import CliRunner
 
 from jevtrends.cli import app
+from jevtrends.core.jev import JEV_URL, TYPESAFE_JEV_URL
+from jevtrends.ugc.cli import _execute
 from jevtrends.ugc.config import RunProfiles, UgcSettings, load_niche
 from jevtrends.ugc.niche_draft import draft_niche, render_niche_yaml
 from jevtrends.ugc.prompts import NicheDraftOut
@@ -76,3 +78,33 @@ async def test_draft_niche_renders_a_loadable_profile(tmp_path):
     profile = load_niche(tmp_path, "pets")
     assert len(profile.seed_queries) == 20 and profile.seed_queries[0] == "query 0"
     assert profile.hashtags == ["dogs", "cats"]
+
+
+async def test_execute_uses_typesafe_key_for_jev_and_openrouter_for_llm_and_vision(tmp_path, monkeypatch):
+    captured = {}
+
+    async def fake_run_ugc_pipeline(ctx, out_dir):
+        captured["ctx"] = ctx
+        return out_dir / "report.md"
+
+    monkeypatch.setattr("jevtrends.ugc.cli.run_ugc_pipeline", fake_run_ugc_pipeline)
+    store = UgcStore(tmp_path / "ugc.sqlite")
+    settings = UgcSettings()
+    profiles = RunProfiles(niche=niche())
+    run_id = store.create_run({}, settings, profiles, NOW)
+
+    keys_with_ts = {"OPENROUTER_API_KEY": "or-k", "SCRAPECREATORS_API_KEY": "sc-k", "TYPESAFE_API_KEY": "ts-k"}
+    await _execute(store, run_id, settings, profiles, NOW, keys_with_ts)
+    assert captured["ctx"].jev.api_key == "ts-k"
+    assert captured["ctx"].jev.url == TYPESAFE_JEV_URL
+    assert captured["ctx"].jev.model == "jev-1.13"
+    assert captured["ctx"].llm.api_key == "or-k"
+    assert captured["ctx"].vision.api_key == "or-k"
+
+    keys_without_ts = {"OPENROUTER_API_KEY": "or-k", "SCRAPECREATORS_API_KEY": "sc-k"}
+    await _execute(store, run_id, settings, profiles, NOW, keys_without_ts)
+    assert captured["ctx"].jev.api_key == "or-k"
+    assert captured["ctx"].jev.url == JEV_URL
+    assert captured["ctx"].jev.model == "typesafe/jev-1.13"
+    store.close()
+

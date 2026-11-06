@@ -15,7 +15,7 @@ Each scan writes a Markdown report and keeps all its data in a local SQLite data
 ## How it works
 
 1. **Collect:** search TikTok through ScrapeCreators with each niche's queries, inside the lookback window. Fetch transcripts, and comments for the most-commented videos.
-2. **Judge:** Jev is TypeSafe's decision model (`typesafe/jev-1.13` on OpenRouter). It answers yes/no, multiple-choice and score questions about every video with calibrated probabilities: whether it's on topic, and whether it's promotional.
+2. **Judge:** Jev is TypeSafe's decision model (`typesafe/jev-1.13` on OpenRouter, or `jev-1.13` directly on TypeSafe). It answers yes/no, multiple-choice and score questions about every video with calibrated probabilities: whether it's on topic, and whether it's promotional.
 3. **Propose, then assign:** Claude reads a digest of the relevant videos and proposes trends. Jev then tags every video against those trends.
 4. **Score:** code works out momentum (growth inside the window) and breadth (how many creators). Jev scores each trend:
    - V1: how painful the need is, whether people spend money on it, and how underserved it is;
@@ -29,10 +29,11 @@ Models only make judgments and write text. Counting, dates and arithmetic stay i
 ## What you need
 
 - **macOS or Linux** with [uv](https://docs.astral.sh/uv/). uv installs Python 3.12 or later if you don't have it. The tool has been run on macOS.
-- **An OpenRouter API key** ([openrouter.ai](https://openrouter.ai)) with credits. Every model call goes through it:
-  - `typesafe/jev-1.13` (Jev) for both versions;
+- **An OpenRouter API key** ([openrouter.ai](https://openrouter.ai)) with credits. Claude calls (and Jev calls, unless `TYPESAFE_API_KEY` is set) go through it:
+  - `typesafe/jev-1.13` (Jev) for both versions, when `TYPESAFE_API_KEY` is not set;
   - `anthropic/claude-opus-5` for V1;
   - `anthropic/claude-opus-5.5` and `anthropic/claude-haiku-4.5` for the UGC version.
+- **A TypeSafe API key (optional)** ([typesafe.ai](https://typesafe.ai)). If `TYPESAFE_API_KEY` is set, Jev calls go directly to `https://api.typesafe.ai/v1/systemone` with model `jev-1.13` instead of OpenRouter.
 - **A ScrapeCreators API key** ([scrapecreators.com](https://scrapecreators.com)) with credits.
   - A default V1 scan uses up to about 1,300 credits, and a UGC scan up to about 650.
   - New accounts get 100 free credits. At the time of writing, 25,000 credits cost $47.
@@ -50,7 +51,7 @@ The tests run offline against recorded API responses, so they need no keys and c
 
 ### API keys
 
-The CLI reads two environment variables, `OPENROUTER_API_KEY` and `SCRAPECREATORS_API_KEY`. You can provide them in either of two ways:
+The CLI requires two environment variables, `OPENROUTER_API_KEY` and `SCRAPECREATORS_API_KEY`, and optionally uses `TYPESAFE_API_KEY` (when set) to call Jev directly via TypeSafe instead of OpenRouter. You can provide them in either of two ways:
 
 - **Export them yourself,** then run commands as `uv run jevtrends …`.
 - **Keep them in a file outside the repo,** and run commands as `scripts/scan.sh …`. For example, create `~/.jevtrends.env`:
@@ -58,6 +59,8 @@ The CLI reads two environment variables, `OPENROUTER_API_KEY` and `SCRAPECREATOR
   ```
   OPENROUTER_API_KEY=your-openrouter-key
   SCRAPECREATORS_API_KEY=your-scrapecreators-key
+  # Optional: call Jev directly via TypeSafe instead of OpenRouter
+  # TYPESAFE_API_KEY=your-typesafe-key
   ```
 
   Then point the helper at it:
